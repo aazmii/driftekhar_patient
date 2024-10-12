@@ -25,7 +25,6 @@ class ReviewTile extends StatelessWidget {
                 image: DecorationImage(image: imageProvider),
               ),
             ),
-            placeholder: (context, url) => const CircularProgressIndicator(),
             errorWidget: (context, url, error) => const Icon(Icons.error),
           ),
         ),

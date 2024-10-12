@@ -18,22 +18,22 @@ class ExperienceContainer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          10.toHeight(),
+          10.toHeight,
           Text(
             experience.title ?? '-',
             style: context.text.titleMedium,
           ),
-          10.toHeight(),
+          10.toHeight,
           Text(
             experience.institution ?? '-',
             style: context.text.titleSmall,
           ),
-          10.toHeight(),
+          10.toHeight,
           Text(
             experience.address ?? '-',
             style: context.text.titleSmall,
           ),
-          10.toHeight(),
+          10.toHeight,
         ],
       ),
     );

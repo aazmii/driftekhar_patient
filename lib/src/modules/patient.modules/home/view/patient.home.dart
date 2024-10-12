@@ -21,7 +21,7 @@ class PatientHome extends StatelessWidget {
       body: Column(
         children: [
           const ImageWithProfessionWidget(),
-          10.toHeight(),
+          10.toHeight,
           const GetAppointSection(),
           Expanded(
             child: TabBarWidget(

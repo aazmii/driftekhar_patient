@@ -68,7 +68,7 @@ class DetailTile extends StatelessWidget {
     return Row(
       children: [
         Ratings(rating: index),
-        6.toWidth(),
+        6.toWidth,
         Expanded(
           child: Stack(
             children: [

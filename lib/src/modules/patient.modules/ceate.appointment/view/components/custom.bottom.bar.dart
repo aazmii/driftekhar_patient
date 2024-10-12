@@ -1,0 +1,63 @@
+import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+
+class CustomBottomBar extends StatelessWidget {
+  const CustomBottomBar({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 2.0,
+            spreadRadius: 2.0,
+            offset: Offset(2.0, 2.0),
+          )
+        ],
+      ),
+      height: 50,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Consultation Fee', style: context.text.titleSmall),
+                  Text(
+                    'TK. 700',
+                    style: context.text.titleMedium!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: context.theme.primaryColor,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: FilledButton(
+                style: FilledButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  maximumSize: const Size.fromHeight(50),
+                ),
+                onPressed: () {},
+                child: const Text('Pay and Confirm'),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

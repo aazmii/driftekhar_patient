@@ -3,13 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
 
 class ChemberContainer extends StatelessWidget {
-  const ChemberContainer({
-    super.key,
-    required this.chember,
-    required this.index,
-  });
+  const ChemberContainer({super.key, required this.chember});
   final Chember chember;
-  final int index;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -65,7 +61,7 @@ class ChemberContainer extends StatelessWidget {
               child: Row(
                 children: [
                   const Icon(Icons.schedule_rounded),
-                  5.toWidth(),
+                  5.toWidth,
                   Text(
                     'Sat, Wed - Fri : 7pm to 9pm',
                     style: context.text.titleSmall!.copyWith(

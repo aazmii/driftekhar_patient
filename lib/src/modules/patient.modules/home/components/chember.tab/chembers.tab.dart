@@ -27,7 +27,7 @@ class ChembersTab extends StatelessWidget {
                       'Chember ${index + 1}',
                       style: context.text.titleMedium,
                     ),
-                    ChemberContainer(chember: chembers[index], index: index),
+                    ChemberContainer(chember: chembers[index]),
                   ],
                 ),
               );

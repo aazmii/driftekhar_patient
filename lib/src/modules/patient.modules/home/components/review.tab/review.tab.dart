@@ -14,12 +14,12 @@ class ReviewTab extends StatelessWidget {
       padding: const EdgeInsets.all(8),
       child: Column(
         children: [
-          10.toHeight(),
+          10.toHeight,
           const Expanded(child: ReviewSummary()),
           Expanded(
             child: ListView.separated(
               itemBuilder: (_, index) => ReviewTile(reviews[index]),
-              separatorBuilder: (_, index) => 10.toHeight(),
+              separatorBuilder: (_, index) => 10.toHeight,
               itemCount: reviews.length,
             ),
           )
