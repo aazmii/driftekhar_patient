@@ -20,8 +20,8 @@ class _DatePickerState extends State<DatePicker> {
       ),
       onDateChange: (selectedDate) {},
       dayProps: const EasyDayProps(
-        height: 40.0,
-        width: 40.0,
+        height: 50.0,
+        width: 50.0,
         dayStructure: DayStructure.dayNumDayStr,
         inactiveDayStyle: DayStyle(
           borderRadius: 48.0,

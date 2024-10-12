@@ -9,9 +9,14 @@ class ImageWithProfessionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const Image(image: NetworkImage(SurgonImages.image4)),
+        const Positioned.fill(
+          child: Image(
+            image: NetworkImage(SurgonImages.image4),
+            fit: BoxFit.cover,
+          ),
+        ),
         Positioned(
-          bottom: 30,
+          bottom: 70,
           left: 0,
           child: DecoratedBox(
             decoration: BoxDecoration(

@@ -11,28 +11,26 @@ class ChembersTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10),
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: List.generate(
-            chembers.length,
-            (index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Chember ${index + 1}',
-                      style: context.text.titleMedium,
-                    ),
-                    ChemberContainer(chember: chembers[index]),
-                  ],
-                ),
-              );
-            },
-          ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: List.generate(
+          chembers.length,
+          (index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Chember ${index + 1}',
+                    style: context.text.titleMedium,
+                  ),
+                  ChemberContainer(chember: chembers[index]),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
