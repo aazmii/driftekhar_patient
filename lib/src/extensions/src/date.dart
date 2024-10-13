@@ -176,4 +176,9 @@ extension DateUtils on DateTime {
 
   bool isBetween(DateTime start, DateTime end) =>
       isAfter(start) && isBefore(end);
+
+  String get weekDayName {
+    final weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return weekdays[weekday - 1];
+  }
 }

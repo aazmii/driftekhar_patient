@@ -14,7 +14,7 @@ class ExperienceTab extends StatelessWidget {
         experiences.length,
         (index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.all(8.0),
             child: ExperienceContainer(experience: experiences[index]),
           );
         },

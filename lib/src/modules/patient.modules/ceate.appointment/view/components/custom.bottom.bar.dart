@@ -1,6 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/modules/patient.modules/ceate.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CustomBottomBar extends StatelessWidget {
   const CustomBottomBar({
@@ -44,19 +45,23 @@ class CustomBottomBar extends StatelessWidget {
             ),
             Expanded(
               flex: 2,
-              child: FilledButton(
-                style: FilledButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+              child: Consumer(builder: (context, ref, child) {
+                return FilledButton(
+                  style: FilledButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    minimumSize: const Size.fromHeight(60),
                   ),
-                  minimumSize: const Size.fromHeight(60),
-                ),
-                onPressed: () {},
-                child: const Text(
-                  'Pay and Confirm',
-                  style: TextStyle(fontSize: 18),
-                ),
-              ),
+                  onPressed: () async {
+                    print(ref.read(newAppointmentProvider).notifyMethod);
+                  },
+                  child: const Text(
+                    'Pay and Confirm',
+                    style: TextStyle(fontSize: 18),
+                  ),
+                );
+              }),
             ),
           ],
         ),
