@@ -1,5 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/providers/chembers.dart';
+import 'package:doc_appointment/src/utils/map.utils/map.utils.dart';
 import 'package:flutter/material.dart';
 
 import 'chember.container.dart';
@@ -17,6 +18,8 @@ class ChembersTab extends StatelessWidget {
         children: List.generate(
           chembers.length,
           (index) {
+            final chember = chembers[index];
+            print('(${chember.lat}, ${chember.long})');
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Column(
@@ -26,7 +29,14 @@ class ChembersTab extends StatelessWidget {
                     'Chember ${index + 1}',
                     style: context.text.titleMedium,
                   ),
-                  ChemberContainer(chember: chembers[index]),
+                  ChemberContainer(
+                    chember: chembers[index],
+                    onMapTapped: () async {
+                      if (chember.lat == null || chember.long == null) return;
+                      await MapUtils.openMap(
+                          chembers[index].lat!, chembers[index].long!);
+                    },
+                  ),
                 ],
               ),
             );

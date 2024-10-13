@@ -1,11 +1,16 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/utils/map.utils/map.utils.dart';
 import 'package:flutter/material.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
 
 class ChemberContainer extends StatelessWidget {
-  const ChemberContainer({super.key, required this.chember});
+  const ChemberContainer({
+    super.key,
+    required this.chember,
+    this.onMapTapped,
+  });
   final Chember chember;
-
+  final VoidCallback? onMapTapped;
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -41,7 +46,10 @@ class ChemberContainer extends StatelessWidget {
                   ),
                 ),
                 TextButton.icon(
-                  onPressed: () {},
+                  onPressed: () async {
+                    await MapUtils.openMap(
+                        23.773985552744225, 90.42117791428409);
+                  },
                   icon: const Icon(Icons.location_pin),
                   label: const Text('Map'),
                 ),
@@ -85,6 +93,6 @@ class IconText extends StatelessWidget {
   final Widget? text;
   @override
   Widget build(BuildContext context) {
-    return Row(children: [Icon(icon), text ?? SizedBox.shrink()]);
+    return Row(children: [Icon(icon), text ?? const SizedBox.shrink()]);
   }
 }

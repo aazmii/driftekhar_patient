@@ -17,6 +17,8 @@ final chembers = <Chember>[
       end: const TimeOfDay(hour: 7, minute: 00),
       weekday: 'Sat Wed Thurs Fri'.split(' ').toList(),
     ),
+    lat: 23.751089603707484,
+    long: 90.41323673247247,
   ),
   Chember(
     name: 'Dr. Sirajul Islam Medical College & Hospital Ltd',
@@ -32,5 +34,7 @@ final chembers = <Chember>[
       end: const TimeOfDay(hour: 7, minute: 00),
       weekday: 'Sat Wed Thurs Fri'.split(' ').toList(),
     ),
+    lat: 23.747303339261226,
+    long: 90.41038853666593,
   ),
 ];

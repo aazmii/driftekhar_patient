@@ -10,6 +10,8 @@ class Chember {
   final String? tel;
   final List<String>? cell;
   final String? web;
+  final double? lat;
+  final double? long;
 
   const Chember({
     this.name,
@@ -21,5 +23,7 @@ class Chember {
     this.tel,
     this.cell,
     this.web,
+    this.lat,
+    this.long,
   });
 }
