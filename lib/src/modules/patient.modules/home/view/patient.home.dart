@@ -1,4 +1,5 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/modules/home/components/drawer.dart';
 import 'package:doc_appointment/src/modules/patient.modules/ceate.appointment/view/create.appointment.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/components/chember.tab/chembers.tab.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/components/experience.tab/experience.tab.dart';
@@ -16,6 +17,7 @@ class PatientHome extends StatelessWidget {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
+        drawer: const AppDrawer(),
         body: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverAppBar(
@@ -72,11 +74,14 @@ class PatientHome extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
                     'Dr. Mohammad Iftekhar Alam',
-                    style: context.text.titleLarge,
+                    style: context.text.titleLarge!.copyWith(
+                      color: Colors.blue,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text(aboutMeText),
                 ),
                 10.toHeight,
@@ -86,6 +91,7 @@ class PatientHome extends StatelessWidget {
         ),
         floatingActionButton: FilledButton(
           style: FilledButton.styleFrom(
+            padding: const EdgeInsets.symmetric(vertical: 10),
             minimumSize: const Size(150, 50),
             backgroundColor: Colors.grey.shade900,
             foregroundColor: Colors.blue,
@@ -98,12 +104,18 @@ class PatientHome extends StatelessWidget {
             context,
             const CreateAppointment(),
           ),
-          child: const Text('Appointment'),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(vertical: 5.0),
+            child: Text(
+              'Book\nAppointment',
+              textAlign: TextAlign.center,
+            ),
+          ),
         ),
       ),
     );
   }
 }
 
-final aboutMeText =
+const aboutMeText =
     'I am a fully trained British Consultant General, Laparoscopic and Vascular Surgeon. I have 38 years of experience in General, Vascular and laparoscopic Surgery in the UK and obtained my complete British training in London, Leeds, Hull, Bristol, Gloucester and Bath. I have been a Consultant General, Vascular and laparoscopic Surgeon in the UK for the last 18 years after completing 17 years of training . I am registered with the General Medical Council UK as a Consultant General and Vascular Surgeon.';

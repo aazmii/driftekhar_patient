@@ -29,9 +29,11 @@ class ReviewTile extends StatelessWidget {
           ),
         ),
         Expanded(
-          flex: 3,
-          child: Text(review.name ?? ''),
-        ),
+            flex: 3,
+            child: Text(
+              review.name ?? '',
+              style: context.text.titleMedium,
+            )),
         Expanded(
           child: Center(
             child: Column(

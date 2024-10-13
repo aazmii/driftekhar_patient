@@ -29,4 +29,25 @@ final reviews = <PatientReview>[
     imageUrl:
         'https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?t=st=1728726477~exp=1728730077~hmac=7c515e1bd3382e5d1063d4f997f47a884f3dfb71bb8ff5fd4a4b49d134958ee3&w=826',
   ),
+  PatientReview(
+    name: 'Jen Bronson',
+    date: DateTime.parse('2024-08-21'),
+    rating: 0,
+    imageUrl:
+        'https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?t=st=1728726477~exp=1728730077~hmac=7c515e1bd3382e5d1063d4f997f47a884f3dfb71bb8ff5fd4a4b49d134958ee3&w=826',
+  ),
+  PatientReview(
+    name: 'Jen Bronson',
+    date: DateTime.parse('2024-08-21'),
+    rating: 0,
+    imageUrl:
+        'https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?t=st=1728726477~exp=1728730077~hmac=7c515e1bd3382e5d1063d4f997f47a884f3dfb71bb8ff5fd4a4b49d134958ee3&w=826',
+  ),
+  PatientReview(
+    name: 'Jen Bronson',
+    date: DateTime.parse('2024-08-21'),
+    rating: 0,
+    imageUrl:
+        'https://img.freepik.com/free-photo/bohemian-man-with-his-arms-crossed_1368-3542.jpg?t=st=1728726477~exp=1728730077~hmac=7c515e1bd3382e5d1063d4f997f47a884f3dfb71bb8ff5fd4a4b49d134958ee3&w=826',
+  ),
 ];

@@ -52,7 +52,7 @@ class CreateAppointment extends StatelessWidget {
                     decoration: InputDecoration(hintText: 'Phone Number'),
                   ),
                   Text(
-                    '* You will be notiied thruogh sms/email once your appointment is confirmed.',
+                    '* You will be notified thruogh sms/email once your appointment is confirmed.',
                     style:
                         TextStyle(color: Theme.of(context).colorScheme.error),
                   ),

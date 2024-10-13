@@ -21,7 +21,7 @@ class CustomBottomBar extends StatelessWidget {
           )
         ],
       ),
-      height: 50,
+      height: 70,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: Row(
@@ -49,10 +49,13 @@ class CustomBottomBar extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
-                  maximumSize: const Size.fromHeight(50),
+                  minimumSize: const Size.fromHeight(60),
                 ),
                 onPressed: () {},
-                child: const Text('Pay and Confirm'),
+                child: const Text(
+                  'Pay and Confirm',
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
             ),
           ],

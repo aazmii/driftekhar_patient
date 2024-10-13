@@ -14,17 +14,19 @@ class FirstTimeVisit extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CheckboxListTile.adaptive(
+              contentPadding: EdgeInsets.zero,
               value: true,
               onChanged: (v) {},
               title: const Text('I am visiting the first time'),
               controlAffinity: ListTileControlAffinity.leading,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                10.toWidth,
                 Icon(
                   Icons.warning_amber_rounded,
                   color: context.theme.colorScheme.error,

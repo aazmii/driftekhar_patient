@@ -12,7 +12,7 @@ class AppDrawer extends StatelessWidget {
       child: Column(
         children: [
           const DrawerHeader(
-            child: Text('hEADER'),
+            child: Text('Header'),
           ),
           Consumer(builder: (_, ref, __) {
             final theme = ref.watch(themeProvider);

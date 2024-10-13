@@ -17,11 +17,17 @@ class ReviewTab extends StatelessWidget {
         children: [
           10.toHeight,
           const ReviewSummary(),
+          const Divider(),
           Expanded(
-            child: ListView.separated(
-              itemBuilder: (_, index) => ReviewTile(reviews[index]),
-              separatorBuilder: (_, index) => 10.toHeight,
-              itemCount: reviews.length,
+            child: SingleChildScrollView(
+              child: Column(
+                children: reviews
+                    .map((e) => Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                          child: ReviewTile(e),
+                        ))
+                    .toList(),
+              ),
             ),
           )
         ],
