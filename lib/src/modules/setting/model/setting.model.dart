@@ -1,29 +1,21 @@
 import 'dart:convert' show json;
 
-import 'package:isar/isar.dart';
-
 import '../../../theme/model/theme.model.dart';
 
 part 'setting.model.ext.dart';
-part 'setting.model.g.dart';
 
-@Collection()
 class AppSetting {
   AppSetting();
 
-  final Id id = 0;
-
   bool firstRun = true;
 
-  @Enumerated(EnumType.name)
-  ThemeProfile theme = ThemeProfile.dark;
+  ThemeProfile theme = ThemeProfile.light;
 
   String toRawJson() => json.encode(toJson());
 
   Map<String, dynamic> toJson() => {
         'firstRun': firstRun,
         'theme': theme.name,
-        'id': id,
       };
 
   factory AppSetting.fromJson(String source) =>
@@ -39,13 +31,8 @@ class AppSetting {
   @override
   String toString() => toRawJson();
 
-  @override
-  bool operator ==(Object other) {
-    if (identical(this, other)) return true;
-    return other is AppSetting && other.id == id;
-  }
+ 
 
-  @Ignore()
-  @override
-  int get hashCode => id.hashCode;
+  
+  
 }
