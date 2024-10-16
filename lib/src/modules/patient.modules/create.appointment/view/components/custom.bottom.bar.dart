@@ -1,12 +1,9 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PayAndConfimButton extends StatelessWidget {
-  const PayAndConfimButton({
-    super.key
-  });
+  const PayAndConfimButton({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,11 +50,9 @@ class PayAndConfimButton extends StatelessWidget {
                     ),
                     minimumSize: const Size.fromHeight(60),
                   ),
-                  onPressed: () async {
-                    print(ref.read(newAppointmentProvider).notifyMethod);
-                  },
+                  onPressed: () async {},
                   child: const Text(
-                    'Pay and Confirm',
+                    'Book Appointment',
                     style: TextStyle(fontSize: 18),
                   ),
                 );

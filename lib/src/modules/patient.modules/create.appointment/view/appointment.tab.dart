@@ -59,8 +59,6 @@ class CreateAppointment extends ConsumerWidget {
                 ),
                 const NotifyMethodContainer(),
                 10.toHeight,
-                const Text('Select one of the chember'),
-                10.toHeight,
                 const FirstTimeVisit(),
               ],
             ),

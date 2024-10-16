@@ -12,14 +12,33 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart' as _svg;
 import 'package:vector_graphics/vector_graphics.dart' as _vg;
 
+class $AssetsIconsGen {
+  const $AssetsIconsGen();
+
+  /// File path: assets/icons/insta.svg
+  SvgGenImage get insta => const SvgGenImage('assets/icons/insta.svg');
+
+  /// File path: assets/icons/snap.svg
+  SvgGenImage get snap => const SvgGenImage('assets/icons/snap.svg');
+
+  /// File path: assets/icons/tiktok.svg
+  SvgGenImage get tiktok => const SvgGenImage('assets/icons/tiktok.svg');
+
+  /// File path: assets/icons/whatsapp.svg
+  SvgGenImage get whatsapp => const SvgGenImage('assets/icons/whatsapp.svg');
+
+  /// File path: assets/icons/youtube.svg
+  SvgGenImage get youtube => const SvgGenImage('assets/icons/youtube.svg');
+
+  /// List of all assets
+  List<SvgGenImage> get values => [insta, snap, tiktok, whatsapp, youtube];
+}
+
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
   /// Directory path: assets/images/jpg
   $AssetsImagesJpgGen get jpg => const $AssetsImagesJpgGen();
-
-  /// Directory path: assets/images/svg
-  $AssetsImagesSvgGen get svg => const $AssetsImagesSvgGen();
 }
 
 class $AssetsImagesJpgGen {
@@ -32,36 +51,10 @@ class $AssetsImagesJpgGen {
   List<AssetGenImage> get values => [doc];
 }
 
-class $AssetsImagesSvgGen {
-  const $AssetsImagesSvgGen();
-
-  /// File path: assets/images/svg/insta.svg
-  SvgGenImage get insta => const SvgGenImage('assets/images/svg/insta.svg');
-
-  /// File path: assets/images/svg/snap.svg
-  SvgGenImage get snap => const SvgGenImage('assets/images/svg/snap.svg');
-
-  /// File path: assets/images/svg/tiktok.svg
-  SvgGenImage get tiktok => const SvgGenImage('assets/images/svg/tiktok.svg');
-
-  /// File path: assets/images/svg/twitter.svg
-  SvgGenImage get twitter => const SvgGenImage('assets/images/svg/twitter.svg');
-
-  /// File path: assets/images/svg/whatsapp.svg
-  SvgGenImage get whatsapp =>
-      const SvgGenImage('assets/images/svg/whatsapp.svg');
-
-  /// File path: assets/images/svg/youtube.svg
-  SvgGenImage get youtube => const SvgGenImage('assets/images/svg/youtube.svg');
-
-  /// List of all assets
-  List<SvgGenImage> get values =>
-      [insta, snap, tiktok, twitter, whatsapp, youtube];
-}
-
 class Assets {
   Assets._();
 
+  static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
 }
 

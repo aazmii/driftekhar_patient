@@ -1,5 +1,8 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+final List<String> icons = 'youtube,insta,snap,tiktok,whatsapp'.split(',');
 
 class ImageWithProfessionWidget extends StatelessWidget {
   const ImageWithProfessionWidget({super.key});
@@ -8,7 +11,7 @@ class ImageWithProfessionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Positioned.fill(
+        const Positioned.fill(
           child: Image(
             // image: Assets.images.jpg.doc.provider(),
             image: AssetImage('assets/images/jpg/doc.jpg'),
@@ -50,10 +53,28 @@ class ImageWithProfessionWidget extends StatelessWidget {
                       ],
                     ),
                   ),
-                  // Text('Asst. Prof. Dr. Mohammad Iftekhar Alam'),
                 ],
               ),
             ),
+          ),
+        ),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: SizedBox(
+            height: 50,
+            child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  icons.length,
+                  (index) => Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: SvgPicture.asset(
+                      'assets/icons/${icons[index]}.svg',
+                      height: 40,
+                      width: 40,
+                    ),
+                  ),
+                )),
           ),
         ),
       ],

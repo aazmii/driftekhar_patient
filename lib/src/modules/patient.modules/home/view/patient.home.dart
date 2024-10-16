@@ -18,43 +18,47 @@ class PatientHome extends StatelessWidget {
         length: 2,
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
-            SliverAppBar(
+            const SliverAppBar(
               pinned: true,
               expandedHeight: 280,
-              flexibleSpace: const ImageWithProfessionWidget(),
-              bottom: PreferredSize(
-                preferredSize: const Size.fromHeight(80),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: context.theme.scaffoldBackgroundColor,
-                  ),
-                  child: TabBar(
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    labelStyle: context.text.titleMedium!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: context.theme.primaryColor,
-                    ),
-                    unselectedLabelStyle: const TextStyle(),
-                    indicator: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: context.theme.primaryColor,
-                          width: 2.0,
-                        ),
-                      ),
-                    ),
-                    tabs: 'Appointment,Doctor Profile'
-                        .split(',')
-                        .toList()
-                        .map((str) => Tab(child: Text(str)))
-                        .toList(),
-                  ),
-                ),
-              ),
+              flexibleSpace: ImageWithProfessionWidget(),
             ),
           ],
-          body: const TabBarView(
-            children: [CreateAppointment(), ProfileTab()],
+          body: Column(
+            children: [
+              Container(
+                height: 60,
+                decoration: BoxDecoration(
+                  color: context.theme.scaffoldBackgroundColor,
+                ),
+                child: TabBar(
+                  indicatorSize: TabBarIndicatorSize.tab,
+                  labelStyle: context.text.titleMedium!.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: context.theme.primaryColor,
+                  ),
+                  unselectedLabelStyle: const TextStyle(),
+                  indicator: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: context.theme.primaryColor,
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                  tabs: 'Appointment,Doctor Profile'
+                      .split(',')
+                      .toList()
+                      .map((str) => Tab(child: Text(str)))
+                      .toList(),
+                ),
+              ),
+              const Expanded(
+                child: TabBarView(
+                  children: [CreateAppointment(), ProfileTab()],
+                ),
+              ),
+            ],
           ),
         ),
       ),

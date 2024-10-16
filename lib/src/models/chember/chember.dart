@@ -77,7 +77,7 @@ class Chember {
   }
 
   factory Chember.fromMap(Map<String, dynamic> map) {
-    return Chember(
+    return const Chember(
         //   name: map['name'] != null ? map['name'] as String : null,
         //   address: map['address'] != null ? map['address'] as String : null,
         //   description: map['description'] != null ? map['description'] as String : null,

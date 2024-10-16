@@ -50,7 +50,7 @@ flutter:
 
   assets:
     - assets/images/jpg/
-    - assets/images/svg/
+    - assets/icons/
 
 
 flutter_gen:
