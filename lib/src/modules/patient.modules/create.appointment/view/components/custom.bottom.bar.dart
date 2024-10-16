@@ -1,11 +1,11 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/patient.modules/ceate.appointment/providers/new.appointment.provider.dart';
+import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomBottomBar extends StatelessWidget {
-  const CustomBottomBar({
-    super.key,
+class PayAndConfimButton extends StatelessWidget {
+  const PayAndConfimButton({
+    super.key
   });
 
   @override

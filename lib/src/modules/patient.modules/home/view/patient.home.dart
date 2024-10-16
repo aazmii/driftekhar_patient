@@ -1,12 +1,10 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/modules/home/components/drawer.dart';
-import 'package:doc_appointment/src/modules/patient.modules/ceate.appointment/view/create.appointment.dart';
-import 'package:doc_appointment/src/modules/patient.modules/home/components/chember.tab/chembers.tab.dart';
-import 'package:doc_appointment/src/modules/patient.modules/home/components/experience.tab/experience.tab.dart';
-import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
+import 'package:doc_appointment/src/modules/patient.modules/create.appointment/view/appointment.tab.dart';
+import 'package:doc_appointment/src/modules/patient.modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:doc_appointment/src/modules/patient.modules/home/components/experience.tab/profile.tab.dart';
 import 'package:flutter/material.dart';
 
-import '../components/review.tab/review.tab.dart';
 import 'components/doc.image.with.profession.dart';
 
 class PatientHome extends StatelessWidget {
@@ -14,20 +12,19 @@ class PatientHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 3,
-      child: Scaffold(
-        drawer: const AppDrawer(),
-        body: NestedScrollView(
+    return Scaffold(
+      endDrawer: const AppDrawer(),
+      body: DefaultTabController(
+        length: 2,
+        child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             SliverAppBar(
               pinned: true,
-              expandedHeight: 320,
+              expandedHeight: 280,
               flexibleSpace: const ImageWithProfessionWidget(),
               bottom: PreferredSize(
                 preferredSize: const Size.fromHeight(80),
                 child: Container(
-                  height: 40,
                   decoration: BoxDecoration(
                     color: context.theme.scaffoldBackgroundColor,
                   ),
@@ -46,7 +43,7 @@ class PatientHome extends StatelessWidget {
                         ),
                       ),
                     ),
-                    tabs: 'Chembers,Experiences,Review'
+                    tabs: 'Appointment,Doctor Profile'
                         .split(',')
                         .toList()
                         .map((str) => Tab(child: Text(str)))
@@ -56,66 +53,12 @@ class PatientHome extends StatelessWidget {
               ),
             ),
           ],
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(
-                  height: 400,
-                  child: TabBarView(
-                    children: [
-                      ChembersTab(),
-                      ExperienceTab(),
-                      ReviewTab(),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Dr. Mohammad Iftekhar Alam',
-                    style: context.text.titleLarge!.copyWith(
-                      color: Colors.blue,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(aboutMeText),
-                ),
-                10.toHeight,
-              ],
-            ),
-          ),
-        ),
-        floatingActionButton: FilledButton(
-          style: FilledButton.styleFrom(
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            minimumSize: const Size(150, 50),
-            backgroundColor: Colors.grey.shade900,
-            foregroundColor: Colors.blue,
-            side: const BorderSide(color: Colors.blue, width: 2),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(6),
-            ),
-          ),
-          onPressed: () async => await fadePush(
-            context,
-            const CreateAppointment(),
-          ),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 5.0),
-            child: Text(
-              'Book\nAppointment',
-              textAlign: TextAlign.center,
-            ),
+          body: const TabBarView(
+            children: [CreateAppointment(), ProfileTab()],
           ),
         ),
       ),
+      bottomNavigationBar: const PayAndConfimButton(),
     );
   }
 }
-
-const aboutMeText =
-    'I am a fully trained British Consultant General, Laparoscopic and Vascular Surgeon. I have 38 years of experience in General, Vascular and laparoscopic Surgery in the UK and obtained my complete British training in London, Leeds, Hull, Bristol, Gloucester and Bath. I have been a Consultant General, Vascular and laparoscopic Surgeon in the UK for the last 18 years after completing 17 years of training . I am registered with the General Medical Council UK as a Consultant General and Vascular Surgeon.';

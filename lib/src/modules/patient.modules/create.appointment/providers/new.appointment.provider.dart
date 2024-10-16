@@ -1,7 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
-import 'package:doc_appointment/src/modules/patient.modules/ceate.appointment/providers/patient.provider.dart';
+import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/patient.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 

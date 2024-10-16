@@ -1,5 +1,4 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/patient.modules/home/providers/image.links.dart';
 import 'package:flutter/material.dart';
 
 class ImageWithProfessionWidget extends StatelessWidget {
@@ -9,9 +8,11 @@ class ImageWithProfessionWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        const Positioned.fill(
+        Positioned.fill(
           child: Image(
-            image: NetworkImage(SurgonImages.image4),
+            // image: Assets.images.jpg.doc.provider(),
+            image: AssetImage('assets/images/jpg/doc.jpg'),
+            // image: NetworkImage(imageLInk),
             fit: BoxFit.cover,
           ),
         ),
