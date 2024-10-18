@@ -2,7 +2,6 @@ import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/date.time.picker.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class AppointmentCard extends StatefulWidget {
   const AppointmentCard(
@@ -90,7 +89,7 @@ class AppointmentCardState extends State<AppointmentCard> {
                   CardDatePicker(
                     initialDate: widget.appointment.dateTime,
                     onDateSelected: (dateTime) async {
-                      _dateController.text = dateTime.formatted;
+                      _dateController.text = dateTime.toDate;
                       widget.onDateSelected?.call(dateTime);
                     },
                   ),
@@ -163,7 +162,7 @@ class CardDatePicker extends StatelessWidget {
           ),
           const SizedBox(width: 10),
           Text(
-            initialDate == null ? 'Select Date' : initialDate!.formatted,
+            initialDate == null ? 'Select Date' : initialDate!.toDate,
             // : DateFormat.yMMMd().format(initialDate!),
             style: context.text.titleMedium!.copyWith(
               color: context.theme.primaryColor,
@@ -204,7 +203,7 @@ class CardHeader extends StatelessWidget {
                 ),
                 5.toWidth,
                 Text(
-                  DateFormat('EEE, d MMMM').format(appointmentDate),
+                  appointmentDate.toDate,
                   style: style,
                 ),
               ],
@@ -221,7 +220,7 @@ class CardHeader extends StatelessWidget {
                 ),
                 5.toWidth,
                 Text(
-                  DateFormat('hh:mm a').format(appointmentDate),
+                  appointmentDate.toTime,
                   style: style,
                 ),
               ],

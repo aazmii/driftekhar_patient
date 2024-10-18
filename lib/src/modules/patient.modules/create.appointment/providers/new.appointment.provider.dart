@@ -12,7 +12,6 @@ class NewAppointment extends _$NewAppointment {
   @override
   Appointment build() {
     return Appointment(
-      dateTime: DateTime.now(),
       patientData: ref.watch(patientProvider),
     );
   }
@@ -23,8 +22,7 @@ class NewAppointment extends _$NewAppointment {
   set setFirstTime(bool isFirstTime) =>
       state = state.copyWith(isFirstTime: isFirstTime);
 
-  set setApptDate(DateTime apptDate) =>
-      state = state.copyWith(dateTime: apptDate);
-
-  set setWeekDay(String weekDay) => state = state.copyWith(weekDay: weekDay);
+  set setApptDate(DateTime apptDate) {
+    state = state.copyWith(dateTime: apptDate);
+  }
 }

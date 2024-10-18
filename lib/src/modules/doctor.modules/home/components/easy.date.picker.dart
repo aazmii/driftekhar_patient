@@ -1,4 +1,3 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/widgets.dart';
@@ -17,15 +16,15 @@ class _EasyDatePickerState extends ConsumerState<EasyDatePicker> {
     final notifier = ref.watch(newAppointmentProvider.notifier);
     final selectedDate =
         ref.watch(newAppointmentProvider.select((v) => v.dateTime));
+    if (selectedDate == null) return const SizedBox();
     return EasyDateTimeLine(
-      initialDate: selectedDate!,
+      initialDate: selectedDate,
       headerProps: const EasyHeaderProps(
         // showHeader: false,
         monthPickerType: MonthPickerType.switcher,
       ),
       onDateChange: (selectedDate) {
         notifier.setApptDate = selectedDate;
-        notifier.setWeekDay = selectedDate.weekDayName;
       },
       dayProps: const EasyDayProps(
         height: 50.0,

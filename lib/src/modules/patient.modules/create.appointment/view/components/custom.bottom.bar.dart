@@ -1,4 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/appointments.dart';
+import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -50,7 +52,17 @@ class PayAndConfimButton extends StatelessWidget {
                     ),
                     minimumSize: const Size.fromHeight(60),
                   ),
-                  onPressed: () async {},
+                  onPressed: () {
+                    final newAppointment = ref.read(newAppointmentProvider);
+
+                    ref
+                        .read(appointmentsProvider.notifier)
+                        .addAppointment(newAppointment);
+                    ref.invalidate(newAppointmentProvider);
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                      content: Text('Request sent Successfully'),
+                    ));
+                  },
                   child: const Text(
                     'Book Appointment',
                     style: TextStyle(fontSize: 18),
