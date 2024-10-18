@@ -1,6 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/new.appointments.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/appointments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -11,13 +11,29 @@ class PendingAppointments extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final pendings = ref.watch(pendingAppointmentsProvider).when(
-        data: (pendingAppointments) => pendingAppointments,
-        error: (e, s) => <Appointment>[],
-        loading: () => <Appointment>[]);
+    final pendings = ref
+        .watch(appointmentsProvider)
+        .when(
+            data: (pendingAppointments) => pendingAppointments,
+            error: (e, s) => <Appointment>[],
+            loading: () => <Appointment>[])
+        .where((a) => a.status == AppointmentStatus.pending)
+        .toList();
+
     final newAppointments =
         pendings.where((a) => a.isFirstTime ?? false).toList();
     final followUps = pendings.where((a) => !a.isFirstTime!).toList();
+
+    if (pendings.isEmpty) {
+      return Center(
+        child: Text(
+          'No Pending Appointments',
+          style: context.text.titleMedium!.copyWith(
+            color: context.theme.primaryColor,
+          ),
+        ),
+      );
+    }
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
@@ -39,7 +55,16 @@ class PendingAppointments extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: AppointmentCard(
                   appointment: pendings[index],
-                  onApprove: (a) {},
+                  onApprove: () {
+                    ref.read(appointmentsProvider.notifier).updateAppointment(
+                        index,
+                        pendings[index]
+                            .copyWith(status: AppointmentStatus.confirmed));
+                  },
+                  onDateSelected: (pickedDate) {
+                    ref.read(appointmentsProvider.notifier).updateAppointment(
+                        index, pendings[index].copyWith(dateTime: pickedDate));
+                  },
                 ),
               ),
               itemCount: pendings.length,

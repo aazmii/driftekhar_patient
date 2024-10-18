@@ -183,5 +183,6 @@ extension DateUtils on DateTime {
   }
 
   //12 Oct, 2024 - 03:30 PM
-  String get formatted => DateFormat('dd MMM, yyyy – hh:mm a').format(this);
+  String get formatted => DateFormat('dd MMM - hh:mm a').format(this);
+  // String get formatted => DateFormat('dd MMM, yyyy – hh:mm a').format(this);
 }

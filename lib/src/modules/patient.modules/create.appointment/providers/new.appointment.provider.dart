@@ -1,7 +1,6 @@
 import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
 import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/patient.provider.dart';
-import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 import '../../../../models/appointment/appointment.dart';
@@ -27,11 +26,5 @@ class NewAppointment extends _$NewAppointment {
   set setApptDate(DateTime apptDate) =>
       state = state.copyWith(dateTime: apptDate);
 
-  set setApptTime(TimeOfDay apptTime) =>
-      state = state.copyWith(apptTime: apptTime);
-
   set setWeekDay(String weekDay) => state = state.copyWith(weekDay: weekDay);
-
-  set setNotifyMethod(NotifyMethod notifyMedium) =>
-      state = state.copyWith(notifyMethod: notifyMedium);
 }

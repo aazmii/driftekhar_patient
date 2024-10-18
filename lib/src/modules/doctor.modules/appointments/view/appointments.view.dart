@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../components/confirmed.appointments.dart';
 import '../components/pending.appoints.dart';
 
 class AppointmentView extends ConsumerWidget {
@@ -22,7 +23,7 @@ class AppointmentView extends ConsumerWidget {
             child: TabBarView(
               children: [
                 PendingAppointments(),
-                Text('Confirmed'),
+                ConfirmedAppointments(),
               ],
             ),
           )

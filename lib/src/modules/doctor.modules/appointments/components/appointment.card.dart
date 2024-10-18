@@ -1,16 +1,22 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/date.time.picker.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-import '../providers/date.time.picker.dart';
-
 class AppointmentCard extends StatefulWidget {
   const AppointmentCard(
-      {super.key, required this.appointment, this.onApprove, this.onReject});
+      {super.key,
+      required this.appointment,
+      this.onApprove,
+      this.onDateSelected,
+      this.onReject,
+      this.onReschedule});
   final Appointment appointment;
-  final ValueSetter<Appointment>? onApprove;
+  final VoidCallback? onApprove;
   final VoidCallback? onReject;
+  final ValueSetter<DateTime>? onDateSelected;
+  final ValueSetter<DateTime>? onReschedule;
 
   @override
   AppointmentCardState createState() => AppointmentCardState();
@@ -34,76 +40,134 @@ class AppointmentCardState extends State<AppointmentCard> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(8),
-                topRight: Radius.circular(8),
-              ),
-              color: context.theme.secondaryHeaderColor,
-            ),
-            height: 50,
-            child: CardHeader(appointmentDate: widget.appointment.dateTime!),
-          ),
+          widget.appointment.status == AppointmentStatus.confirmed
+              ? CardHeader(appointmentDate: widget.appointment.dateTime!)
+              : const SizedBox.shrink(),
           Padding(
             padding: const EdgeInsets.all(8),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.appointment.patientData?.name ?? '',
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Age: ${widget.appointment.patientData?.age ?? ''}',
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Phone: ${widget.appointment.patientData?.phone ?? ''}',
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 16),
                 Row(
                   children: [
                     Expanded(
                       flex: 2,
-                      child: TextField(
-                        controller: _dateController,
-                        decoration: const InputDecoration(
-                          // enabledBorder: InputBorder.none,
-                          // border: InputBorder.none,
-                          // focusedBorder: InputBorder.none,
-                          labelText: 'Schedule',
-                          prefixIcon: Icon(Icons.calendar_month),
-                        ),
-                        readOnly: true,
-                        onTap: () async {
-                          final dateTime = await getSelectedDateTime();
-                          if (dateTime != null) {
-                            _dateController.text = dateTime.formatted;
-                            widget.appointment.dateTime = dateTime;
-                          }
-                        },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            widget.appointment.patientData?.name ?? '',
+                            style: const TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Age: ${widget.appointment.patientData?.age ?? ''}',
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            'Phone: ${widget.appointment.patientData?.phone ?? ''}',
+                            style: const TextStyle(fontSize: 16),
+                          ),
+                          const SizedBox(height: 16),
+                        ],
                       ),
                     ),
-                    const SizedBox(width: 10),
                     Expanded(
-                      flex: 1,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          minimumSize: const Size.fromHeight(55),
-                        ),
-                        onPressed: () =>
-                            widget.onApprove?.call(widget.appointment),
-                        child: const Text('Approve'),
-                      ),
+                      child: widget.appointment.isConfirmed
+                          ? RescheduleButton(
+                              appointment: widget.appointment,
+                              onReschedule: widget.onReschedule,
+                            )
+                          : ApproveButton(
+                              appointment: widget.appointment,
+                              onApprove: widget.onApprove,
+                            ),
                     ),
                   ],
                 ),
+                if (!widget.appointment.isConfirmed)
+                  CardDatePicker(
+                    initialDate: widget.appointment.dateTime,
+                    onDateSelected: (dateTime) async {
+                      _dateController.text = dateTime.formatted;
+                      widget.onDateSelected?.call(dateTime);
+                    },
+                  ),
               ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class RescheduleButton extends StatelessWidget {
+  const RescheduleButton({
+    super.key,
+    required this.appointment,
+    this.onReschedule,
+  });
+  final Appointment appointment;
+  final ValueSetter<DateTime>? onReschedule;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size.fromHeight(55),
+      ),
+      onPressed: () async {
+        final pickedDate = await getSelectedDateTime();
+        if (pickedDate != null) onReschedule?.call(pickedDate);
+      },
+      child: const Text('Reschedule'),
+    );
+  }
+}
+
+class ApproveButton extends StatelessWidget {
+  const ApproveButton({super.key, required this.appointment, this.onApprove});
+  final Appointment appointment;
+  final VoidCallback? onApprove;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size.fromHeight(55),
+      ),
+      onPressed: appointment.dateTime == null ? null : () => onApprove?.call(),
+      child: const Text('Approve'),
+    );
+  }
+}
+
+class CardDatePicker extends StatelessWidget {
+  final DateTime? initialDate;
+  const CardDatePicker({super.key, this.initialDate, this.onDateSelected});
+  final ValueSetter<DateTime>? onDateSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () async {
+        final pickedDate = await getSelectedDateTime();
+        if (pickedDate != null) onDateSelected?.call(pickedDate);
+      },
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.calendar_month,
+            color: context.theme.primaryColor,
+          ),
+          const SizedBox(width: 10),
+          Text(
+            initialDate == null ? 'Select Date' : initialDate!.formatted,
+            // : DateFormat.yMMMd().format(initialDate!),
+            style: context.text.titleMedium!.copyWith(
+              color: context.theme.primaryColor,
+              fontWeight: FontWeight.bold,
             ),
           )
         ],
@@ -120,6 +184,7 @@ class CardHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final style = context.text.titleMedium!.copyWith(color: Colors.white);
     return Container(
+      height: 50,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(8),
@@ -156,7 +221,7 @@ class CardHeader extends StatelessWidget {
                 ),
                 5.toWidth,
                 Text(
-                  DateFormat('hh a').format(appointmentDate),
+                  DateFormat('hh:mm a').format(appointmentDate),
                   style: style,
                 ),
               ],

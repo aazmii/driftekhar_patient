@@ -1,42 +1,41 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:doc_appointment/src/models/patient/patient.data.dart';
-import 'package:flutter/material.dart';
-
 import 'package:doc_appointment/src/models/chember/chember.dart';
+import 'package:doc_appointment/src/models/patient/patient.data.dart';
+
+enum AppointmentStatus { pending, confirmed, cancelled }
 
 class Appointment {
-  PatientData? patientData;
-  DateTime? dateTime;
+  final PatientData? patientData;
+  final DateTime? dateTime;
+  final Chember? chember;
+  final bool? isFirstTime;
 
-  Chember? chember;
-  bool? isFirstTime;
-  NotifyMethod? notifyMethod;
+  final AppointmentStatus? status;
 
   Appointment({
     this.patientData,
     this.dateTime,
     this.chember,
     this.isFirstTime = true,
-    this.notifyMethod = NotifyMethod.sms,
+    this.status = AppointmentStatus.pending,
   });
 
   Appointment copyWith({
     PatientData? patientData,
-    DateTime? dateTime,
     String? weekDay,
-    TimeOfDay? apptTime,
     Chember? chember,
+    DateTime? dateTime,
     bool? isFirstTime,
-    NotifyMethod? notifyMethod,
+    AppointmentStatus? status,
   }) {
     return Appointment(
       patientData: patientData ?? this.patientData,
-      dateTime: dateTime ?? this.dateTime,
       chember: chember ?? this.chember,
       isFirstTime: isFirstTime ?? this.isFirstTime,
-      notifyMethod: notifyMethod ?? this.notifyMethod,
+      status: status ?? this.status,
+      dateTime: dateTime ?? this.dateTime,
     );
   }
 
@@ -79,7 +78,6 @@ class Appointment {
     return other.patientData == patientData &&
         other.dateTime == dateTime &&
         other.chember == chember &&
-        other.notifyMethod == notifyMethod &&
         other.isFirstTime == isFirstTime;
   }
 
@@ -88,9 +86,14 @@ class Appointment {
     return patientData.hashCode ^
         dateTime.hashCode ^
         chember.hashCode ^
-        notifyMethod.hashCode ^
         isFirstTime.hashCode;
   }
 }
 
 enum NotifyMethod { email, sms }
+
+extension AppointmentExt on Appointment {
+  bool get isPending => status == AppointmentStatus.pending;
+  bool get isConfirmed => status == AppointmentStatus.confirmed;
+  bool get isCancelled => status == AppointmentStatus.cancelled;
+}
