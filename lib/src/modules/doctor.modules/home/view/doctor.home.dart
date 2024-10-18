@@ -1,4 +1,5 @@
 import 'package:doc_appointment/src/modules/doctor.modules/appointments/view/appointments.view.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/home/components/easy.date.picker.dart';
 import 'package:flutter/material.dart';
 
 class DoctorHome extends StatefulWidget {
@@ -28,10 +29,16 @@ class _DoctorHomeState extends State<DoctorHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Doctor Home'),
+      body: SafeArea(
+        child: Column(
+          children: [
+            const EasyDatePicker(),
+            Expanded(
+              child: _widgetOptions.elementAt(_selectedIndex),
+            ),
+          ],
+        ),
       ),
-      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         enableFeedback: false,

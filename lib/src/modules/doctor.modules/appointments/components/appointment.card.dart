@@ -1,6 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../providers/date.time.picker.dart';
 
@@ -31,62 +32,138 @@ class AppointmentCardState extends State<AppointmentCard> {
       elevation: 4,
       // margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              widget.appointment.patientData?.name ?? '',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+      child: Column(
+        children: [
+          Container(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(8),
+                topRight: Radius.circular(8),
+              ),
+              color: context.theme.secondaryHeaderColor,
             ),
-            const SizedBox(height: 8),
-            Text(
-              'Age: ${widget.appointment.patientData?.age ?? ''}',
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 8),
-            Text(
-              'Phone: ${widget.appointment.patientData?.phone ?? ''}',
-              style: const TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 16),
-            Row(
+            height: 50,
+            child: CardHeader(appointmentDate: widget.appointment.dateTime!),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  flex: 2,
-                  child: TextField(
-                    controller: _dateController,
-                    decoration: const InputDecoration(
-                      labelText: 'Select Appointment Date',
-                      border: OutlineInputBorder(),
-                      prefixIcon: Icon(Icons.calendar_today),
-                    ),
-                    readOnly: true,
-                    onTap: () async {
-                      final dateTime = await getSelectedDateTime();
-                      if (dateTime != null) {
-                        _dateController.text = dateTime.formatted;
-                        widget.appointment.dateTime = dateTime;
-                      }
-                    },
-                  ),
+                Text(
+                  widget.appointment.patientData?.name ?? '',
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(width: 10),
-                Expanded(
-                  flex: 1,
-                  child: ElevatedButton(
-                    onPressed: () => widget.onApprove?.call(widget.appointment),
-                    child: const Text('Approve'),
-                  ),
+                const SizedBox(height: 8),
+                Text(
+                  'Age: ${widget.appointment.patientData?.age ?? ''}',
+                  style: const TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  'Phone: ${widget.appointment.patientData?.phone ?? ''}',
+                  style: const TextStyle(fontSize: 16),
+                ),
+                const SizedBox(height: 16),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: TextField(
+                        controller: _dateController,
+                        decoration: const InputDecoration(
+                          // enabledBorder: InputBorder.none,
+                          // border: InputBorder.none,
+                          // focusedBorder: InputBorder.none,
+                          labelText: 'Schedule',
+                          prefixIcon: Icon(Icons.calendar_month),
+                        ),
+                        readOnly: true,
+                        onTap: () async {
+                          final dateTime = await getSelectedDateTime();
+                          if (dateTime != null) {
+                            _dateController.text = dateTime.formatted;
+                            widget.appointment.dateTime = dateTime;
+                          }
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    Expanded(
+                      flex: 1,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(55),
+                        ),
+                        onPressed: () =>
+                            widget.onApprove?.call(widget.appointment),
+                        child: const Text('Approve'),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
 }
-  // Function to open the DateTime picker
- 
+
+// Function to open the DateTime picker
+class CardHeader extends StatelessWidget {
+  const CardHeader({super.key, required this.appointmentDate});
+  final DateTime appointmentDate;
+  @override
+  Widget build(BuildContext context) {
+    final style = context.text.titleMedium!.copyWith(color: Colors.white);
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(8),
+          topRight: Radius.circular(8),
+        ),
+        color: context.theme.primaryColor,
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.calendar_month,
+                  color: Colors.white,
+                ),
+                5.toWidth,
+                Text(
+                  DateFormat('EEE, d MMMM').format(appointmentDate),
+                  style: style,
+                ),
+              ],
+            ),
+          ),
+          const VerticalDivider(),
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.watch_later_outlined,
+                  color: Colors.white,
+                ),
+                5.toWidth,
+                Text(
+                  DateFormat('hh a').format(appointmentDate),
+                  style: style,
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
