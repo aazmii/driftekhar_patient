@@ -3,8 +3,17 @@ import 'package:flutter/material.dart';
 
 ThemeData get lightTheme => ThemeData(
       visualDensity: VisualDensity.compact,
-      colorSchemeSeed: Colors.teal,
+      // primarySwatch: Colors.blue,
+
+      colorSchemeSeed: Colors.blue.shade600,
       brightness: Brightness.light,
       useMaterial3: true,
       inputDecorationTheme: inputDecorationTheme,
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
     );

@@ -1,6 +1,13 @@
 import 'package:doc_appointment/src/l10n/localization.dart';
 import 'package:flutter/material.dart'
-    show BuildContext, MaterialApp, MediaQuery, TextScaler, Widget;
+    show
+        BuildContext,
+        GlobalKey,
+        MaterialApp,
+        MediaQuery,
+        NavigatorState,
+        TextScaler,
+        Widget;
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'
     show AppLocalizations;
 import 'package:flutter_riverpod/flutter_riverpod.dart'
@@ -13,6 +20,8 @@ import 'modules/router/view/router.dart' show AppRouter;
 import 'theme/model/theme.model.dart' show ThemeProfileExtension;
 import 'theme/provider/theme.provider.dart' show themeProvider;
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
@@ -23,6 +32,7 @@ class MyApp extends ConsumerWidget {
       theme: ref.watch(themeProvider).theme,
       supportedLocales: supportedLocales,
       debugShowCheckedModeBanner: false,
+      navigatorKey: navigatorKey,
       onGenerateTitle: onGenerateTitle,
       restorationScopeId: appName,
       home: const AppRouter(),

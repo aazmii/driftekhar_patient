@@ -20,7 +20,7 @@ class DatePickerRowState extends ConsumerState<DatePickerRow> {
   Widget build(BuildContext context) {
     final notifier = ref.watch(newAppointmentProvider.notifier);
     final selectedDate =
-        ref.watch(newAppointmentProvider.select((v) => v.apptDate));
+        ref.watch(newAppointmentProvider.select((v) => v.dateTime));
     return Row(
       children: [
         const Text('Select Date'),
@@ -66,7 +66,7 @@ class _DatePickerState extends ConsumerState<DatePicker> {
   Widget build(BuildContext context) {
     final notifier = ref.watch(newAppointmentProvider.notifier);
     final selectedDate =
-        ref.watch(newAppointmentProvider.select((v) => v.apptDate));
+        ref.watch(newAppointmentProvider.select((v) => v.dateTime));
     return EasyDateTimeLine(
       initialDate: selectedDate!,
       headerProps: const EasyHeaderProps(

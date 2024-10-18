@@ -181,4 +181,7 @@ extension DateUtils on DateTime {
     final weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     return weekdays[weekday - 1];
   }
+
+  //12 Oct, 2024 - 03:30 PM
+  String get formatted => DateFormat('dd MMM, yyyy – hh:mm a').format(this);
 }

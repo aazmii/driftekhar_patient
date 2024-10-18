@@ -1,11 +1,10 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
 import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/patient.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-import '../model/appointment.dart';
+import '../../../../models/appointment/appointment.dart';
 
 part 'new.appointment.provider.g.dart';
 
@@ -14,8 +13,7 @@ class NewAppointment extends _$NewAppointment {
   @override
   Appointment build() {
     return Appointment(
-      apptDate: DateTime.now(),
-      weekDay: DateTime.now().weekDayName,
+      dateTime: DateTime.now(),
       patientData: ref.watch(patientProvider),
     );
   }
@@ -27,7 +25,7 @@ class NewAppointment extends _$NewAppointment {
       state = state.copyWith(isFirstTime: isFirstTime);
 
   set setApptDate(DateTime apptDate) =>
-      state = state.copyWith(apptDate: apptDate);
+      state = state.copyWith(dateTime: apptDate);
 
   set setApptTime(TimeOfDay apptTime) =>
       state = state.copyWith(apptTime: apptTime);

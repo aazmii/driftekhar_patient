@@ -1,4 +1,4 @@
-import 'package:doc_appointment/src/modules/patient.modules/create.appointment/model/appointment.dart';
+import 'package:doc_appointment/src/models/appointment/appointment.dart';
 import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -1,26 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'new.appointment.provider.dart';
+part of 'new.appointments.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$newAppointmentHash() => r'8d1008927da131c18d748e531b40c31fc5fb852f';
+String _$pendingAppointmentsHash() =>
+    r'aa16f4d361d383c2a34fcfb4e86edda65518d315';
 
-/// See also [NewAppointment].
-@ProviderFor(NewAppointment)
-final newAppointmentProvider =
-    NotifierProvider<NewAppointment, Appointment>.internal(
-  NewAppointment.new,
-  name: r'newAppointmentProvider',
+/// See also [pendingAppointments].
+@ProviderFor(pendingAppointments)
+final pendingAppointmentsProvider =
+    AutoDisposeFutureProvider<List<Appointment>>.internal(
+  pendingAppointments,
+  name: r'pendingAppointmentsProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$newAppointmentHash,
+      : _$pendingAppointmentsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$NewAppointment = Notifier<Appointment>;
+typedef PendingAppointmentsRef
+    = AutoDisposeFutureProviderRef<List<Appointment>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

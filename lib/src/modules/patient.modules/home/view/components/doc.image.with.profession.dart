@@ -1,6 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 final List<String> icons = 'youtube,insta,snap,tiktok,whatsapp'.split(',');
 
@@ -63,21 +64,34 @@ class ImageWithProfessionWidget extends StatelessWidget {
           child: SizedBox(
             height: 50,
             child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  icons.length,
-                  (index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SvgPicture.asset(
-                      'assets/icons/${icons[index]}.svg',
-                      height: 40,
-                      width: 40,
-                    ),
-                  ),
-                )),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                icons.length,
+                (index) => Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SocialIconHolder(name: icons[index]),
+                ),
+              ),
+            ),
           ),
         ),
       ],
+    );
+  }
+}
+
+class SocialIconHolder extends StatelessWidget {
+  const SocialIconHolder({super.key, required this.name, this.title});
+  final side = 60.0;
+  final String name;
+  final String? title;
+
+  @override
+  Widget build(BuildContext context) {
+    return SvgPicture.asset(
+      'assets/icons/$name.svg',
+      height: 40,
+      width: 40,
     );
   }
 }

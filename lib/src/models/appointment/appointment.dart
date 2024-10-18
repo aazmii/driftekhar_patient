@@ -8,18 +8,15 @@ import 'package:doc_appointment/src/models/chember/chember.dart';
 
 class Appointment {
   PatientData? patientData;
-  DateTime? apptDate;
-  String? weekDay;
-  TimeOfDay? apptTime;
+  DateTime? dateTime;
+
   Chember? chember;
   bool? isFirstTime;
   NotifyMethod? notifyMethod;
 
   Appointment({
     this.patientData,
-    this.apptDate,
-    this.weekDay,
-    this.apptTime,
+    this.dateTime,
     this.chember,
     this.isFirstTime = true,
     this.notifyMethod = NotifyMethod.sms,
@@ -27,7 +24,7 @@ class Appointment {
 
   Appointment copyWith({
     PatientData? patientData,
-    DateTime? apptDate,
+    DateTime? dateTime,
     String? weekDay,
     TimeOfDay? apptTime,
     Chember? chember,
@@ -36,9 +33,7 @@ class Appointment {
   }) {
     return Appointment(
       patientData: patientData ?? this.patientData,
-      apptDate: apptDate ?? this.apptDate,
-      weekDay: weekDay ?? this.weekDay,
-      apptTime: apptTime ?? this.apptTime,
+      dateTime: dateTime ?? this.dateTime,
       chember: chember ?? this.chember,
       isFirstTime: isFirstTime ?? this.isFirstTime,
       notifyMethod: notifyMethod ?? this.notifyMethod,
@@ -48,7 +43,7 @@ class Appointment {
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
       // 'patientData': patientData?.toMap(),
-      // 'apptDate': apptDate?.millisecondsSinceEpoch,
+      // 'date': date?.millisecondsSinceEpoch,
       // 'weekDay': weekDay,
       // 'apptTime': apptTime?.toMap(),
       // 'chember': chember?.toMap(),
@@ -59,7 +54,7 @@ class Appointment {
   factory Appointment.fromMap(Map<String, dynamic> map) {
     return Appointment(
         // patientData: map['patientData'] != null ? PatientData.fromMap(map['patientData'] as Map<String,dynamic>) : null,
-        // apptDate: map['apptDate'] != null ? DateTime.fromMillisecondsSinceEpoch(map['apptDate'] as int) : null,
+        // date: map['date'] != null ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int) : null,
         // weekDay: map['weekDay'] != null ? map['weekDay'] as String : null,
         // apptTime: map['apptTime'] != null ? TimeOfDay.fromMap(map['apptTime'] as Map<String,dynamic>) : null,
         // chember: map['chember'] != null ? Chember.fromMap(map['chember'] as Map<String,dynamic>) : null,
@@ -74,7 +69,7 @@ class Appointment {
 
   @override
   String toString() {
-    return 'Appointment(patientData: $patientData, apptDate: $apptDate, weekDay: $weekDay, apptTime: $apptTime, chember: $chember, isFirstTime: $isFirstTime)';
+    return 'Appointment(patientData: $patientData, date: $dateTime , chember: $chember, isFirstTime: $isFirstTime)';
   }
 
   @override
@@ -82,9 +77,7 @@ class Appointment {
     if (identical(this, other)) return true;
 
     return other.patientData == patientData &&
-        other.apptDate == apptDate &&
-        other.weekDay == weekDay &&
-        other.apptTime == apptTime &&
+        other.dateTime == dateTime &&
         other.chember == chember &&
         other.notifyMethod == notifyMethod &&
         other.isFirstTime == isFirstTime;
@@ -93,9 +86,7 @@ class Appointment {
   @override
   int get hashCode {
     return patientData.hashCode ^
-        apptDate.hashCode ^
-        weekDay.hashCode ^
-        apptTime.hashCode ^
+        dateTime.hashCode ^
         chember.hashCode ^
         notifyMethod.hashCode ^
         isFirstTime.hashCode;

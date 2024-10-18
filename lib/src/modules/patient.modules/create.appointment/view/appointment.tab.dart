@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'components/appt.date.picker.dart';
-import 'components/notify.method.dart';
 
 class CreateAppointment extends ConsumerWidget {
   const CreateAppointment({super.key});
@@ -53,11 +52,19 @@ class CreateAppointment extends ConsumerWidget {
                   ],
                 ),
                 10.toHeight,
+                TextField(
+                  onChanged: (phone) => patientNotifier.setPhone = phone,
+                  keyboardType: TextInputType.phone,
+                  decoration: const InputDecoration(
+                    prefix: Text('+880'),
+                    // hintText: 'Phone Number',
+                  ),
+                ),
                 Text(
                   '* You will be notified thruogh sms/email once your appointment is confirmed.',
                   style: TextStyle(color: Theme.of(context).colorScheme.error),
                 ),
-                const NotifyMethodContainer(),
+                // const NotifyMethodContainer(),
                 10.toHeight,
                 const FirstTimeVisit(),
               ],
