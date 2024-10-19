@@ -1,3 +1,4 @@
+import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/appointments/view/appointments.view.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/home/components/easy.date.picker.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,10 @@ class _DoctorHomeState extends State<DoctorHome> {
       body: SafeArea(
         child: Column(
           children: [
-            const EasyDatePicker(),
+            if (_selectedIndex == 0) ...[
+              10.toHeight,
+              const EasyDatePicker(),
+            ],
             Expanded(
               child: _widgetOptions.elementAt(_selectedIndex),
             ),
@@ -49,13 +53,17 @@ class _DoctorHomeState extends State<DoctorHome> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: 'Account',
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(Icons.add),
+        onPressed: () {},
       ),
     );
   }

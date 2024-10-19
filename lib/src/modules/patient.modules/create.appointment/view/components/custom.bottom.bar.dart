@@ -1,4 +1,5 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/models/patient/patient.data.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/appointments.dart';
 import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,7 @@ class PayAndConfimButton extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Consumer(builder: (context, ref, child) {
+                final newAppointment = ref.watch(newAppointmentProvider);
                 return FilledButton(
                   style: FilledButton.styleFrom(
                     shape: RoundedRectangleBorder(
@@ -52,17 +54,21 @@ class PayAndConfimButton extends StatelessWidget {
                     ),
                     minimumSize: const Size.fromHeight(60),
                   ),
-                  onPressed: () {
-                    final newAppointment = ref.read(newAppointmentProvider);
+                  onPressed: !newAppointment.patientData!.isValid
+                      ? null
+                      : () {
+                          final newAppointment =
+                              ref.read(newAppointmentProvider);
 
-                    ref
-                        .read(appointmentsProvider.notifier)
-                        .addAppointment(newAppointment);
-                    ref.invalidate(newAppointmentProvider);
-                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Request sent Successfully'),
-                    ));
-                  },
+                          ref
+                              .read(appointmentsProvider.notifier)
+                              .addAppointment(newAppointment);
+                          ref.invalidate(newAppointmentProvider);
+                          ScaffoldMessenger.of(context)
+                              .showSnackBar(const SnackBar(
+                            content: Text('Request sent Successfully'),
+                          ));
+                        },
                   child: const Text(
                     'Book Appointment',
                     style: TextStyle(fontSize: 18),

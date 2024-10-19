@@ -40,6 +40,9 @@ class ConfirmedAppointments extends ConsumerWidget {
               ref.read(appointmentsProvider.notifier).updateAppointment(
                   index, confirmed[index].copyWith(dateTime: updatedDateTime));
             },
+            onReject: () => ref
+                .read(appointmentsProvider.notifier)
+                .removeAppointment(index),
           ),
         ),
         itemCount: confirmed.length,

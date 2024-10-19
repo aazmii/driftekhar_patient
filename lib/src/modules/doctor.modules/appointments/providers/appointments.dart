@@ -16,7 +16,7 @@ class Appointments extends _$Appointments {
   }
 
   void addAppointment(Appointment appointment) {
-    state = AsyncData([...state.value ?? [], appointment]);
+    state = AsyncData([appointment, ...state.value ?? []]);
   }
 
   void removeAppointment(int index) {

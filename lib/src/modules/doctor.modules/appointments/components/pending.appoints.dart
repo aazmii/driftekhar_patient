@@ -11,6 +11,7 @@ class PendingAppointments extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
+    final notifier = ref.watch(appointmentsProvider.notifier);
     final pendings = ref
         .watch(appointmentsProvider)
         .when(
@@ -48,24 +49,28 @@ class PendingAppointments extends ConsumerWidget {
             'Follow Up: ${followUps.length} ',
             style: context.text.titleMedium,
           ),
+          10.toHeight,
           Expanded(
             flex: 10,
             child: ListView.builder(
               itemBuilder: (_, index) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 18),
                 child: AppointmentCard(
-                  appointment: pendings[index],
-                  onApprove: () {
-                    ref.read(appointmentsProvider.notifier).updateAppointment(
+                    appointment: pendings[index],
+                    onApprove: () {
+                      notifier.updateAppointment(
                         index,
                         pendings[index]
-                            .copyWith(status: AppointmentStatus.confirmed));
-                  },
-                  onDateSelected: (pickedDate) {
-                    ref.read(appointmentsProvider.notifier).updateAppointment(
-                        index, pendings[index].copyWith(dateTime: pickedDate));
-                  },
-                ),
+                            .copyWith(status: AppointmentStatus.confirmed),
+                      );
+                    },
+                    onDateSelected: (pickedDate) {
+                      notifier.updateAppointment(
+                        index,
+                        pendings[index].copyWith(dateTime: pickedDate),
+                      );
+                    },
+                    onReject: () => notifier.removeAppointment(index)),
               ),
               itemCount: pendings.length,
             ),

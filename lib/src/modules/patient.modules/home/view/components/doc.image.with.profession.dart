@@ -1,7 +1,11 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/models/social.link.model/social.link.dart';
+import 'package:doc_appointment/src/providers/social.link.providers.dart';
+import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
 final List<String> icons = 'youtube,insta,snap,tiktok,whatsapp'.split(',');
 
@@ -63,15 +67,22 @@ class ImageWithProfessionWidget extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           child: SizedBox(
             height: 50,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                icons.length,
-                (index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SocialIconHolder(name: icons[index]),
-                ),
-              ),
+            child: Consumer(
+              builder: (context, ref, child) {
+                final linkModels = ref.watch(socialLinksPProvider);
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: List.generate(
+                    linkModels.length,
+                    (index) => Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SocialIconHolder(
+                        socialLink: linkModels[index],
+                      ),
+                    ),
+                  ),
+                );
+              },
             ),
           ),
         ),
@@ -81,17 +92,25 @@ class ImageWithProfessionWidget extends StatelessWidget {
 }
 
 class SocialIconHolder extends StatelessWidget {
-  const SocialIconHolder({super.key, required this.name, this.title});
+  const SocialIconHolder({
+    super.key,
+    required this.socialLink,
+  });
   final side = 60.0;
-  final String name;
-  final String? title;
+  final SocialLink socialLink;
 
   @override
   Widget build(BuildContext context) {
-    return SvgPicture.asset(
-      'assets/icons/$name.svg',
-      height: 40,
-      width: 40,
+    return InkWell(
+      onTap: () {
+        if (socialLink.link == 'whatsapp') return;
+        Launcher.browseSocialLink(socialLink.link!);
+      },
+      child: SvgPicture.asset(
+        'assets/icons/${socialLink.icon}.svg',
+        height: 40,
+        width: 40,
+      ),
     );
   }
 }

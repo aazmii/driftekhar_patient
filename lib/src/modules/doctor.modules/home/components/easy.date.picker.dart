@@ -16,9 +16,9 @@ class _EasyDatePickerState extends ConsumerState<EasyDatePicker> {
     final notifier = ref.watch(newAppointmentProvider.notifier);
     final selectedDate =
         ref.watch(newAppointmentProvider.select((v) => v.dateTime));
-    if (selectedDate == null) return const SizedBox();
+
     return EasyDateTimeLine(
-      initialDate: selectedDate,
+      initialDate: selectedDate ?? DateTime.now(),
       headerProps: const EasyHeaderProps(
         // showHeader: false,
         monthPickerType: MonthPickerType.switcher,

@@ -1,7 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/utils/map.utils/map.utils.dart';
-import 'package:flutter/material.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
+import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
+import 'package:flutter/material.dart';
 
 class ChemberContainer extends StatelessWidget {
   const ChemberContainer({
@@ -47,7 +47,7 @@ class ChemberContainer extends StatelessWidget {
                 ),
                 TextButton.icon(
                   onPressed: () async {
-                    await MapUtils.openMap(
+                    await Launcher.openMap(
                         23.773985552744225, 90.42117791428409);
                   },
                   icon: const Icon(Icons.location_pin),

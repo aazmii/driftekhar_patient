@@ -99,3 +99,10 @@ class PatientData {
 }
 
 enum Gender { male, female, other }
+
+extension PatientDataExt on PatientData {
+  bool get isMale => gender == Gender.male;
+  bool get isFemale => gender == Gender.female;
+  bool get isOther => gender == Gender.other;
+  bool get isValid => name != null && phone != null;
+}
