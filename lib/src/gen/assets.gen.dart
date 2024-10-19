@@ -57,12 +57,16 @@ class $AssetsImagesJpgGen {
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/construction.png
+  AssetGenImage get construction =>
+      const AssetGenImage('assets/images/png/construction.png');
+
   /// File path: assets/images/png/medicine.png
   AssetGenImage get medicine =>
       const AssetGenImage('assets/images/png/medicine.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [medicine];
+  List<AssetGenImage> get values => [construction, medicine];
 }
 
 class Assets {

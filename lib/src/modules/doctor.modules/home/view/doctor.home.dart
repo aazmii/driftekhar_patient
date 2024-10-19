@@ -35,7 +35,7 @@ class _DoctorHomeState extends State<DoctorApp> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Settings',
+            label: 'Account',
           ),
         ],
         currentIndex: _selectedIndex,

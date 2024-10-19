@@ -96,4 +96,5 @@ extension AppointmentExt on Appointment {
   bool get isPending => status == AppointmentStatus.pending;
   bool get isConfirmed => status == AppointmentStatus.confirmed;
   bool get isCancelled => status == AppointmentStatus.cancelled;
+  bool get isValid => dateTime != null && chember != null;
 }

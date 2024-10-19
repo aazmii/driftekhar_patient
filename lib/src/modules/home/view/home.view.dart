@@ -5,8 +5,6 @@ import 'package:doc_appointment/src/modules/patient.modules/home/view/patient.ho
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
 
-import 'package:flutter/material.dart';
-
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
 

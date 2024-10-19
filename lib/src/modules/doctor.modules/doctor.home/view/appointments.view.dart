@@ -21,10 +21,14 @@ class DoctorHome extends ConsumerWidget {
             loading: () => <Appointment>[])
         .where((a) => a.status == AppointmentStatus.pending)
         .toList();
-
-    final newAppointments =
-        pendings.where((a) => a.isFirstTime ?? false).toList();
-    final followUps = pendings.where((a) => !a.isFirstTime!).toList();
+    final confirms = ref
+        .watch(appointmentsProvider)
+        .when(
+            data: (pendingAppointments) => pendingAppointments,
+            error: (e, s) => <Appointment>[],
+            loading: () => <Appointment>[])
+        .where((a) => a.status == AppointmentStatus.confirmed)
+        .toList();
 
     return Scaffold(
       body: SafeArea(
@@ -44,49 +48,29 @@ class DoctorHome extends ConsumerWidget {
             // 10.toHeight,
             const EasyDatePicker(),
             10.toHeight,
-            Row(
-              children: [
-                10.toWidth,
-                CircleAvatar(
-                  radius: 6,
-                  backgroundColor: context.theme.primaryColor,
-                ),
-                5.toWidth,
-                Text(
-                  'New: ${newAppointments.length}',
-                  style: context.text.titleMedium,
-                ),
-                20.toWidth,
-                CircleAvatar(
-                  radius: 6,
-                  backgroundColor: context.theme.primaryColor,
-                ),
-                5.toWidth,
-                Text(
-                  'Follow Up: ${followUps.length}',
-                  style: context.text.titleMedium,
-                ),
-              ],
-            ),
+
             Expanded(
               child: DefaultTabController(
                 length: 2,
                 child: Column(
                   children: [
-                    const TabBar(
+                    TabBar(
+                      unselectedLabelStyle: context.text.titleSmall!,
+                      labelStyle: context.text.titleMedium!.copyWith(
+                        color: context.theme.primaryColor,
+                      ),
                       tabs: [
-                        Tab(text: 'Pendings'),
-                        Tab(text: 'Confirmed '),
+                        Tab(
+                          text: 'Pendings (${pendings.length})',
+                        ),
+                        Tab(text: 'Confirmed (${confirms.length})'),
                       ],
                     ),
-                    Expanded(
+                    const Expanded(
                       child: TabBarView(
                         children: [
-                          PendingAppointments(
-                            pendings: pendings,
-                            followUps: followUps,
-                          ),
-                          const ConfirmedAppointments(),
+                          PendingAppointments(),
+                          ConfirmedAppointments(),
                         ],
                       ),
                     )

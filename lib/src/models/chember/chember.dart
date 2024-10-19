@@ -1,8 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
 import 'package:doc_appointment/src/models/visiting.hour/visiting.hour.dart';
 
 class Chember {
@@ -113,7 +111,6 @@ class Chember {
         other.visitingHour == visitingHour &&
         other.hotline == hotline &&
         other.tel == tel &&
-        listEquals(other.cell, cell) &&
         other.web == web &&
         other.lat == lat &&
         other.long == long;
@@ -128,7 +125,6 @@ class Chember {
         visitingHour.hashCode ^
         hotline.hashCode ^
         tel.hashCode ^
-        cell.hashCode ^
         web.hashCode ^
         lat.hashCode ^
         long.hashCode;

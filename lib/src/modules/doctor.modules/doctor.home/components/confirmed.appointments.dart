@@ -4,7 +4,7 @@ import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'appointment.card.dart';
+import 'appointment.card/appointment.card.dart';
 
 class ConfirmedAppointments extends ConsumerWidget {
   const ConfirmedAppointments({super.key});
@@ -36,13 +36,20 @@ class ConfirmedAppointments extends ConsumerWidget {
           padding: const EdgeInsets.symmetric(vertical: 10),
           child: AppointmentCard(
             appointment: confirmed[index],
-            onReschedule: (updatedDateTime) {
-              ref.read(appointmentsProvider.notifier).updateAppointment(
-                  index, confirmed[index].copyWith(dateTime: updatedDateTime));
+            onUpdate: () {
+              context.showSnack('Appointment Updated');
             },
+            onChemberSelected: (value) => ref
+                .read(appointmentsProvider.notifier)
+                .updateAppointment(
+                    index, confirmed[index].copyWith(chember: value)),
             onReject: () => ref
                 .read(appointmentsProvider.notifier)
                 .removeAppointment(index),
+            onDateSelected: (value) => ref
+                .read(appointmentsProvider.notifier)
+                .updateAppointment(
+                    index, confirmed[index].copyWith(dateTime: value)),
           ),
         ),
         itemCount: confirmed.length,
