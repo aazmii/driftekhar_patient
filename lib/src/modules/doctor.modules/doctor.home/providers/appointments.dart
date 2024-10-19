@@ -1,5 +1,5 @@
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/dummy.appts.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/dummy.appts.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'appointments.g.dart';

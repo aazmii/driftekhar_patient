@@ -1,10 +1,10 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/appointments.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/appointments.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../components/appointment.card.dart';
+import 'appointment.card.dart';
 
 class ConfirmedAppointments extends ConsumerWidget {
   const ConfirmedAppointments({super.key});

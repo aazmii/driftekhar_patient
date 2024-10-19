@@ -1,6 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/appointments.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/appointments.dart';
 import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

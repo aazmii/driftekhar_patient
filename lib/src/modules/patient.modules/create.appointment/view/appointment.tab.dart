@@ -1,5 +1,5 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/appointments.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/appointments.dart';
 import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/patient.provider.dart';
 import 'package:doc_appointment/src/modules/patient.modules/create.appointment/view/components/first.time.visit.dart';
 import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
@@ -100,7 +100,7 @@ class OrSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: Text(
             'OR',
-            style: context.theme.textTheme.titleLarge!.copyWith(
+            style: context.theme.textTheme.titleMedium!.copyWith(
                 color: context.theme.primaryColor, fontWeight: FontWeight.bold),
           ),
         ),

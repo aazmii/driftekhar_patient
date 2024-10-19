@@ -24,7 +24,7 @@ class HomeView extends StatelessWidget {
             ),
             SizedBox(height: context.height * 0.5),
             ElevatedButton(
-              onPressed: () async => fadePush(context, const DoctorHome()),
+              onPressed: () async => fadePush(context, const DoctorApp()),
               child: const Text('View as Doctor'),
             ),
             ElevatedButton(

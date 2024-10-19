@@ -1,6 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/appointments/providers/date.time.picker.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/date.time.picker.dart';
 import 'package:flutter/material.dart';
 
 class AppointmentCard extends StatefulWidget {

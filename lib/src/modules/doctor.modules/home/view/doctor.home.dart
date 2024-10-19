@@ -1,16 +1,15 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/appointments/view/appointments.view.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/home/components/easy.date.picker.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/account/view/doctor.account.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/view/appointments.view.dart';
 import 'package:flutter/material.dart';
 
-class DoctorHome extends StatefulWidget {
-  const DoctorHome({super.key});
+class DoctorApp extends StatefulWidget {
+  const DoctorApp({super.key});
 
   @override
-  State<DoctorHome> createState() => _DoctorHomeState();
+  State<DoctorApp> createState() => _DoctorHomeState();
 }
 
-class _DoctorHomeState extends State<DoctorHome> {
+class _DoctorHomeState extends State<DoctorApp> {
   int _selectedIndex = 0;
   // To keep track of selected tab
   void _onItemTapped(int index) {
@@ -18,31 +17,14 @@ class _DoctorHomeState extends State<DoctorHome> {
   }
 
   static const List<Widget> _widgetOptions = <Widget>[
-    AppointmentView(),
-    Text(
-      'Notifications Page',
-      style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-    ),
-    Text('Profile Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+    DoctorHome(),
+    DoctorAccount(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            if (_selectedIndex == 0) ...[
-              10.toHeight,
-              const EasyDatePicker(),
-            ],
-            Expanded(
-              child: _widgetOptions.elementAt(_selectedIndex),
-            ),
-          ],
-        ),
-      ),
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         enableFeedback: false,
@@ -60,10 +42,6 @@ class _DoctorHomeState extends State<DoctorHome> {
         selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
         onTap: _onItemTapped,
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {},
       ),
     );
   }
