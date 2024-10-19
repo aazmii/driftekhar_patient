@@ -1,7 +1,8 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/models/patient/patient.data.dart';
+import 'package:doc_appointment/src/modules/create.appointment/providers/patient.provider.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/components/first.time.visit.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/appointments.dart';
-import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/patient.provider.dart';
-import 'package:doc_appointment/src/modules/patient.modules/create.appointment/view/components/first.time.visit.dart';
 import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +15,7 @@ class CreateAppointment extends ConsumerWidget {
     ref.watch(appointmentsProvider);
     final patientNotifier = ref.watch(patientProvider.notifier);
 
+    final selectedGender = ref.watch(patientProvider.select((v) => v.gender));
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -51,14 +53,41 @@ class CreateAppointment extends ConsumerWidget {
                   ],
                 ),
                 10.toHeight,
-                TextField(
-                  onChanged: (phone) => patientNotifier.setPhone = phone,
-                  keyboardType: TextInputType.phone,
-                  decoration: const InputDecoration(
-                    prefix: Text('+880'),
-                    // hintText: 'Phone Number',
-                    label: Text('* Phone Number'),
-                  ),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: TextField(
+                        onChanged: (phone) => patientNotifier.setPhone = phone,
+                        keyboardType: TextInputType.phone,
+                        decoration: const InputDecoration(
+                          prefix: Text('+880'),
+                          // hintText: 'Phone Number',
+                          label: Text('* Phone Number'),
+                        ),
+                      ),
+                    ),
+                    Flexible(
+                      child: RadioListTile.adaptive(
+                        contentPadding: EdgeInsets.zero,
+                        dense: true,
+                        title: const Text('Male'),
+                        value: Gender.male,
+                        groupValue: selectedGender,
+                        onChanged: (v) => patientNotifier.setGender = v!,
+                      ),
+                    ),
+                    Flexible(
+                      child: RadioListTile.adaptive(
+                        contentPadding: EdgeInsets.zero,
+                        dense: true,
+                        title: const Text('Female'),
+                        value: Gender.female,
+                        groupValue: selectedGender,
+                        onChanged: (v) => patientNotifier.setGender = v!,
+                      ),
+                    ),
+                  ],
                 ),
                 Text(
                   '* You will be notified thruogh sms once your appointment is confirmed.',
@@ -121,9 +150,9 @@ class CallForAppointmentButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 40,
       width: 220,
-      child: FilledButton.icon(
+      child: OutlinedButton.icon(
         onPressed: () {
           Launcher.callNumber('01964492442');
         },

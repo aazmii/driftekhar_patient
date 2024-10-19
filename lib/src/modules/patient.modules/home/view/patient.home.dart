@@ -1,7 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/home/components/drawer.dart';
-import 'package:doc_appointment/src/modules/patient.modules/create.appointment/view/appointment.tab.dart';
-import 'package:doc_appointment/src/modules/patient.modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/components/experience.tab/profile.tab.dart';
 import 'package:flutter/material.dart';
 
@@ -13,14 +12,14 @@ class PatientHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      endDrawer: const AppDrawer(),
+      // endDrawer: const AppDrawer(),
       body: DefaultTabController(
         length: 2,
         child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) => [
             const SliverAppBar(
               pinned: true,
-              expandedHeight: 280,
+              expandedHeight: 260,
               flexibleSpace: ImageWithProfessionWidget(),
             ),
           ],

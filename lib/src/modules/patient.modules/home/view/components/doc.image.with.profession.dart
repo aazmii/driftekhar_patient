@@ -18,10 +18,9 @@ class ImageWithProfessionWidget extends StatelessWidget {
       children: [
         const Positioned.fill(
           child: Image(
-            // image: Assets.images.jpg.doc.provider(),
             image: AssetImage('assets/images/jpg/doc.jpg'),
-            // image: NetworkImage(imageLInk),
             fit: BoxFit.cover,
+            // image: NetworkImage(imageLInk),
           ),
         ),
         Positioned(
@@ -29,7 +28,8 @@ class ImageWithProfessionWidget extends StatelessWidget {
           left: 0,
           child: DecoratedBox(
             decoration: BoxDecoration(
-              color: Colors.green.shade100,
+              // color: Colors.green.shade100,
+              color: context.theme.secondaryHeaderColor,
               borderRadius: const BorderRadius.only(
                 topRight: Radius.circular(10),
                 bottomRight: Radius.circular(10),

@@ -1,5 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
+import 'package:doc_appointment/src/modules/confirm.dialog/confirm.dialog.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/date.time.picker.dart';
 import 'package:flutter/material.dart';
 
@@ -50,74 +51,96 @@ class AppointmentCardState extends State<AppointmentCard> {
               widget.appointment.status == AppointmentStatus.confirmed
                   ? CardHeader(appointmentDate: widget.appointment.dateTime!)
                   : const SizedBox.shrink(),
-              Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          flex: 3,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                children: [
+                  Container(
+                    width: 3,
+                    height: 145,
+                    color: Colors.black,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        children: [
+                          Row(
                             children: [
-                              Text(
-                                widget.appointment.patientData?.name ?? '',
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.bold),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                'Age: ${widget.appointment.patientData?.age ?? ''}',
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(height: 8),
-                              Text(
-                                'Phone: ${widget.appointment.patientData?.phone ?? ''}',
-                                style: const TextStyle(fontSize: 16),
-                              ),
-                              const SizedBox(height: 16),
-                            ],
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Column(
-                            children: [
-                              widget.appointment.isConfirmed
-                                  ? RescheduleButton(
-                                      appointment: widget.appointment,
-                                      onReschedule: widget.onReschedule,
-                                    )
-                                  : ApproveButton(
-                                      appointment: widget.appointment,
-                                      onApprove: widget.onApprove,
+                              Expanded(
+                                flex: 3,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      widget.appointment.patientData?.name ??
+                                          '',
+                                      style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold),
                                     ),
-                              5.toHeight,
-                              TextButton(
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor:
-                                      context.theme.colorScheme.error,
-                                  minimumSize: const Size.fromHeight(55),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Age: ${widget.appointment.patientData?.age ?? ''}',
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      'Phone: ${widget.appointment.patientData?.phone ?? ''}',
+                                      style: const TextStyle(fontSize: 16),
+                                    ),
+                                    const SizedBox(height: 16),
+                                  ],
                                 ),
-                                onPressed: widget.onReject,
-                                child: const Text('Cancel'),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: Column(
+                                  children: [
+                                    widget.appointment.isConfirmed
+                                        ? RescheduleButton(
+                                            appointment: widget.appointment,
+                                            onReschedule: widget.onReschedule,
+                                          )
+                                        : ApproveButton(
+                                            appointment: widget.appointment,
+                                            onApprove: widget.onApprove,
+                                          ),
+                                    5.toHeight,
+                                    TextButton(
+                                      style: ElevatedButton.styleFrom(
+                                        foregroundColor:
+                                            context.theme.colorScheme.error,
+                                        minimumSize: const Size.fromHeight(55),
+                                      ),
+                                      onPressed: () async {
+                                        final isConfirmed =
+                                            await ConfirmDialog.show(context,
+                                                'Are you sure to reject the appointment?');
+                                        if (isConfirmed == null ||
+                                            !isConfirmed) {
+                                          return;
+                                        }
+                                        widget.onReject?.call();
+                                      },
+                                      child: const Text('Reject'),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ],
                           ),
-                        ),
-                      ],
-                    ),
-                    if (!widget.appointment.isConfirmed)
-                      CardDatePicker(
-                        initialDate: widget.appointment.dateTime,
-                        onDateSelected: (dateTime) async {
-                          _dateController.text = dateTime.toDate;
-                          widget.onDateSelected?.call(dateTime);
-                        },
+                          if (!widget.appointment.isConfirmed)
+                            CardDatePicker(
+                              initialDate: widget.appointment.dateTime,
+                              onDateSelected: (dateTime) async {
+                                _dateController.text = dateTime.toDate;
+                                widget.onDateSelected?.call(dateTime);
+                              },
+                            ),
+                        ],
                       ),
-                  ],
-                ),
+                    ),
+                  ),
+                ],
               )
             ],
           ),

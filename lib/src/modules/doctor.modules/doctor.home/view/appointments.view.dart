@@ -29,8 +29,19 @@ class DoctorHome extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            10.toHeight,
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0),
+              child: Text(
+                'Appointments',
+                style: context.text.titleLarge!.copyWith(
+                  color: context.theme.primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            // 10.toHeight,
             const EasyDatePicker(),
             10.toHeight,
             Row(
@@ -85,10 +96,6 @@ class DoctorHome extends ConsumerWidget {
             ),
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.add),
-        onPressed: () {},
       ),
     );
   }

@@ -18,7 +18,7 @@ class _DoctorHomeState extends State<DoctorApp> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     DoctorHome(),
-    DoctorAccount(),
+    DoctorSettings(),
   ];
 
   @override
@@ -34,8 +34,8 @@ class _DoctorHomeState extends State<DoctorApp> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Account',
+            icon: Icon(Icons.settings),
+            label: 'Settings',
           ),
         ],
         currentIndex: _selectedIndex,

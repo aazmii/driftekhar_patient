@@ -1,5 +1,5 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -22,6 +22,7 @@ class FirstTimeVisit extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CheckboxListTile.adaptive(
+              tileColor: Colors.transparent,
               contentPadding: EdgeInsets.zero,
               value: isFirstVisit,
               onChanged: (v) =>

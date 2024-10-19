@@ -6,7 +6,7 @@ part of 'social.link.providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$socialLinksPHash() => r'd612d36627f1c9054b0f859a0586199a62e55b4d';
+String _$socialLinksPHash() => r'06d6b760dbe479eee7417e6aa9bd28a41d99896d';
 
 /// See also [socialLinksP].
 @ProviderFor(socialLinksP)

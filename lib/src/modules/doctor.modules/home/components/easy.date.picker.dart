@@ -1,4 +1,4 @@
-import 'package:doc_appointment/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

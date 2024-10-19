@@ -39,6 +39,9 @@ class $AssetsImagesGen {
 
   /// Directory path: assets/images/jpg
   $AssetsImagesJpgGen get jpg => const $AssetsImagesJpgGen();
+
+  /// Directory path: assets/images/png
+  $AssetsImagesPngGen get png => const $AssetsImagesPngGen();
 }
 
 class $AssetsImagesJpgGen {
@@ -49,6 +52,17 @@ class $AssetsImagesJpgGen {
 
   /// List of all assets
   List<AssetGenImage> get values => [doc];
+}
+
+class $AssetsImagesPngGen {
+  const $AssetsImagesPngGen();
+
+  /// File path: assets/images/png/medicine.png
+  AssetGenImage get medicine =>
+      const AssetGenImage('assets/images/png/medicine.png');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [medicine];
 }
 
 class Assets {

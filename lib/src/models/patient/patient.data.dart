@@ -11,7 +11,7 @@ class PatientData {
   String? image;
   PatientData({
     this.name,
-    this.gender,
+    this.gender = Gender.male,
     this.phone,
     this.age,
     this.email,
