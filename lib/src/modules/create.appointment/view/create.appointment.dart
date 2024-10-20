@@ -69,6 +69,7 @@ class CreateAppointment extends ConsumerWidget {
                     ),
                     Flexible(
                       child: RadioListTile.adaptive(
+                        tileColor: Colors.transparent,
                         contentPadding: EdgeInsets.zero,
                         dense: true,
                         title: const Text('Male'),
@@ -79,6 +80,7 @@ class CreateAppointment extends ConsumerWidget {
                     ),
                     Flexible(
                       child: RadioListTile.adaptive(
+                        tileColor: Colors.transparent,
                         contentPadding: EdgeInsets.zero,
                         dense: true,
                         title: const Text('Female'),

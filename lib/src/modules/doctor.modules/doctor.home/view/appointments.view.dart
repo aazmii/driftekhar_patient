@@ -35,16 +35,17 @@ class DoctorHome extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Text(
-                'Appointments',
-                style: context.text.titleLarge!.copyWith(
-                  color: context.theme.primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+            //! better not delete
+            // Padding(
+            //   padding: const EdgeInsets.only(left: 8.0),
+            //   child: Text(
+            //     'Appointments',
+            //     style: context.text.titleLarge!.copyWith(
+            //       color: context.theme.primaryColor,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ),
+            // ),
             // 10.toHeight,
             const EasyDatePicker(),
             10.toHeight,

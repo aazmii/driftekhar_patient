@@ -119,13 +119,17 @@ class AppointmentCardState extends State<AppointmentCard> {
                               onPressed: () async {
                                 final confirm = await ConfirmDialog.show(
                                   context,
-                                  'Are you sure you want to reject this appointment?',
+                                  'Are you sure you want to ${widget.appointment.isConfirmed ? 'cancel' : 'reject'} this appointment?',
                                 );
                                 if (confirm == null) return;
                                 if (!confirm) return;
                                 widget.onReject?.call();
                               },
-                              child: const Text('Reject'),
+                              child: Text(
+                                widget.appointment.isConfirmed
+                                    ? 'Cancel'
+                                    : 'Reject',
+                              ),
                             ),
                           ),
                         ),
@@ -134,11 +138,11 @@ class AppointmentCardState extends State<AppointmentCard> {
                             appointment: widget.appointment,
                             onApproveOrUpdate: () {
                               if (!widget.appointment.isConfirmed) {
+                                widget.onApprove?.call();
+                                context.showSnack('Appointmtent Approved');
+                              } else {
                                 widget.onUpdate?.call();
                                 context.showSnack('Updated Successfully');
-                              } else {
-                                widget.onApprove?.call();
-                                context.showSnack('Appointmtent Requeested ');
                               }
                             },
                           ),

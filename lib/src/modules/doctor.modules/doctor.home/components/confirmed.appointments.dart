@@ -41,15 +41,14 @@ class ConfirmedAppointments extends ConsumerWidget {
             },
             onChemberSelected: (value) => ref
                 .read(appointmentsProvider.notifier)
-                .updateAppointment(
-                    index, confirmed[index].copyWith(chember: value)),
-            onReject: () => ref
-                .read(appointmentsProvider.notifier)
-                .removeAppointment(index),
+                .updateAppointment(confirmed[index].copyWith(chember: value)),
+            onReject: () {
+              ref.read(appointmentsProvider.notifier).removeAppointment(index);
+              context.showSnack('Appointment Cancelled');
+            },
             onDateSelected: (value) => ref
                 .read(appointmentsProvider.notifier)
-                .updateAppointment(
-                    index, confirmed[index].copyWith(dateTime: value)),
+                .updateAppointment(confirmed[index].copyWith(dateTime: value)),
           ),
         ),
         itemCount: confirmed.length,

@@ -11,7 +11,8 @@ class Appointments extends _$Appointments {
     return ref.watch(dummyApptsProvider);
   }
 
-  void updateAppointment(int index, Appointment appointment) {
+  void updateAppointment(Appointment appointment) {
+    final index = state.value!.indexOf(appointment);
     state = AsyncData(state.value!..[index] = appointment);
   }
 

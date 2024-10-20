@@ -38,22 +38,20 @@ class PendingAppointments extends ConsumerWidget {
         itemBuilder: (_, index) => Padding(
           padding: const EdgeInsets.symmetric(vertical: 18),
           child: AppointmentCard(
+            key: ValueKey(pendings[index].id),
             appointment: pendings[index],
             onApprove: () {
               notifier.updateAppointment(
-                index,
                 pendings[index].copyWith(status: AppointmentStatus.confirmed),
               );
             },
             onDateSelected: (pickedDate) {
               notifier.updateAppointment(
-                index,
                 pendings[index].copyWith(dateTime: pickedDate),
               );
             },
             onChemberSelected: (chember) {
               notifier.updateAppointment(
-                index,
                 pendings[index].copyWith(chember: chember),
               );
             },

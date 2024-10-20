@@ -7,6 +7,7 @@ import 'package:doc_appointment/src/models/patient/patient.data.dart';
 enum AppointmentStatus { pending, confirmed, cancelled }
 
 class Appointment {
+  final String? id;
   final PatientData? patientData;
   final DateTime? dateTime;
   final Chember? chember;
@@ -15,6 +16,7 @@ class Appointment {
   final AppointmentStatus? status;
 
   Appointment({
+    this.id,
     this.patientData,
     this.dateTime,
     this.chember,
@@ -23,6 +25,7 @@ class Appointment {
   });
 
   Appointment copyWith({
+    String? id,
     PatientData? patientData,
     String? weekDay,
     Chember? chember,
@@ -31,6 +34,7 @@ class Appointment {
     AppointmentStatus? status,
   }) {
     return Appointment(
+      id: id ?? this.id,
       patientData: patientData ?? this.patientData,
       chember: chember ?? this.chember,
       isFirstTime: isFirstTime ?? this.isFirstTime,
@@ -68,25 +72,22 @@ class Appointment {
 
   @override
   String toString() {
-    return 'Appointment(patientData: $patientData, date: $dateTime , chember: $chember, isFirstTime: $isFirstTime)';
+    return 'patientt : ${patientData?.name}, status : $status\n';
   }
+  // String toString() {
+  //   return 'Appointment(patientData: $patientData, date: $dateTime , chember: $chember, isFirstTime: $isFirstTime)';
+  // }
 
   @override
   bool operator ==(covariant Appointment other) {
     if (identical(this, other)) return true;
 
-    return other.patientData == patientData &&
-        other.dateTime == dateTime &&
-        other.chember == chember &&
-        other.isFirstTime == isFirstTime;
+    return other.id == id;
   }
 
   @override
   int get hashCode {
-    return patientData.hashCode ^
-        dateTime.hashCode ^
-        chember.hashCode ^
-        isFirstTime.hashCode;
+    return id.hashCode;
   }
 }
 

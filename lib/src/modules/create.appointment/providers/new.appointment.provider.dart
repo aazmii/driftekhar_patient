@@ -2,16 +2,20 @@ import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
 import 'package:doc_appointment/src/modules/create.appointment/providers/patient.provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../models/appointment/appointment.dart';
 
 part 'new.appointment.provider.g.dart';
+
+const uuid = Uuid();
 
 @Riverpod(keepAlive: true)
 class NewAppointment extends _$NewAppointment {
   @override
   Appointment build() {
     return Appointment(
+      id: uuid.v4(),
       patientData: ref.watch(patientProvider),
     );
   }

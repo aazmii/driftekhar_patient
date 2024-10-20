@@ -1,3 +1,4 @@
+import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/account/view/doctor.account.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/view/appointments.view.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,15 @@ class _DoctorHomeState extends State<DoctorApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Appointment',
+          style: context.text.titleLarge!.copyWith(
+            color: context.theme.primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,

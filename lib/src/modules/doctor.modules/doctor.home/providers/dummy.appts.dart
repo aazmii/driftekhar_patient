@@ -1,5 +1,6 @@
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
+import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'dummy.appts.g.dart';
 
@@ -10,6 +11,7 @@ List<Appointment> dummyAppts(DummyApptsRef ref) {
 
 final appointments = <Appointment>[
   Appointment(
+    id: uuid.v4(),
     isFirstTime: true,
     // dateTime: DateTime(2023, 5, 10, 14, 30),
     patientData: PatientData(
@@ -21,6 +23,8 @@ final appointments = <Appointment>[
     ),
   ),
   Appointment(
+    id: uuid.v4(),
+
     isFirstTime: true,
     // dateTime: DateTime(2024, 12, 25, 9, 45),
     patientData: PatientData(
@@ -32,6 +36,8 @@ final appointments = <Appointment>[
     ),
   ),
   Appointment(
+    id: uuid.v4(),
+
     isFirstTime: false,
     // dateTime: DateTime(2022, 8, 17, 18, 0),
     patientData: PatientData(
