@@ -34,7 +34,7 @@ class AppointmentCard extends StatefulWidget {
 class AppointmentCardState extends State<AppointmentCard> {
   DateTime? selectedDateTime;
 
-  final containerHeight = 180.0;
+  final containerHeight = 210.0;
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +51,28 @@ class AppointmentCardState extends State<AppointmentCard> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                widget.appointment.status == AppointmentStatus.confirmed
-                    ? CardHeader(appointmentDate: widget.appointment.dateTime!)
-                    : const SizedBox.shrink(),
+                if (widget.appointment.status == AppointmentStatus.confirmed)
+                  CardHeader(appointmentDate: widget.appointment.dateTime!),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Text('Appointment ID: ', style: context.text.titleMedium),
+                      5.toWidth,
+                      Text(
+                        widget.appointment.id!.substring(0, 8),
+                        // style: context.text.titleMedium,
+                      ),
+                      const Spacer(),
+                      IconButton(
+                        iconSize: 20,
+                        style: IconButton.styleFrom(padding: EdgeInsets.zero),
+                        onPressed: () {},
+                        icon: const Icon(Icons.copy),
+                      )
+                    ],
+                  ),
+                ),
                 Column(
                   children: [
                     Padding(
