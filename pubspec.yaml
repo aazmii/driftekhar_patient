@@ -54,7 +54,9 @@ flutter:
   assets:
     - assets/images/jpg/
     - assets/images/png/
+    - assets/images/service.images/
     - assets/icons/
+    - assets/texts/services/
 
 
 flutter_gen:
