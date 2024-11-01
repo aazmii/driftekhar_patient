@@ -18,6 +18,9 @@ class $AssetsIconsGen {
   /// File path: assets/icons/insta.svg
   SvgGenImage get insta => const SvgGenImage('assets/icons/insta.svg');
 
+  /// File path: assets/icons/location.svg
+  SvgGenImage get location => const SvgGenImage('assets/icons/location.svg');
+
   /// File path: assets/icons/snap.svg
   SvgGenImage get snap => const SvgGenImage('assets/icons/snap.svg');
 
@@ -31,7 +34,8 @@ class $AssetsIconsGen {
   SvgGenImage get youtube => const SvgGenImage('assets/icons/youtube.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [insta, snap, tiktok, whatsapp, youtube];
+  List<SvgGenImage> get values =>
+      [insta, location, snap, tiktok, whatsapp, youtube];
 }
 
 class $AssetsImagesGen {
@@ -65,40 +69,44 @@ class $AssetsImagesJpgGen {
   /// File path: assets/images/jpg/doc.jpg
   AssetGenImage get doc => const AssetGenImage('assets/images/jpg/doc.jpg');
 
+  /// File path: assets/images/jpg/injuries.jpg
+  AssetGenImage get injuries =>
+      const AssetGenImage('assets/images/jpg/injuries.jpg');
+
   /// File path: assets/images/jpg/online.appointment2.jpg
   AssetGenImage get onlineAppointment2 =>
       const AssetGenImage('assets/images/jpg/online.appointment2.jpg');
 
   /// List of all assets
-  List<AssetGenImage> get values => [consult, doc, onlineAppointment2];
+  List<AssetGenImage> get values =>
+      [consult, doc, injuries, onlineAppointment2];
 }
 
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
-  /// File path: assets/images/png/appointment.png
-  AssetGenImage get appointment =>
-      const AssetGenImage('assets/images/png/appointment.png');
+  /// File path: assets/images/png/book.appointment.png
+  AssetGenImage get bookAppointment =>
+      const AssetGenImage('assets/images/png/book.appointment.png');
 
   /// File path: assets/images/png/construction.png
   AssetGenImage get construction =>
       const AssetGenImage('assets/images/png/construction.png');
 
-  /// File path: assets/images/png/injuries.png
-  AssetGenImage get injuries =>
-      const AssetGenImage('assets/images/png/injuries.png');
+  /// File path: assets/images/png/logo.png
+  AssetGenImage get logo => const AssetGenImage('assets/images/png/logo.png');
 
   /// File path: assets/images/png/medicine.png
   AssetGenImage get medicine =>
       const AssetGenImage('assets/images/png/medicine.png');
 
-  /// File path: assets/images/png/online.appointmentpng.png
-  AssetGenImage get onlineAppointmentpng =>
-      const AssetGenImage('assets/images/png/online.appointmentpng.png');
+  /// File path: assets/images/png/online.appointment.png
+  AssetGenImage get onlineAppointment =>
+      const AssetGenImage('assets/images/png/online.appointment.png');
 
   /// List of all assets
   List<AssetGenImage> get values =>
-      [appointment, construction, injuries, medicine, onlineAppointmentpng];
+      [bookAppointment, construction, logo, medicine, onlineAppointment];
 }
 
 class $AssetsImagesServiceImagesGen {

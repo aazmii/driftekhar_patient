@@ -1,9 +1,10 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:doc_appointment/src/modules/create.appointment/component/chember.picker.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/models/welcome.options.dart';
 import 'package:doc_appointment/src/modules/patient.modules/services/view/services.dart';
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../components/home.container/home.container.dart';
 
@@ -12,6 +13,7 @@ class PatientHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final int crossAxisCount = context.width > 600 ? 4 : 2;
     return Scaffold(
       // endDrawer: const AppDrawer(),
 
@@ -26,9 +28,12 @@ class PatientHome extends StatelessWidget {
                 height: 150,
               ),
               SafeArea(
-                child: Image.asset(
-                  'assets/images/png/logo.png',
-                  height: 60,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 12.0),
+                  child: Image.asset(
+                    'assets/images/png/logo.png',
+                    height: 80,
+                  ),
                 ),
               ),
               Positioned(
@@ -56,35 +61,53 @@ class PatientHome extends StatelessWidget {
               ),
             ],
           ),
-
           Expanded(
-            child: GridView.builder(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: GridView.builder(
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
                   mainAxisSpacing: 30,
                   crossAxisSpacing: 10,
                 ),
-                itemBuilder: (_, index) => InkWell(
-                      onTap: () async {
-                        if (welcomeOptions[index].title == 'Services') {
-                          await fadePush(context, const ServicesPage());
-                        }
-                      },
-                      child: HomeContainer(
-                        option: welcomeOptions[index],
-                      ),
+                itemBuilder: (_, index) {
+                  return InkWell(
+                    onTap: () async => handleRoute(context, index),
+                    child: HomeContainer(
+                      option: _welcomeOptions[index],
                     ),
-                itemCount: welcomeOptions.length),
+                  );
+                },
+                itemCount: _welcomeOptions.length,
+              ),
+            ),
           ),
-          // const SizedBox(height: 70),
         ],
       ),
-      bottomNavigationBar: const PayAndConfimButton(),
+      // bottomNavigationBar: const PayAndConfimButton(),
+      floatingActionButton: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            FontAwesomeIcons.whatsapp,
+            color: Colors.green,
+            size: 34,
+          )),
     );
+  }
+
+  handleRoute(BuildContext context, int index) async {
+    final service = _welcomeOptions[index].title;
+    if (service == 'Book Appointment') {
+      await getChember(context);
+    }
+
+    if (service == 'Services') {
+      await fadePush(context, const ServicesPage());
+    }
   }
 }
 
-final welcomeOptions = [
+final _welcomeOptions = [
   WelcomeOption(
     title: 'Book Appointment',
     image: 'assets/images/png/book.appointment.png',

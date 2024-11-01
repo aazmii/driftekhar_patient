@@ -17,7 +17,6 @@ class HomeContainer extends StatelessWidget {
         children: [
           Expanded(
             child: Image(
-              height: 120,
               image: AssetImage(
                 option.image,
               ),

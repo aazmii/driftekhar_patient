@@ -8,78 +8,47 @@ class ChemberContainer extends StatelessWidget {
     super.key,
     required this.chember,
     this.onMapTapped,
+    this.isSelected = false,
   });
+  final bool? isSelected;
   final Chember chember;
   final VoidCallback? onMapTapped;
   @override
   Widget build(BuildContext context) {
-    return Material(
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      elevation: 2,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: isSelected! ? 2 : 1,
+          color:
+              isSelected! ? context.theme.primaryColor : Colors.grey.shade300,
+        ),
+      ),
+      child: Row(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
+          Expanded(
+            flex: 3,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  flex: 3,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        chember.name ?? '',
-                        style: context.text.titleSmall!.copyWith(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      Text(chember.address ?? '',
-                          style: context.text.titleSmall),
-                      Text(chember.description ?? '',
-                          style: context.text.titleSmall),
-                      Text(
-                        'Serial : ${chember.cell?.first}',
-                        style: context.text.titleSmall,
-                      ),
-                    ],
+                Text(
+                  chember.name ?? '',
+                  style: context.text.titleSmall!.copyWith(
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-                TextButton.icon(
-                  onPressed: () async {
-                    await Launcher.openMap(
-                        23.773985552744225, 90.42117791428409);
-                  },
-                  icon: const Icon(Icons.location_pin),
-                  label: const Text('Map'),
-                ),
+                Text(chember.address ?? '', style: context.text.titleSmall),
+                Text(chember.description ?? '', style: context.text.titleSmall),
               ],
             ),
           ),
-          DecoratedBox(
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(6),
-                bottomRight: Radius.circular(6),
-              ),
-              color: Colors.green.shade50,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  const Icon(Icons.schedule_rounded),
-                  5.toWidth,
-                  Text(
-                    'Sat, Wed - Fri : 7pm to 9pm',
-                    style: context.text.titleSmall!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+          TextButton.icon(
+            onPressed: () async {
+              await Launcher.openMap(23.773985552744225, 90.42117791428409);
+            },
+            icon: const Icon(Icons.location_pin),
+            label: const Text('Map'),
           ),
         ],
       ),
