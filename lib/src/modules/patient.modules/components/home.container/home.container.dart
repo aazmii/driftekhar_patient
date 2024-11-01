@@ -9,15 +9,20 @@ class HomeContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: Colors.grey.shade300),
       ),
       child: Column(
         children: [
-          const Expanded(
-            child: Placeholder(),
+          Expanded(
+            child: Image(
+              height: 120,
+              image: AssetImage(
+                option.image,
+              ),
+              fit: BoxFit.cover,
+            ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),

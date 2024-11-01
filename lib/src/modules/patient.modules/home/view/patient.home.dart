@@ -61,7 +61,7 @@ class PatientHome extends StatelessWidget {
             child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 10,
+                  mainAxisSpacing: 30,
                   crossAxisSpacing: 10,
                 ),
                 itemBuilder: (_, index) => InkWell(
@@ -87,18 +87,18 @@ class PatientHome extends StatelessWidget {
 final welcomeOptions = [
   WelcomeOption(
     title: 'Book Appointment',
-    image: 'assets/images/png/medicine.png',
+    image: 'assets/images/png/book.appointment.png',
   ),
   WelcomeOption(
     title: 'Online Consultation',
-    image: 'assets/images/png/medicine.png',
+    image: 'assets/images/png/online.appointment.png',
   ),
   WelcomeOption(
     title: 'Services',
-    image: 'assets/images/png/medicine.png',
+    image: 'assets/images/jpg/injuries.jpg',
   ),
   WelcomeOption(
-    title: 'Contact',
-    image: 'assets/images/png/medicine.png',
+    title: 'Chembers',
+    image: 'assets/images/jpg/consult.jpg',
   ),
 ];

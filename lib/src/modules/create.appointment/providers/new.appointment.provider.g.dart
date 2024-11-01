@@ -6,7 +6,7 @@ part of 'new.appointment.provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$newAppointmentHash() => r'08b46a1e1703440dd8d63581beec8658b627c411';
+String _$newAppointmentHash() => r'5e7f218497b739fad9fabd784e6b9b3a81bb5b9b';
 
 /// See also [NewAppointment].
 @ProviderFor(NewAppointment)

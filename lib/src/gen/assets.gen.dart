@@ -42,31 +42,151 @@ class $AssetsImagesGen {
 
   /// Directory path: assets/images/png
   $AssetsImagesPngGen get png => const $AssetsImagesPngGen();
+
+  /// Directory path: assets/images/service.images
+  $AssetsImagesServiceImagesGen get service =>
+      const $AssetsImagesServiceImagesGen();
+}
+
+class $AssetsTextsGen {
+  const $AssetsTextsGen();
+
+  /// Directory path: assets/texts/services
+  $AssetsTextsServicesGen get services => const $AssetsTextsServicesGen();
 }
 
 class $AssetsImagesJpgGen {
   const $AssetsImagesJpgGen();
 
+  /// File path: assets/images/jpg/consult.jpg
+  AssetGenImage get consult =>
+      const AssetGenImage('assets/images/jpg/consult.jpg');
+
   /// File path: assets/images/jpg/doc.jpg
   AssetGenImage get doc => const AssetGenImage('assets/images/jpg/doc.jpg');
 
+  /// File path: assets/images/jpg/online.appointment2.jpg
+  AssetGenImage get onlineAppointment2 =>
+      const AssetGenImage('assets/images/jpg/online.appointment2.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values => [doc];
+  List<AssetGenImage> get values => [consult, doc, onlineAppointment2];
 }
 
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/appointment.png
+  AssetGenImage get appointment =>
+      const AssetGenImage('assets/images/png/appointment.png');
+
   /// File path: assets/images/png/construction.png
   AssetGenImage get construction =>
       const AssetGenImage('assets/images/png/construction.png');
+
+  /// File path: assets/images/png/injuries.png
+  AssetGenImage get injuries =>
+      const AssetGenImage('assets/images/png/injuries.png');
 
   /// File path: assets/images/png/medicine.png
   AssetGenImage get medicine =>
       const AssetGenImage('assets/images/png/medicine.png');
 
+  /// File path: assets/images/png/online.appointmentpng.png
+  AssetGenImage get onlineAppointmentpng =>
+      const AssetGenImage('assets/images/png/online.appointmentpng.png');
+
   /// List of all assets
-  List<AssetGenImage> get values => [construction, medicine];
+  List<AssetGenImage> get values =>
+      [appointment, construction, injuries, medicine, onlineAppointmentpng];
+}
+
+class $AssetsImagesServiceImagesGen {
+  const $AssetsImagesServiceImagesGen();
+
+  /// File path: assets/images/service.images/arthritis.jpg
+  AssetGenImage get arthritis =>
+      const AssetGenImage('assets/images/service.images/arthritis.jpg');
+
+  /// File path: assets/images/service.images/injury.jpg
+  AssetGenImage get injury =>
+      const AssetGenImage('assets/images/service.images/injury.jpg');
+
+  /// File path: assets/images/service.images/joint.pain.jpg
+  AssetGenImage get jointPain =>
+      const AssetGenImage('assets/images/service.images/joint.pain.jpg');
+
+  /// File path: assets/images/service.images/knee.jpg
+  AssetGenImage get knee =>
+      const AssetGenImage('assets/images/service.images/knee.jpg');
+
+  /// File path: assets/images/service.images/lowback.jpg
+  AssetGenImage get lowback =>
+      const AssetGenImage('assets/images/service.images/lowback.jpg');
+
+  /// File path: assets/images/service.images/shoulder.jpg
+  AssetGenImage get shoulder =>
+      const AssetGenImage('assets/images/service.images/shoulder.jpg');
+
+  /// File path: assets/images/service.images/slipped.disc.jpg
+  AssetGenImage get slippedDisc =>
+      const AssetGenImage('assets/images/service.images/slipped.disc.jpg');
+
+  /// File path: assets/images/service.images/sports.injury.jpg
+  AssetGenImage get sportsInjury =>
+      const AssetGenImage('assets/images/service.images/sports.injury.jpg');
+
+  /// List of all assets
+  List<AssetGenImage> get values => [
+        arthritis,
+        injury,
+        jointPain,
+        knee,
+        lowback,
+        shoulder,
+        slippedDisc,
+        sportsInjury
+      ];
+}
+
+class $AssetsTextsServicesGen {
+  const $AssetsTextsServicesGen();
+
+  /// File path: assets/texts/services/arthritis.pain.txt
+  String get arthritisPain => 'assets/texts/services/arthritis.pain.txt';
+
+  /// File path: assets/texts/services/disc.pain.txt
+  String get discPain => 'assets/texts/services/disc.pain.txt';
+
+  /// File path: assets/texts/services/injury.txt
+  String get injury => 'assets/texts/services/injury.txt';
+
+  /// File path: assets/texts/services/joint.pain.txt
+  String get jointPain => 'assets/texts/services/joint.pain.txt';
+
+  /// File path: assets/texts/services/knee.pain.txt
+  String get kneePain => 'assets/texts/services/knee.pain.txt';
+
+  /// File path: assets/texts/services/low.back.pain.txt
+  String get lowBackPain => 'assets/texts/services/low.back.pain.txt';
+
+  /// File path: assets/texts/services/shoulder.paint.txt
+  String get shoulderPaint => 'assets/texts/services/shoulder.paint.txt';
+
+  /// File path: assets/texts/services/sports.injury.txt
+  String get sportsInjury => 'assets/texts/services/sports.injury.txt';
+
+  /// List of all assets
+  List<String> get values => [
+        arthritisPain,
+        discPain,
+        injury,
+        jointPain,
+        kneePain,
+        lowBackPain,
+        shoulderPaint,
+        sportsInjury
+      ];
 }
 
 class Assets {
@@ -74,6 +194,7 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsTextsGen texts = $AssetsTextsGen();
 }
 
 class AssetGenImage {

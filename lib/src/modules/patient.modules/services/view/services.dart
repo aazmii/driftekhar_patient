@@ -32,9 +32,14 @@ class _ServicesPageState extends State<ServicesPage> {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ExpansionTile(
-                    minTileHeight: 80,
-                    leading: const FlutterLogo(
-                      size: 50,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    minTileHeight: 100,
+                    leading: Image.asset(
+                      width: 80,
+                      service.image ?? '',
+                      fit: BoxFit.cover,
                     ),
                     key: Key('$index'),
                     title: Text(service.title ?? ''),
