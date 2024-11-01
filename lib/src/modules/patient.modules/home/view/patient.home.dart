@@ -17,28 +17,28 @@ class PatientHome extends StatelessWidget {
 
       body: Column(
         children: [
-          SizedBox(
-            height: 200,
-            child: Stack(
-              clipBehavior: Clip.none,
-              alignment: AlignmentDirectional.bottomStart,
-              children: [
-                const Positioned.fill(
-                  child: Image(
-                    image: AssetImage('assets/images/jpg/doc.jpg'),
-                    fit: BoxFit.cover,
-                    // image: NetworkImage(imageLInk),
-                  ),
+          Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.topCenter,
+            children: [
+              Container(
+                color: Colors.blue.shade50,
+                height: 150,
+              ),
+              SafeArea(
+                child: Image.asset(
+                  'assets/images/png/logo.png',
+                  height: 60,
                 ),
-                Positioned(
-                  bottom: -60,
-                  child: SizedBox(
-                    width: context.width,
-                    child: const CircleAvatar(radius: 60),
-                  ),
+              ),
+              Positioned(
+                bottom: -50,
+                child: SizedBox(
+                  width: context.width,
+                  child: const CircleAvatar(radius: 50),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           60.toHeight,
           Column(
