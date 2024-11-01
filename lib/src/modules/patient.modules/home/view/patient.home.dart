@@ -1,5 +1,5 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/create.appointment/component/chember.picker.dart';
+import 'package:doc_appointment/src/modules/patient.modules/chembers/view/chembers.page.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/models/welcome.options.dart';
 import 'package:doc_appointment/src/modules/patient.modules/services/view/services.dart';
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
@@ -98,7 +98,7 @@ class PatientHome extends StatelessWidget {
   handleRoute(BuildContext context, int index) async {
     final service = _welcomeOptions[index].title;
     if (service == 'Book Appointment') {
-      await getChember(context);
+      fadePush(context, const ChembersPage());
     }
 
     if (service == 'Services') {

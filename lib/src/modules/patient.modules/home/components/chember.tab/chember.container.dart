@@ -8,22 +8,17 @@ class ChemberContainer extends StatelessWidget {
     super.key,
     required this.chember,
     this.onMapTapped,
-    this.isSelected = false,
   });
-  final bool? isSelected;
+
   final Chember chember;
   final VoidCallback? onMapTapped;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
-      margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        border: Border.all(
-          width: isSelected! ? 2 : 1,
-          color:
-              isSelected! ? context.theme.primaryColor : Colors.grey.shade300,
-        ),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: context.theme.primaryColor),
       ),
       child: Row(
         children: [

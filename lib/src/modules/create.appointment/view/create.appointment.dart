@@ -1,113 +1,56 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/models/patient/patient.data.dart';
-import 'package:doc_appointment/src/modules/create.appointment/providers/patient.provider.dart';
-import 'package:doc_appointment/src/modules/create.appointment/view/components/first.time.visit.dart';
+import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/appointments.dart';
 import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CreateAppointment extends ConsumerWidget {
-  const CreateAppointment({super.key});
+import 'components/appointment.form.dart';
+import 'components/chember.detail.section.dart';
 
+class CreateAppointment extends ConsumerWidget {
+  const CreateAppointment({super.key, this.chember});
+  final Chember? chember;
   @override
   Widget build(BuildContext context, ref) {
     ref.watch(appointmentsProvider);
-    final patientNotifier = ref.watch(patientProvider.notifier);
 
-    final selectedGender = ref.watch(patientProvider.select((v) => v.gender));
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // 20.toHeight,
-                // const DatePickerR  ow(),
-                10.toHeight,
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        decoration: const InputDecoration(
-                          label: Text('* Patient Name'),
-                        ),
-                        onChanged: (name) => patientNotifier.setName = name,
-                      ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('New Appointment'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              if (chember != null) const ChemberDetailSection(),
+              Row(
+                children: [
+                  const Expanded(child: Divider()),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: Text(
+                      'Appointment Form',
+                      style: context.text.titleLarge!.copyWith(
+                          fontWeight: FontWeight.bold, color: Colors.black54),
                     ),
-                    10.toWidth,
-                    Expanded(
-                      child: TextField(
-                        onChanged: (age) =>
-                            patientNotifier.setAge = int.parse(age),
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          label: Text('Age'),
-                        ),
-                      ),
-                    ),
-                    5.toWidth,
-                    const Text('Y/O'),
-                  ],
-                ),
-                10.toHeight,
-                Row(
-                  children: [
-                    Expanded(
-                      flex: 2,
-                      child: TextField(
-                        onChanged: (phone) => patientNotifier.setPhone = phone,
-                        keyboardType: TextInputType.phone,
-                        decoration: const InputDecoration(
-                          prefix: Text('+880'),
-                          // hintText: 'Phone Number',
-                          label: Text('* Phone Number'),
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      child: RadioListTile.adaptive(
-                        tileColor: Colors.transparent,
-                        contentPadding: EdgeInsets.zero,
-                        dense: true,
-                        title: const Text('Male'),
-                        value: Gender.male,
-                        groupValue: selectedGender,
-                        onChanged: (v) => patientNotifier.setGender = v!,
-                      ),
-                    ),
-                    Flexible(
-                      child: RadioListTile.adaptive(
-                        tileColor: Colors.transparent,
-                        contentPadding: EdgeInsets.zero,
-                        dense: true,
-                        title: const Text('Female'),
-                        value: Gender.female,
-                        groupValue: selectedGender,
-                        onChanged: (v) => patientNotifier.setGender = v!,
-                      ),
-                    ),
-                  ],
-                ),
-                Text(
-                  '* You will be notified thruogh sms once your appointment is confirmed.',
-                  style: TextStyle(color: Theme.of(context).colorScheme.error),
-                ),
-                // const NotifyMethodContainer(),
-                10.toHeight,
-                const FirstTimeVisit(),
-                10.toHeight,
-                const OrSection(),
-                10.toHeight,
-                const Center(
-                  child: CallForAppointmentButton(),
-                ),
-              ],
-            ),
+                  ),
+                  const Expanded(child: Divider()),
+                ],
+              ),
+              20.toHeight,
+              const AppointmentForm(),
+              10.toHeight,
+              const OrSection(),
+              10.toHeight,
+              const Center(
+                child: CallForAppointmentButton(),
+              ),
+              10.toHeight,
+            ],
           ),
-        ],
+        ),
       ),
     );
   }
