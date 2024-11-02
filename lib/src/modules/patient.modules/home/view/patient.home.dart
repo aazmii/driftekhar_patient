@@ -1,6 +1,8 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.dart';
 import 'package:doc_appointment/src/modules/patient.modules/chembers/view/chembers.page.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/models/welcome.options.dart';
+import 'package:doc_appointment/src/modules/patient.modules/online.consultation/view/online.consultation.dart';
 import 'package:doc_appointment/src/modules/patient.modules/services/view/services.dart';
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
@@ -97,10 +99,27 @@ class PatientHome extends StatelessWidget {
 
   handleRoute(BuildContext context, int index) async {
     final service = _welcomeOptions[index].title;
-    if (service == 'Book Appointment') {
-      fadePush(context, const ChembersPage());
-    }
 
+    if (service == 'Book Appointment') {
+      await fadePush(
+        context,
+        ChembersPage(
+          title: 'Select Chember',
+          onSelectChember: (chember) async => fadePush(
+            context,
+            CreateAppointment(
+              chember: chember,
+            ),
+          ),
+        ),
+      );
+    }
+    if (service == 'Online Consultation') {
+      await fadePush(context, OnlineConsultationPage());
+    }
+    if (service == 'Chembers') {
+      await fadePush(context, const ChembersPage(title: 'Chembers'));
+    }
     if (service == 'Services') {
       await fadePush(context, const ServicesPage());
     }

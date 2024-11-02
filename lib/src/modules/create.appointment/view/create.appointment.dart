@@ -24,7 +24,14 @@ class CreateAppointment extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              if (chember != null) const ChemberDetailSection(),
+              if (chember != null) ...[
+                Text(
+                  chember?.name ?? '',
+                  style: context.text.titleLarge!
+                      .copyWith(color: context.theme.primaryColor),
+                ),
+                const ChemberDetailSection(),
+              ],
               Row(
                 children: [
                   const Expanded(child: Divider()),
