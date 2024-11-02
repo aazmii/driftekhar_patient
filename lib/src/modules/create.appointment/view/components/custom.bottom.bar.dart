@@ -1,12 +1,13 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/models/patient/patient.data.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/appointments.dart';
-import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PayAndConfimButton extends StatelessWidget {
-  const PayAndConfimButton({super.key});
+  const PayAndConfimButton(
+      {super.key, this.fee, this.onConfirm, this.confirmText});
+  final int? fee;
+  final VoidCallback? onConfirm;
+  final String? confirmText;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +23,9 @@ class PayAndConfimButton extends StatelessWidget {
           )
         ],
       ),
-      height: 70,
+      height: 50,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: const EdgeInsets.symmetric(horizontal: 0),
         child: Row(
           children: [
             Expanded(
@@ -34,7 +35,7 @@ class PayAndConfimButton extends StatelessWidget {
                 children: [
                   Text('Consultation Fee', style: context.text.titleSmall),
                   Text(
-                    'TK. 700',
+                    'TK. ${fee ?? 0}',
                     style: context.text.titleMedium!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: context.theme.primaryColor,
@@ -46,32 +47,35 @@ class PayAndConfimButton extends StatelessWidget {
             Expanded(
               flex: 2,
               child: Consumer(builder: (context, ref, child) {
-                final newAppointment = ref.watch(newAppointmentProvider);
+                // final newAppointment = ref.watch(newAppointmentProvider);
                 return FilledButton(
                   style: FilledButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                    )),
                     minimumSize: const Size.fromHeight(60),
                   ),
-                  onPressed: !newAppointment.patientData!.isValid
-                      ? null
-                      : () {
-                          final newAppointment =
-                              ref.read(newAppointmentProvider);
+                  onPressed: onConfirm,
+                  // onPressed: !newAppointment.patientData!.isValid
+                  //     ? null
+                  //     : () {
+                  //         final newAppointment =
+                  //             ref.read(newAppointmentProvider);
 
-                          ref
-                              .read(appointmentsProvider.notifier)
-                              .addAppointment(newAppointment);
-                          ref.invalidate(newAppointmentProvider);
-                          ScaffoldMessenger.of(context)
-                              .showSnackBar(const SnackBar(
-                            content: Text('Request sent Successfully'),
-                          ));
-                        },
-                  child: const Text(
-                    'Book Appointment',
-                    style: TextStyle(fontSize: 18),
+                  //         ref
+                  //             .read(appointmentsProvider.notifier)
+                  //             .addAppointment(newAppointment);
+                  //         ref.invalidate(newAppointmentProvider);
+                  //         ScaffoldMessenger.of(context)
+                  //             .showSnackBar(const SnackBar(
+                  //           content: Text('Request sent Successfully'),
+                  //         ));
+                  //       },
+                  child: Text(
+                    confirmText ?? 'Book Appointment',
+                    style: const TextStyle(fontSize: 14),
                   ),
                 );
               }),

@@ -1,6 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.dart';
 import 'package:doc_appointment/src/modules/patient.modules/chembers/view/chembers.page.dart';
+import 'package:doc_appointment/src/modules/patient.modules/components/socila.icons.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/models/welcome.options.dart';
 import 'package:doc_appointment/src/modules/patient.modules/online.consultation/view/online.consultation.dart';
 import 'package:doc_appointment/src/modules/patient.modules/services/view/services.dart';
@@ -38,11 +39,30 @@ class PatientHome extends StatelessWidget {
                   ),
                 ),
               ),
+              if (context.isTabletWidth)
+                Positioned(
+                  bottom: -50,
+                  child: SizedBox(
+                    width: context.width,
+                    child: const SocialIcons(),
+                  ),
+                ),
               Positioned(
                 bottom: -50,
-                child: SizedBox(
-                  width: context.width,
-                  child: const CircleAvatar(radius: 50),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.network(
+                    height: 100,
+                    width: 100,
+                    'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        const Icon(Icons.error),
+                    loadingBuilder: (context, child, loadingProgress) =>
+                        loadingProgress == null
+                            ? child
+                            : const CircularProgressIndicator(),
+                  ),
                 ),
               ),
             ],
@@ -115,7 +135,7 @@ class PatientHome extends StatelessWidget {
       );
     }
     if (service == 'Online Consultation') {
-      await fadePush(context, OnlineConsultationPage());
+      await fadePush(context, const OnlineConsultationPage());
     }
     if (service == 'Chembers') {
       await fadePush(context, const ChembersPage(title: 'Chembers'));

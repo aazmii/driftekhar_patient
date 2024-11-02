@@ -1,4 +1,5 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
 import 'package:flutter/material.dart';
 
 class OnlineConsultationPage extends StatelessWidget {
@@ -20,10 +21,15 @@ class OnlineConsultationPage extends StatelessWidget {
               const SizedBox(height: 20),
               AppointmentForma(),
               const SizedBox(height: 20),
-              const SubmitButton(),
+              // const SubmitButton(),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: PayAndConfimButton(
+        fee: 700,
+        confirmText: 'Request Appointment',
+        onConfirm: () {},
       ),
     );
   }
@@ -43,21 +49,32 @@ class DoctorInfo extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: [
-            const CircleAvatar(
-              radius: 30,
-              backgroundImage: AssetImage('assets/images/jpg/doc.jpg'),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(100),
+              child: Image.network(
+                height: 60,
+                width: 60,
+                'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.error),
+                loadingBuilder: (context, child, loadingProgress) =>
+                    loadingProgress == null
+                        ? child
+                        : const CircularProgressIndicator(),
+              ),
             ),
             const SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  "Dr. John Doe",
+                  "Dr. Md. Iftekhar Alam",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
-                  "Cardiologist",
+                  "Orthopedic & Trauma Surgeon",
                   style: TextStyle(color: Colors.grey[600]),
                 ),
               ],

@@ -71,13 +71,6 @@ class AppointmentForm extends ConsumerWidget {
 
           5.toHeight,
           const VisitTypePicker(),
-          10.toHeight,
-          Center(
-            child: ElevatedButton(
-              onPressed: () {},
-              child: const Text('Submit'),
-            ),
-          ),
         ],
       ),
     );

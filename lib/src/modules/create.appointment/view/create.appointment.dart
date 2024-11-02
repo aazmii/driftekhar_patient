@@ -1,5 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/appointments.dart';
 import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
@@ -48,17 +49,20 @@ class CreateAppointment extends ConsumerWidget {
               ),
               20.toHeight,
               const AppointmentForm(),
-              10.toHeight,
-              const OrSection(),
-              10.toHeight,
-              const Center(
-                child: CallForAppointmentButton(),
-              ),
-              10.toHeight,
+
+              20.toHeight,
+
+              // const OrSection(),
+              // 10.toHeight,
+              // const Center(
+              //   child: CallForAppointmentButton(),
+              // ),
+              // 10.toHeight,
             ],
           ),
         ),
       ),
+      bottomNavigationBar: const PayAndConfimButton(),
     );
   }
 }

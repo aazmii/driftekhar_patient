@@ -13,7 +13,6 @@ class SocialIcons extends ConsumerWidget {
     final linkModels = ref.watch(socialLinksPProvider);
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(
         linkModels.length,
         (index) => Padding(
@@ -44,8 +43,8 @@ class SocialIconHolder extends StatelessWidget {
       },
       child: SvgPicture.asset(
         'assets/icons/${socialLink.icon}.svg',
-        height: 40,
-        width: 40,
+        height: 30,
+        width: 30,
       ),
     );
   }

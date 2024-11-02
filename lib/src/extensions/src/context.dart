@@ -13,6 +13,7 @@ extension BuildContextExtension on BuildContext {
   double get personalInfoTextFieldSmallMinimumWidth => 245;
 
   bool get tooSmall => width < 350 || height < 500;
+  bool get isTabletWidth => width >= 600;
 
   TextTheme get text => theme.textTheme;
 
