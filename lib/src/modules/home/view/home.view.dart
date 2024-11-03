@@ -1,7 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/gen/assets.gen.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/home/view/doctor.home.dart';
-import 'package:doc_appointment/src/modules/patient.modules/home/view/patient.home.dart';
+import 'package:doc_appointment/src/modules/patient.modules/home/view/patient.home.2.dart';
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
 
@@ -79,7 +79,7 @@ class _HomeViewState extends State<HomeView>
                       minimumSize: const Size.fromHeight(55),
                     ),
                     onPressed: () async =>
-                        fadePush(context, const PatientHome()),
+                        fadePush(context, const PatientHome2()),
                     child: const Text('View as Patient'),
                   ),
                 ],

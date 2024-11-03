@@ -11,8 +11,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../components/home.container/home.container.dart';
 
-class PatientHome extends StatelessWidget {
-  const PatientHome({super.key});
+class PatientHome2 extends StatelessWidget {
+  const PatientHome2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,37 +24,36 @@ class PatientHome extends StatelessWidget {
         children: [
           Stack(
             clipBehavior: Clip.none,
-            alignment: Alignment.topCenter,
+            // alignment: Alignment.topCenter,
             children: [
               Container(
-                color: Colors.blue.shade50,
-                height: 150,
+                color: const Color(0xff255385),
+                height: 120,
               ),
-              SafeArea(
+              Center(
                 child: Padding(
                   padding: const EdgeInsets.only(top: 12.0),
                   child: Image.asset(
                     'assets/images/png/dr.iftekhar.png',
+                    color: Colors.white,
                     // 'assets/images/png/logo.png',
                     height: 80,
                   ),
                 ),
               ),
-              if (context.isTabletWidth)
-                Positioned(
-                  bottom: -50,
-                  child: SizedBox(
-                    width: context.width,
-                    child: const SocialIcons(),
-                  ),
-                ),
+              const Positioned(
+                bottom: -50,
+                right: 0,
+                child: SocialIcons(),
+              ),
               Positioned(
                 bottom: -50,
+                left: 10,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(100),
                   child: Image.network(
-                    height: 100,
-                    width: 100,
+                    height: 120,
+                    width: 120,
                     'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) =>
@@ -66,24 +65,54 @@ class PatientHome extends StatelessWidget {
                   ),
                 ),
               ),
-            ],
-          ),
-          60.toHeight,
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                'Dr. Md. Iftekhar Alam',
-                style: context.text.titleMedium!.copyWith(
-                  color: context.theme.primaryColor,
+              Positioned(
+                bottom: -55,
+                left: 130,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'Dr. Md. Iftekhar Alam',
+                      style: context.text.titleMedium!.copyWith(
+                        color: context.theme.primaryColor,
+                      ),
+                    ),
+                    Text(
+                      'Orthopedic & Trauma Surgeon ​',
+                      style: context.text.titleMedium!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              Text(
-                'Orthopedic & Trauma Surgeon ​',
-                style: context.text.titleLarge,
-              ),
+              )
             ],
           ),
+          80.toHeight,
+          Text(
+            'Welcome!',
+            style: context.text.titleLarge!.copyWith(
+              color: context.theme.primaryColor,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          // Column(
+          //   crossAxisAlignment: CrossAxisAlignment.center,
+          //   children: [
+          //     Text(
+          //       'Dr. Md. Iftekhar Alam',
+          //       style: context.text.titleMedium!.copyWith(
+          //         color: context.theme.primaryColor,
+          //       ),
+          //     ),
+          //     Text(
+          //       'Orthopedic & Trauma Surgeon ​',
+          //       style: context.text.titleLarge,
+          //     ),
+          //   ],
+          // ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(8.0),

@@ -208,7 +208,7 @@ class _ChemberInformation extends StatelessWidget {
                   ),
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Text('\$100 per night'),
+                    child: Text('BDT 700'),
                   ),
                 ],
               ),
