@@ -7,9 +7,10 @@ import 'package:doc_appointment/src/modules/patient.modules/online.consultation/
 import 'package:doc_appointment/src/modules/patient.modules/services/view/services.dart';
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/svg.dart';
 
 import '../../components/home.container/home.container.dart';
+import 'components/surgon.carousel.dart';
 
 class PatientHome2 extends StatelessWidget {
   const PatientHome2({super.key});
@@ -17,133 +18,137 @@ class PatientHome2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final int crossAxisCount = context.width > 600 ? 4 : 2;
-    return Scaffold(
-      // endDrawer: const AppDrawer(),
+    // return Scaffold(
+    //   body: Image.asset('assets/images/jpg/surgery4.jpg'),
+    // );
+    return Stack(
+      children: [
+        Scaffold(body: SurgonCarousel()),
+        Scaffold(
+          // endDrawer: const AppDrawer(),
+          backgroundColor: Colors.transparent,
 
-      body: Column(
-        children: [
-          Stack(
-            clipBehavior: Clip.none,
-            // alignment: Alignment.topCenter,
+          body: Column(
             children: [
-              Container(
-                color: const Color(0xff255385),
-                height: 120,
+              Stack(
+                clipBehavior: Clip.none,
+                // alignment: Alignment.topCenter,
+                children: [
+                  Container(
+                    color: const Color(0xff255385),
+                    height: 190,
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 12.0),
+                      child: Image.asset(
+                        'assets/images/png/dr.iftekhar.png',
+                        color: Colors.white,
+                        // 'assets/images/png/logo.png',
+                        height: 80,
+                      ),
+                    ),
+                  ),
+                  const Positioned(bottom: 0, right: 0, child: SocialIcons()),
+                  Positioned(
+                    top: 8,
+                    // bottom: 5,
+                    left: 10,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      // borderRadius: BorderRadius.circular(100),
+                      child: Image.network(
+                        height: 100,
+                        width: 100,
+                        'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) =>
+                            const Icon(Icons.error),
+                        loadingBuilder: (context, child, loadingProgress) =>
+                            loadingProgress == null
+                                ? child
+                                : const CircularProgressIndicator(),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    bottom: 5,
+                    // left: 130,
+                    left: 10,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'Asst Prof. Dr. Mohammad Iftekhar Alam',
+                          style: context.text.titleLarge!.copyWith(
+                            color: context.theme.secondaryHeaderColor,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Assistant Professor (Orthopaedic Surgery)​',
+                          style: context.text.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          'Dr.Sirajul Islam Medical College,Dhaka.​',
+                          style: context.text.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                ],
               ),
-              Center(
+              80.toHeight,
+              Text(
+                'Welcome!',
+                style: context.text.titleLarge!.copyWith(
+                  color: context.theme.primaryColor,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 12.0),
-                  child: Image.asset(
-                    'assets/images/png/dr.iftekhar.png',
-                    color: Colors.white,
-                    // 'assets/images/png/logo.png',
-                    height: 80,
+                  padding: const EdgeInsets.all(8.0),
+                  child: GridView.builder(
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: crossAxisCount,
+                      mainAxisSpacing: 30,
+                      crossAxisSpacing: 10,
+                    ),
+                    itemBuilder: (_, index) {
+                      return InkWell(
+                        onTap: () async => handleRoute(context, index),
+                        child: HomeContainer(
+                          option: _welcomeOptions[index],
+                        ),
+                      );
+                    },
+                    itemCount: _welcomeOptions.length,
                   ),
                 ),
               ),
-              const Positioned(
-                bottom: -50,
-                right: 0,
-                child: SocialIcons(),
-              ),
-              Positioned(
-                bottom: -50,
-                left: 10,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image.network(
-                    height: 120,
-                    width: 120,
-                    'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
-                    fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) =>
-                        const Icon(Icons.error),
-                    loadingBuilder: (context, child, loadingProgress) =>
-                        loadingProgress == null
-                            ? child
-                            : const CircularProgressIndicator(),
-                  ),
-                ),
-              ),
-              Positioned(
-                bottom: -55,
-                left: 130,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'Dr. Md. Iftekhar Alam',
-                      style: context.text.titleMedium!.copyWith(
-                        color: context.theme.primaryColor,
-                      ),
-                    ),
-                    Text(
-                      'Orthopedic & Trauma Surgeon ​',
-                      style: context.text.titleMedium!.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ],
-                ),
-              )
             ],
           ),
-          80.toHeight,
-          Text(
-            'Welcome!',
-            style: context.text.titleLarge!.copyWith(
-              color: context.theme.primaryColor,
-              fontWeight: FontWeight.bold,
+          // bottomNavigationBar: const PayAndConfimButton(),
+          floatingActionButton: IconButton(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              'assets/icons/whatsapp.svg',
+              height: 44,
             ),
+            // icon: const Icon(
+            //   FontAwesomeIcons.whatsapp,
+            //   color: Colors.green,
+            //   size: 34,
+            // ),
           ),
-
-          // Column(
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   children: [
-          //     Text(
-          //       'Dr. Md. Iftekhar Alam',
-          //       style: context.text.titleMedium!.copyWith(
-          //         color: context.theme.primaryColor,
-          //       ),
-          //     ),
-          //     Text(
-          //       'Orthopedic & Trauma Surgeon ​',
-          //       style: context.text.titleLarge,
-          //     ),
-          //   ],
-          // ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: crossAxisCount,
-                  mainAxisSpacing: 30,
-                  crossAxisSpacing: 10,
-                ),
-                itemBuilder: (_, index) {
-                  return InkWell(
-                    onTap: () async => handleRoute(context, index),
-                    child: HomeContainer(
-                      option: _welcomeOptions[index],
-                    ),
-                  );
-                },
-                itemCount: _welcomeOptions.length,
-              ),
-            ),
-          ),
-        ],
-      ),
-      // bottomNavigationBar: const PayAndConfimButton(),
-      floatingActionButton: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            FontAwesomeIcons.whatsapp,
-            color: Colors.green,
-            size: 34,
-          )),
+        ),
+      ],
     );
   }
 
@@ -187,10 +192,19 @@ final _welcomeOptions = [
   ),
   WelcomeOption(
     title: 'Services',
-    image: 'assets/images/jpg/radio.jpg',
+    image: 'assets/images/png/medical.kit.png',
   ),
   WelcomeOption(
     title: 'Chembers',
-    image: 'assets/images/jpg/consult.jpg',
+    image: 'assets/images/png/consult.png',
   ),
 ];
+
+class CarouseBackground extends StatelessWidget {
+  const CarouseBackground({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}

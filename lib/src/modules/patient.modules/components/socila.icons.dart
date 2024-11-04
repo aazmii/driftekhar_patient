@@ -43,8 +43,8 @@ class SocialIconHolder extends StatelessWidget {
       },
       child: SvgPicture.asset(
         'assets/icons/${socialLink.icon}.svg',
-        height: 30,
-        width: 30,
+        height: 25,
+        width: 25,
       ),
     );
   }
