@@ -13,6 +13,8 @@ class HomeContainer extends StatelessWidget {
     return FrostedGlassBox(
       width: 100.0,
       height: 100.0,
+      borderColor: context.theme.primaryColor,
+      borderWidth: 2,
       child: Column(
         children: [
           Expanded(
@@ -30,8 +32,9 @@ class HomeContainer extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               option.title,
-              style: context.text.titleSmall!.copyWith(
+              style: context.text.titleMedium!.copyWith(
                 fontWeight: FontWeight.bold,
+                color: context.theme.primaryColor,
               ),
             ),
           ),
@@ -46,12 +49,16 @@ class FrostedGlassBox extends StatelessWidget {
     super.key,
     this.width,
     this.height,
+    this.borderColor,
+    this.borderWidth,
     required this.child,
   });
 
   final double? width;
   final double? height;
   final Widget child;
+  final double? borderWidth;
+  final Color? borderColor;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +67,9 @@ class FrostedGlassBox extends StatelessWidget {
       child: Container(
         width: width,
         height: height,
-        color: Colors.transparent,
+        decoration: const BoxDecoration(
+          color: Colors.transparent,
+        ),
         //we use Stack(); because we want the effects be on top of each other,
         //  just like layer in photoshop.
         child: Stack(
@@ -81,6 +90,16 @@ class FrostedGlassBox extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
+
+                border: borderWidth == null
+                    ? null
+                    : Border.all(
+                        color: borderColor!,
+                        width: borderWidth ?? 1,
+                        // color: context.theme.primaryColor,
+                        // width: 2,
+                      ),
+
                 // border: Border.all(color: Colors.white.withOpacity(0.13)),
                 gradient: LinearGradient(
                     begin: Alignment.topLeft,

@@ -1,3 +1,4 @@
+import 'package:doc_appointment/src/constants/constants.dart';
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.dart';
 import 'package:doc_appointment/src/modules/patient.modules/chembers/view/chembers.page.dart';
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../components/home.container/home.container.dart';
+import 'components/auto.scroll.text.dart';
 import 'components/surgon.carousel.dart';
 
 class PatientHome2 extends StatelessWidget {
@@ -34,10 +36,7 @@ class PatientHome2 extends StatelessWidget {
                 clipBehavior: Clip.none,
                 // alignment: Alignment.topCenter,
                 children: [
-                  Container(
-                    color: const Color(0xff255385),
-                    height: 190,
-                  ),
+                  Container(color: primaryColor, height: 190),
                   Center(
                     child: Padding(
                       padding: const EdgeInsets.only(top: 12.0),
@@ -103,14 +102,24 @@ class PatientHome2 extends StatelessWidget {
                   )
                 ],
               ),
-              80.toHeight,
-              Text(
-                'Welcome!',
-                style: context.text.titleLarge!.copyWith(
-                  color: context.theme.primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
+              10.toHeight,
+              SizedBox(
+                width: context.width * 0.7,
+                child: ScrollingText(
+                    height: 50,
+                    text:
+                        'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয় ।প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ',
+                    textStyle: context.text.titleLarge!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    )),
               ),
+              // Text(
+              //   'Welcome!',
+              //   style: context.text.titleLarge!.copyWith(
+              //     color: context.theme.primaryColor,
+              //     fontWeight: FontWeight.bold,
+              //   ),
+              // ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -188,6 +197,7 @@ final _welcomeOptions = [
   ),
   WelcomeOption(
     title: 'Online Consultation',
+    // image: 'assets/images/png/online.consult.png',
     image: 'assets/images/png/online.appointment.png',
   ),
   WelcomeOption(
@@ -197,6 +207,10 @@ final _welcomeOptions = [
   WelcomeOption(
     title: 'Chembers',
     image: 'assets/images/png/consult.png',
+  ),
+  WelcomeOption(
+    title: 'Socials',
+    image: 'assets/images/png/socials.png',
   ),
 ];
 
