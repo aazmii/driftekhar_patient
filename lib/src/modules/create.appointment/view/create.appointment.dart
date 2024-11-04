@@ -1,7 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
+import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:doc_appointment/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/appointments.dart';
 import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,8 +14,9 @@ class CreateAppointment extends ConsumerWidget {
   final Chember? chember;
   @override
   Widget build(BuildContext context, ref) {
-    ref.watch(appointmentsProvider);
+    final newAppt = ref.watch(newAppointmentProvider);
 
+    final fee = newAppt.type?.fee ?? 0;
     return Scaffold(
       appBar: AppBar(
         title: const Text('New Appointment'),
@@ -62,7 +63,7 @@ class CreateAppointment extends ConsumerWidget {
           ),
         ),
       ),
-      bottomNavigationBar: const PayAndConfimButton(),
+      bottomNavigationBar: PayAndConfimButton(fee: fee),
     );
   }
 }

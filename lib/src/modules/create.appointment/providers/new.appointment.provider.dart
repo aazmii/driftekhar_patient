@@ -1,3 +1,4 @@
+import 'package:doc_appointment/src/models/appointment.type.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
 import 'package:doc_appointment/src/modules/create.appointment/providers/patient.provider.dart';
@@ -23,10 +24,11 @@ class NewAppointment extends _$NewAppointment {
   set setChember(Chember chember) => state = state.copyWith(chember: chember);
   set setPatientData(PatientData patientData) =>
       state = state.copyWith(patientData: patientData);
-  set setFirstTime(bool isFirstTime) =>
-      state = state.copyWith(isFirstTime: isFirstTime);
+  set setFirstTime(AppointmentType type) => state = state.copyWith(type: type);
 
   set setApptDate(DateTime apptDate) {
     state = state.copyWith(dateTime: apptDate);
   }
+
+  void update(Appointment appt) => state = appt;
 }

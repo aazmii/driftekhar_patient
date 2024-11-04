@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+import 'package:doc_appointment/src/models/appointment.type.dart';
 import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
 
@@ -11,7 +12,7 @@ class Appointment {
   final PatientData? patientData;
   final DateTime? dateTime;
   final Chember? chember;
-  final bool? isFirstTime;
+  final AppointmentType? type;
 
   final AppointmentStatus? status;
 
@@ -20,7 +21,7 @@ class Appointment {
     this.patientData,
     this.dateTime,
     this.chember,
-    this.isFirstTime = true,
+    this.type = AppointmentType.firstTime,
     this.status = AppointmentStatus.pending,
   });
 
@@ -30,14 +31,14 @@ class Appointment {
     String? weekDay,
     Chember? chember,
     DateTime? dateTime,
-    bool? isFirstTime,
+    AppointmentType? type,
     AppointmentStatus? status,
   }) {
     return Appointment(
       id: id ?? this.id,
       patientData: patientData ?? this.patientData,
       chember: chember ?? this.chember,
-      isFirstTime: isFirstTime ?? this.isFirstTime,
+      type: type ?? this.type,
       status: status ?? this.status,
       dateTime: dateTime ?? this.dateTime,
     );
@@ -50,7 +51,7 @@ class Appointment {
       // 'weekDay': weekDay,
       // 'apptTime': apptTime?.toMap(),
       // 'chember': chember?.toMap(),
-      'isFirstTime': isFirstTime,
+      // 'isFirstTime': isFirstTime,
     };
   }
 

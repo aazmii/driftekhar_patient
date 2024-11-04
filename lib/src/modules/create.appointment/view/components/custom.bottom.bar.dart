@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PayAndConfimButton extends StatelessWidget {
-  const PayAndConfimButton(
-      {super.key, this.fee, this.onConfirm, this.confirmText});
+  const PayAndConfimButton({
+    super.key,
+    this.fee,
+    this.onConfirm,
+    this.confirmText,
+  });
   final int? fee;
   final VoidCallback? onConfirm;
   final String? confirmText;
@@ -35,7 +39,7 @@ class PayAndConfimButton extends StatelessWidget {
                 children: [
                   Text('Consultation Fee', style: context.text.titleSmall),
                   Text(
-                    'TK. ${fee ?? 0}',
+                    fee == 0 ? 'Free' : 'TK. ${fee ?? 0}',
                     style: context.text.titleMedium!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: context.theme.primaryColor,

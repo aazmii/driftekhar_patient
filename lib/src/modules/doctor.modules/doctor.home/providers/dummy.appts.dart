@@ -1,3 +1,4 @@
+import 'package:doc_appointment/src/models/appointment.type.dart';
 import 'package:doc_appointment/src/models/appointment/appointment.dart';
 import 'package:doc_appointment/src/models/patient/patient.data.dart';
 import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
@@ -12,7 +13,7 @@ List<Appointment> dummyAppts(DummyApptsRef ref) {
 final appointments = <Appointment>[
   Appointment(
     id: uuid.v4(),
-    isFirstTime: true,
+    type: AppointmentType.firstTime,
     // dateTime: DateTime(2023, 5, 10, 14, 30),
     patientData: PatientData(
       name: 'Jasmin Hoque',
@@ -25,7 +26,8 @@ final appointments = <Appointment>[
   Appointment(
     id: uuid.v4(),
 
-    isFirstTime: true,
+    type: AppointmentType.firstTime,
+
     // dateTime: DateTime(2024, 12, 25, 9, 45),
     patientData: PatientData(
       name: 'Jhon Doe',
@@ -38,7 +40,8 @@ final appointments = <Appointment>[
   Appointment(
     id: uuid.v4(),
 
-    isFirstTime: false,
+    type: AppointmentType.firstTime,
+
     // dateTime: DateTime(2022, 8, 17, 18, 0),
     patientData: PatientData(
       name: 'Patric Freeman',
