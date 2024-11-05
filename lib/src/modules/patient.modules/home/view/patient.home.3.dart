@@ -27,8 +27,8 @@ class PatientHome3 extends StatelessWidget {
       children: [
         // Scaffold(body: SurgonCarousel()),
         Scaffold(
+          // appBar: AppBar(),
           // endDrawer: const AppDrawer(),
-          backgroundColor: primaryColor,
 
           body: Column(
             children: [
@@ -52,7 +52,12 @@ class PatientHome3 extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Positioned(bottom: 0, right: 0, child: SocialIcons()),
+                  // if (context.isTabletWidth)
+                  Positioned(
+                    bottom: context.isTabletWidth ? 0 : -40,
+                    right: 0,
+                    child: const SocialIcons(),
+                  ),
                   Positioned(
                     // top: 8,
                     bottom: -50,
@@ -75,29 +80,38 @@ class PatientHome3 extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    bottom: -80,
-                    left: 120,
+                    bottom: context.isTabletWidth ? -80 : -130,
+                    left: context.isTabletWidth ? 120 : 10,
+                    // bottom: -80,
+                    // left: 120,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           'Asst Prof. Dr. Mohammad Iftekhar Alam',
-                          style: context.text.titleLarge!.copyWith(
-                            color: context.theme.secondaryHeaderColor,
-                            fontWeight: FontWeight.bold,
-                          ),
+                          style: context.isTabletWidth
+                              ? context.text.titleLarge!.copyWith(
+                                  color: context.theme.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                )
+                              : context.text.titleMedium!.copyWith(
+                                  color: context.theme.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
                         ),
                         Text(
                           'Assistant Professor (Orthopaedic Surgery)​',
-                          style: context.text.titleMedium!.copyWith(
+                          style: context.text.titleSmall!.copyWith(
                             fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade800,
                           ),
                         ),
                         Text(
                           'Dr.Sirajul Islam Medical College,Dhaka.​',
-                          style: context.text.titleMedium!.copyWith(
+                          style: context.text.titleSmall!.copyWith(
                             fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade800,
                           ),
                         ),
                       ],
@@ -105,7 +119,7 @@ class PatientHome3 extends StatelessWidget {
                   )
                 ],
               ),
-              80.toHeight,
+              context.isTabletWidth ? 80.toHeight : 130.toHeight,
               SizedBox(
                 width: context.width * 0.9,
                 child: ScrollingText(
@@ -114,6 +128,7 @@ class PatientHome3 extends StatelessWidget {
                         'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয় ।প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ',
                     textStyle: context.text.titleLarge!.copyWith(
                       fontWeight: FontWeight.bold,
+                      color: Colors.grey.shade800,
                     )),
               ),
               // Text(

@@ -32,9 +32,10 @@ class HomeContainer extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               option.title,
+              textAlign: TextAlign.center,
               style: context.text.titleMedium!.copyWith(
                 fontWeight: FontWeight.bold,
-                color: context.theme.secondaryHeaderColor,
+                color: context.theme.primaryColor,
               ),
             ),
           ),
@@ -91,7 +92,7 @@ class FrostedGlassBox extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(30),
-      
+
                   border: borderWidth == null
                       ? null
                       : Border.all(
@@ -100,7 +101,7 @@ class FrostedGlassBox extends StatelessWidget {
                           // color: context.theme.primaryColor,
                           // width: 2,
                         ),
-      
+
                   // border: Border.all(color: Colors.white.withOpacity(0.13)),
                   gradient: LinearGradient(
                       begin: Alignment.topLeft,
