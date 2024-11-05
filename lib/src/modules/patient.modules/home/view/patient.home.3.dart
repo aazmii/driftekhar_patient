@@ -27,7 +27,7 @@ class PatientHome3 extends StatelessWidget {
       children: [
         // Scaffold(body: SurgonCarousel()),
         Scaffold(
-          // appBar: AppBar(),
+          appBar: AppBar(),
           // endDrawer: const AppDrawer(),
 
           body: Column(

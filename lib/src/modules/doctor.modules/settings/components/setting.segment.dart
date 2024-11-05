@@ -1,67 +1,20 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
-class DoctorSettings extends StatelessWidget {
-  const DoctorSettings({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey.shade200,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: Column(
-            children: [
-              SettingSegment(
-                onSelectOption: () {},
-                title: 'Account',
-                icon: Icons.person,
-                children: const [
-                  Text('Profile'),
-                  Text('Password'),
-                ],
-              ),
-              SettingSegment(
-                title: 'Appointment Setting',
-                icon: Icons.settings,
-                onSelectOption: () {},
-                children: const [
-                  Text('Phone number'),
-                  Text('Time Per Patient'),
-                  Text('Appointment Request Type')
-                ],
-              ),
-              Card(
-                child: ListTile(
-                  onTap: () => context.pop(),
-                  trailing: Icon(
-                    Icons.logout,
-                    color: context.theme.colorScheme.error,
-                  ),
-                  title: const Text('Logout'),
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class SettingSegment extends StatelessWidget {
-  const SettingSegment({
+///Accepts a [List] of [Widget]s and displays them as a segmented setting
+///returns tapped option name in [onSelectOption]
+class SegmentedSetting extends StatelessWidget {
+  const SegmentedSetting({
     super.key,
     required this.children,
     this.title,
     this.icon,
-    this.onSelectOption,
+    // this.onSelectOption,
   });
   final List<Widget> children;
   final IconData? icon;
   final String? title;
-  final VoidCallback? onSelectOption;
+  // final ValueSetter<String>? onSelectOption;
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -80,7 +33,7 @@ class SettingSegment extends StatelessWidget {
                   10.toWidth,
                   Text(
                     title!,
-                    style: context.text.titleMedium!.copyWith(
+                    style: context.text.titleSmall!.copyWith(
                       fontWeight: FontWeight.bold,
                       color: context.theme.primaryColor,
                     ),
@@ -96,7 +49,9 @@ class SettingSegment extends StatelessWidget {
                 children: [
                   // InkWell(onTap: onSelectOption, child: children[index])
                   ListTile(
-                    onTap: onSelectOption,
+                    onTap: () {
+                      
+                    },
                     title: children[index],
                   ),
                   if (index < children.length - 1)

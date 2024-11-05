@@ -1,5 +1,5 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/doctor.modules/account/view/doctor.account.dart';
+import 'package:doc_appointment/src/modules/doctor.modules/settings/view/doctor.account.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/view/appointments.view.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +45,7 @@ class _DoctorHomeState extends State<DoctorApp> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'Account',
+            label: 'Settings',
           ),
         ],
         currentIndex: _selectedIndex,
