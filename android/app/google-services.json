@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "834482021363",
+    "project_id": "driftekhar-ec1e3",
+    "storage_bucket": "driftekhar-ec1e3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834482021363:android:1856ff7db4ee272f89a886",
+        "android_client_info": {
+          "package_name": "com.codeconnect.driftekhar.admin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYiI61g7Iwquy2L8m5CWk8BZwbYR42AGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834482021363:android:6087245421b7dcf989a886",
+        "android_client_info": {
+          "package_name": "com.codeconnect.driftekhar.patient"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYiI61g7Iwquy2L8m5CWk8BZwbYR42AGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
