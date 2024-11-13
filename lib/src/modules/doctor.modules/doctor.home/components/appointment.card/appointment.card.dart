@@ -1,7 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/models/appointment/appointment.dart';
-import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/modules/confirm.dialog/confirm.dialog.dart';
+import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:flutter/material.dart';
 
 import 'card.buttons.dart';

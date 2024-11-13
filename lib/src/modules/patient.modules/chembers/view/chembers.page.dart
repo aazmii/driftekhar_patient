@@ -1,6 +1,6 @@
-import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/components/chember.tab/chember.container.dart';
 import 'package:doc_appointment/src/modules/patient.modules/home/providers/chembers.dart';
+import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:flutter/material.dart';
 
 class ChembersPage extends StatelessWidget {

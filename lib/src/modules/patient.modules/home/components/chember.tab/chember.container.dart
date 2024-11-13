@@ -1,6 +1,6 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/models/chember/chember.dart';
 import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
+import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:flutter/material.dart';
 
 class ChemberContainer extends StatelessWidget {
@@ -34,7 +34,6 @@ class ChemberContainer extends StatelessWidget {
                   ),
                 ),
                 Text(chember.address ?? '', style: context.text.titleSmall),
-                Text(chember.description ?? '', style: context.text.titleSmall),
               ],
             ),
           ),

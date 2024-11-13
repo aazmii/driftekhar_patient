@@ -1,5 +1,6 @@
-import 'package:doc_appointment/src/models/patient/patient.data.dart';
+import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 part 'patient.provider.g.dart';
 
 @Riverpod(keepAlive: true)

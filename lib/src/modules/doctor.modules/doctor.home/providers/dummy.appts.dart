@@ -1,8 +1,7 @@
-import 'package:doc_appointment/src/models/appointment.type.dart';
-import 'package:doc_appointment/src/models/appointment/appointment.dart';
-import 'package:doc_appointment/src/models/patient/patient.data.dart';
 import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+
 part 'dummy.appts.g.dart';
 
 @Riverpod(keepAlive: true)

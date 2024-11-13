@@ -1,5 +1,5 @@
-import 'package:doc_appointment/src/models/appointment/appointment.dart';
 import 'package:doc_appointment/src/modules/doctor.modules/doctor.home/providers/date.time.picker.dart';
+import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:flutter/material.dart';
 
 class RescheduleButton extends StatelessWidget {
