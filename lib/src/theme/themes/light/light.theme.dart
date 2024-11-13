@@ -1,9 +1,7 @@
-import 'package:doc_appointment/src/constants/constants.dart';
 import 'package:doc_appointment/src/theme/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 ThemeData get lightTheme => ThemeData(
-  scaffoldBackgroundColor:  lightBlue,
     visualDensity: VisualDensity.compact,
     // primarySwatch: Colors.blue,
 

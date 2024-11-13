@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:doc_appointment/src/constants/constants.dart';
 import 'package:doc_appointment/src/extensions/extensions.dart';
 import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.dart';
@@ -11,7 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../components/home.container/home.container.dart';
-import 'components/auto.scroll.text.dart';
 import 'components/surgon.carousel.dart';
 
 class PatientHome3 extends StatelessWidget {
@@ -27,7 +27,6 @@ class PatientHome3 extends StatelessWidget {
       children: [
         // Scaffold(body: SurgonCarousel()),
         Scaffold(
-          appBar: AppBar(),
           // endDrawer: const AppDrawer(),
 
           body: Column(
@@ -64,18 +63,18 @@ class PatientHome3 extends StatelessWidget {
                     left: 10,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(100),
-                      // borderRadius: BorderRadius.circular(100),
-                      child: Image.network(
+                      child: SizedBox(
                         height: 100,
                         width: 100,
-                        'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            const Icon(Icons.error),
-                        loadingBuilder: (context, child, loadingProgress) =>
-                            loadingProgress == null
-                                ? child
-                                : const CircularProgressIndicator(),
+                        child: CachedNetworkImage(
+                          imageUrl:
+                              'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
+                          fit: BoxFit.cover,
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                          placeholder: (context, url) =>
+                              const CircularProgressIndicator(),
+                        ),
                       ),
                     ),
                   ),
@@ -119,18 +118,18 @@ class PatientHome3 extends StatelessWidget {
                   )
                 ],
               ),
-              context.isTabletWidth ? 80.toHeight : 130.toHeight,
-              SizedBox(
-                width: context.width * 0.9,
-                child: ScrollingText(
-                    height: 50,
-                    text:
-                        'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয় ।প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ',
-                    textStyle: context.text.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey.shade800,
-                    )),
-              ),
+              context.isTabletWidth ? 80.toHeight : 120.toHeight,
+              // SizedBox(
+              //   width: context.width * 0.9,
+              //   child: ScrollingText(
+              //       height: 50,
+              //       text:
+              //           'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয় ।প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ',
+              //       textStyle: context.text.titleLarge!.copyWith(
+              //         fontWeight: FontWeight.bold,
+              //         color: Colors.grey.shade800,
+              //       )),
+              // ),
               // Text(
               //   'Welcome!',
               //   style: context.text.titleLarge!.copyWith(
