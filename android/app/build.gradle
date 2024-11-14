@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "com.example.doc_appointment"
+    namespace = "com.codeconnect.driftekhar.patient"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
