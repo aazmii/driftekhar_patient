@@ -26,17 +26,17 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -51,18 +51,18 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBYiI61g7Iwquy2L8m5CWk8BZwbYR42AGw',
-    appId: '1:834482021363:android:6087245421b7dcf989a886',
+    appId: '1:834482021363:android:b9320d72e8e72b8e89a886',
     messagingSenderId: '834482021363',
     projectId: 'driftekhar-ec1e3',
     storageBucket: 'driftekhar-ec1e3.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDCTm4onFO-_dxCs8dL0Em2sSDkCCsyOW4',
-    appId: '1:834482021363:ios:eb144abad3b2572689a886',
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDx6htE4zCk4tVdVX52HrQ1JQw7WAmf0Fc',
+    appId: '1:834482021363:web:93ce462560783ee489a886',
     messagingSenderId: '834482021363',
     projectId: 'driftekhar-ec1e3',
+    authDomain: 'driftekhar-ec1e3.firebaseapp.com',
     storageBucket: 'driftekhar-ec1e3.firebasestorage.app',
-    iosBundleId: 'com.codeconnect.driftekhar.patient',
   );
 }
