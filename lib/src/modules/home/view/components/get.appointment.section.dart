@@ -1,4 +1,4 @@
-import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.view.dart';
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
 
@@ -29,7 +29,7 @@ class GetAppointSection extends StatelessWidget {
           ),
           ElevatedButton(
             onPressed: () async =>
-                await fadePush(context, const CreateAppointment()),
+                await fadePush(context, const CreateAppointmentView()),
             child: const Text('Get Appointment'),
           )
         ],

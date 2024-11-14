@@ -1,21 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:doc_appointment/src/constants/constants.dart';
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.dart';
-import 'package:doc_appointment/src/modules/chembers/view/chembers.page.dart';
+import 'package:doc_appointment/src/modules/chembers/providers/selected.chember.provider.dart';
+import 'package:doc_appointment/src/modules/chembers/view/chembers.view.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.view.dart';
+import 'package:doc_appointment/src/modules/home/components/services/view/services.dart';
 import 'package:doc_appointment/src/modules/home/components/social.icons.dart';
 import 'package:doc_appointment/src/modules/home/models/welcome.options.dart';
 import 'package:doc_appointment/src/modules/online.consultation/view/online.consultation.dart';
-import 'package:doc_appointment/src/modules/home/components/services/view/services.dart';
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../components/home.container/home.container.dart';
 import 'components/surgon.carousel.dart';
 
-class PatientHome3 extends StatelessWidget {
-  const PatientHome3({super.key});
+class HomeView extends StatelessWidget {
+  const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -140,22 +142,24 @@ class PatientHome3 extends StatelessWidget {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: crossAxisCount,
-                      mainAxisSpacing: 30,
-                      crossAxisSpacing: 10,
-                    ),
-                    itemBuilder: (_, index) {
-                      return InkWell(
-                        onTap: () async => handleRoute(context, index),
-                        child: HomeContainer(
-                          option: _welcomeOptions[index],
-                        ),
-                      );
-                    },
-                    itemCount: _welcomeOptions.length,
-                  ),
+                  child: Consumer(builder: (context, ref, child) {
+                    return GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: crossAxisCount,
+                        mainAxisSpacing: 30,
+                        crossAxisSpacing: 10,
+                      ),
+                      itemBuilder: (_, index) {
+                        return InkWell(
+                          onTap: () async => handleRoute(context, index, ref),
+                          child: HomeContainer(
+                            option: _welcomeOptions[index],
+                          ),
+                        );
+                      },
+                      itemCount: _welcomeOptions.length,
+                    );
+                  }),
                 ),
               ),
             ],
@@ -178,20 +182,27 @@ class PatientHome3 extends StatelessWidget {
     );
   }
 
-  handleRoute(BuildContext context, int index) async {
+  handleRoute(BuildContext context, int index, WidgetRef ref) async {
     final service = _welcomeOptions[index].title;
 
     if (service == 'Book Appointment') {
       await fadePush(
         context,
-        ChembersPage(
+        ChembersView(
           title: 'Select Chember',
-          onSelectChember: (chember) async => fadePush(
-            context,
-            CreateAppointment(
-              chember: chember,
-            ),
-          ),
+          onSelectChember: (chember) async {
+            // print(
+            //     'before ${ref.read(selectedChemberProvider)?.name}'); // Before updating
+            // ref.read(selectedChemberProvider.notifier).update(chember);
+            // print(
+            //     'after ${ref.read(selectedChemberProvider)?.name}'); // After updating
+            ref.read(selectedChemberProvider.notifier).update(chember);
+
+            await fadePush(
+              context,
+              const CreateAppointmentView(),
+            );
+          },
         ),
       );
     }
@@ -199,7 +210,7 @@ class PatientHome3 extends StatelessWidget {
       await fadePush(context, const OnlineConsultationPage());
     }
     if (service == 'Chembers') {
-      await fadePush(context, const ChembersPage(title: 'Chembers'));
+      await fadePush(context, const ChembersView(title: 'Chembers'));
     }
     if (service == 'Services') {
       await fadePush(context, const ServicesPage());

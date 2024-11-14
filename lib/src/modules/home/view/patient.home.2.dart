@@ -1,11 +1,11 @@
 import 'package:doc_appointment/src/constants/constants.dart';
 import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.dart';
-import 'package:doc_appointment/src/modules/chembers/view/chembers.page.dart';
+import 'package:doc_appointment/src/modules/chembers/view/chembers.view.dart';
+import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.view.dart';
+import 'package:doc_appointment/src/modules/home/components/services/view/services.dart';
 import 'package:doc_appointment/src/modules/home/components/social.icons.dart';
 import 'package:doc_appointment/src/modules/home/models/welcome.options.dart';
 import 'package:doc_appointment/src/modules/online.consultation/view/online.consultation.dart';
-import 'package:doc_appointment/src/modules/home/components/services/view/services.dart';
 import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -167,13 +167,11 @@ class PatientHome2 extends StatelessWidget {
     if (service == 'Book Appointment') {
       await fadePush(
         context,
-        ChembersPage(
+        ChembersView(
           title: 'Select Chember',
           onSelectChember: (chember) async => fadePush(
             context,
-            CreateAppointment(
-              chember: chember,
-            ),
+            const CreateAppointmentView(),
           ),
         ),
       );
@@ -182,7 +180,7 @@ class PatientHome2 extends StatelessWidget {
       await fadePush(context, const OnlineConsultationPage());
     }
     if (service == 'Chembers') {
-      await fadePush(context, const ChembersPage(title: 'Chembers'));
+      await fadePush(context, const ChembersView(title: 'Chembers'));
     }
     if (service == 'Services') {
       await fadePush(context, const ServicesPage());

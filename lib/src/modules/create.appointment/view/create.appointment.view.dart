@@ -1,21 +1,20 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/modules/chembers/providers/selected.chember.provider.dart';
 import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:doc_appointment/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
 import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
-import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'components/appointment.form.dart';
 import 'components/chember.detail.section.dart';
 
-class CreateAppointment extends ConsumerWidget {
-  const CreateAppointment({super.key, this.chember});
-  final Chember? chember;
+class CreateAppointmentView extends ConsumerWidget {
+  const CreateAppointmentView({super.key});
+
   @override
   Widget build(BuildContext context, ref) {
     final newAppt = ref.watch(newAppointmentProvider);
-
     final fee = newAppt.type?.fee ?? 0;
     return Scaffold(
       appBar: AppBar(
@@ -26,9 +25,9 @@ class CreateAppointment extends ConsumerWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              if (chember != null) ...[
+              ...[
                 Text(
-                  chember?.name ?? '',
+                  ref.watch(selectedChemberProvider)?.name ?? '',
                   style: context.text.titleLarge!
                       .copyWith(color: context.theme.primaryColor),
                 ),

@@ -1,5 +1,7 @@
 import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:doc_appointment/src/modules/chembers/providers/selected.chember.provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class ChemberDetailSection extends StatelessWidget {
   const ChemberDetailSection({super.key});
@@ -26,11 +28,14 @@ class ChemberDetailSection extends StatelessWidget {
   }
 }
 
-class _Schedule extends StatelessWidget {
+class _Schedule extends ConsumerWidget {
   const _Schedule();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    // final schedules = ref.watch(selectedChemberProvider)?.name;
+    // print(schedules);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Column(
@@ -128,11 +133,13 @@ class _Schedule extends StatelessWidget {
   }
 }
 
-class _ChemberInformation extends StatelessWidget {
+class _ChemberInformation extends ConsumerWidget {
   const _ChemberInformation();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, ref) {
+    final chember = ref.watch(selectedChemberProvider);
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: Column(
@@ -146,60 +153,60 @@ class _ChemberInformation extends StatelessWidget {
               0: FixedColumnWidth(100.0), // Width for first column (titles)
               1: FlexColumnWidth(), // Width for second column (fills remaining space)
             },
-            children: const [
+            children: [
               TableRow(
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text('Address',
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('123 Main St, Springfield, NJ 07071'),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(chember?.address ?? ''),
                   ),
                 ],
               ),
               TableRow(
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text('Room',
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('Deluxe Suite 101'),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('${chember?.roomNo ?? '-'}'),
                   ),
                 ],
               ),
               TableRow(
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text('Address',
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('123 Main St, Springfield'),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(chember?.address ?? ''),
                   ),
                 ],
               ),
               TableRow(
                 children: [
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.all(8.0),
                     child: Text('Contact',
                         style: TextStyle(fontWeight: FontWeight.bold)),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text('+1 234 567 8901'),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text('${chember?.phone ?? '-'}'),
                   ),
                 ],
               ),
-              TableRow(
+              const TableRow(
                 children: [
                   Padding(
                     padding: EdgeInsets.all(8.0),

@@ -77,9 +77,42 @@ class $AssetsImagesJpgGen {
   AssetGenImage get onlineAppointment2 =>
       const AssetGenImage('assets/images/jpg/online.appointment2.jpg');
 
+  /// File path: assets/images/jpg/radio.jpg
+  AssetGenImage get radio => const AssetGenImage('assets/images/jpg/radio.jpg');
+
+  /// File path: assets/images/jpg/strature.jpg
+  AssetGenImage get strature =>
+      const AssetGenImage('assets/images/jpg/strature.jpg');
+
+  /// File path: assets/images/jpg/surgery1.jpg
+  AssetGenImage get surgery1 =>
+      const AssetGenImage('assets/images/jpg/surgery1.jpg');
+
+  /// File path: assets/images/jpg/surgery2.jpg
+  AssetGenImage get surgery2 =>
+      const AssetGenImage('assets/images/jpg/surgery2.jpg');
+
+  /// File path: assets/images/jpg/surgery3.jpg
+  AssetGenImage get surgery3 =>
+      const AssetGenImage('assets/images/jpg/surgery3.jpg');
+
+  /// File path: assets/images/jpg/surgery4.jpg
+  AssetGenImage get surgery4 =>
+      const AssetGenImage('assets/images/jpg/surgery4.jpg');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [consult, doc, injuries, onlineAppointment2];
+  List<AssetGenImage> get values => [
+        consult,
+        doc,
+        injuries,
+        onlineAppointment2,
+        radio,
+        strature,
+        surgery1,
+        surgery2,
+        surgery3,
+        surgery4
+      ];
 }
 
 class $AssetsImagesPngGen {
@@ -93,8 +126,17 @@ class $AssetsImagesPngGen {
   AssetGenImage get construction =>
       const AssetGenImage('assets/images/png/construction.png');
 
-  /// File path: assets/images/png/logo.png
-  AssetGenImage get logo => const AssetGenImage('assets/images/png/logo.png');
+  /// File path: assets/images/png/consult.png
+  AssetGenImage get consult =>
+      const AssetGenImage('assets/images/png/consult.png');
+
+  /// File path: assets/images/png/dr.iftekhar.png
+  AssetGenImage get drIftekhar =>
+      const AssetGenImage('assets/images/png/dr.iftekhar.png');
+
+  /// File path: assets/images/png/medical.kit.png
+  AssetGenImage get medicalKit =>
+      const AssetGenImage('assets/images/png/medical.kit.png');
 
   /// File path: assets/images/png/medicine.png
   AssetGenImage get medicine =>
@@ -104,9 +146,26 @@ class $AssetsImagesPngGen {
   AssetGenImage get onlineAppointment =>
       const AssetGenImage('assets/images/png/online.appointment.png');
 
+  /// File path: assets/images/png/online.consult.png
+  AssetGenImage get onlineConsult =>
+      const AssetGenImage('assets/images/png/online.consult.png');
+
+  /// File path: assets/images/png/socials.png
+  AssetGenImage get socials =>
+      const AssetGenImage('assets/images/png/socials.png');
+
   /// List of all assets
-  List<AssetGenImage> get values =>
-      [bookAppointment, construction, logo, medicine, onlineAppointment];
+  List<AssetGenImage> get values => [
+        bookAppointment,
+        construction,
+        consult,
+        drIftekhar,
+        medicalKit,
+        medicine,
+        onlineAppointment,
+        onlineConsult,
+        socials
+      ];
 }
 
 class $AssetsImagesServiceImagesGen {
