@@ -1,4 +1,4 @@
-import 'package:doc_appointment/firebase_options.dart';
+import 'package:driftekhar_patient/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart' show WidgetsFlutterBinding, runApp;
 import 'package:flutter/services.dart' show DeviceOrientation, SystemChrome;

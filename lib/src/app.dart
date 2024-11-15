@@ -1,4 +1,4 @@
-import 'package:doc_appointment/src/l10n/localization.dart';
+import 'package:driftekhar_patient/src/l10n/localization.dart';
 import 'package:flutter/material.dart'
     show
         BuildContext,

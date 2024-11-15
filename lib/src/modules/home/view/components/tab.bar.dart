@@ -1,4 +1,4 @@
-import 'package:doc_appointment/src/modules/home/models/tab.model.dart';
+import 'package:driftekhar_patient/src/modules/home/models/tab.model.dart';
 import 'package:flutter/material.dart';
 
 class TabBarWidget extends StatelessWidget {

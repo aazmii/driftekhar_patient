@@ -1,4 +1,4 @@
-package com.example.doc_appointment
+package com.example.driftekhar_patient
 
 import io.flutter.embedding.android.FlutterActivity
 

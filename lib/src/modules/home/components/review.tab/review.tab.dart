@@ -1,5 +1,5 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/home/providers/reviews.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/home/providers/reviews.dart';
 import 'package:flutter/material.dart';
 
 import 'reveiw.tile.dart';

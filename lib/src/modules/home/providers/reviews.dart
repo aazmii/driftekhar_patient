@@ -1,4 +1,4 @@
-import 'package:doc_appointment/src/modules/home/models/review.dart';
+import 'package:driftekhar_patient/src/modules/home/models/review.dart';
 
 final reviews = <PatientReview>[
   PatientReview(

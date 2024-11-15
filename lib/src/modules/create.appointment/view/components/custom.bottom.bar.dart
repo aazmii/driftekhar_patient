@@ -1,4 +1,4 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -1,6 +1,6 @@
-import 'package:doc_appointment/src/models/social.link.model/social.link.dart';
-import 'package:doc_appointment/src/providers/social.link.providers.dart';
-import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
+import 'package:driftekhar_patient/src/models/social.link.model/social.link.dart';
+import 'package:driftekhar_patient/src/providers/social.link.providers.dart';
+import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';

@@ -1,11 +1,11 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/create.appointment/view/create.appointment.view.dart';
-import 'package:doc_appointment/src/modules/chembers/view/chembers.view.dart';
-import 'package:doc_appointment/src/modules/home/components/social.icons.dart';
-import 'package:doc_appointment/src/modules/home/models/welcome.options.dart';
-import 'package:doc_appointment/src/modules/online.consultation/view/online.consultation.dart';
-import 'package:doc_appointment/src/modules/home/components/services/view/services.dart';
-import 'package:doc_appointment/src/modules/router/provider/route.provider.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/view/create.appointment.view.dart';
+import 'package:driftekhar_patient/src/modules/chembers/view/chembers.view.dart';
+import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart';
+import 'package:driftekhar_patient/src/modules/home/models/welcome.options.dart';
+import 'package:driftekhar_patient/src/modules/online.consultation/view/online.consultation.dart';
+import 'package:driftekhar_patient/src/modules/home/components/services/view/services.dart';
+import 'package:driftekhar_patient/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

@@ -1,6 +1,6 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/home/components/experience.tab/experience.container.dart';
-import 'package:doc_appointment/src/modules/home/providers/experiences.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/home/components/experience.tab/experience.container.dart';
+import 'package:driftekhar_patient/src/modules/home/providers/experiences.dart';
 import 'package:flutter/material.dart';
 
 class ProfileTab extends StatelessWidget {

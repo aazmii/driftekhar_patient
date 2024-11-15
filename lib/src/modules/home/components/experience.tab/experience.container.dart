@@ -1,5 +1,5 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/home/models/experience/experience.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/home/models/experience/experience.dart';
 import 'package:flutter/material.dart';
 
 class ExperienceContainer extends StatelessWidget {
@@ -8,7 +8,6 @@ class ExperienceContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       padding: const EdgeInsets.all(8),
       width: double.infinity,

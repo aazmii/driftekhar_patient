@@ -1,8 +1,6 @@
-
-import 'package:doc_appointment/src/models/social.link.model/social.link.dart';
+import 'package:driftekhar_patient/src/models/social.link.model/social.link.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'social.link.providers.g.dart';
-
 
 @riverpod
 List<SocialLink> socialLinksP(SocialLinksPRef ref) => socialLinks;

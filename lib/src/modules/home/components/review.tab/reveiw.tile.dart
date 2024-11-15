@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/review.dart';

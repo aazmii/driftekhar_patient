@@ -1,8 +1,8 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/chembers/providers/selected.chember.provider.dart';
-import 'package:doc_appointment/src/modules/create.appointment/providers/new.appointment.provider.dart';
-import 'package:doc_appointment/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
-import 'package:doc_appointment/src/utils/url.launcher/url.launcher.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/chembers/providers/selected.chember.provider.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

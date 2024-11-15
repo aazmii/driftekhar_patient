@@ -1,7 +1,7 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
-import 'package:doc_appointment/src/modules/create.appointment/providers/patient.provider.dart';
-import 'package:doc_appointment/src/modules/create.appointment/view/components/gender.picker.dart';
-import 'package:doc_appointment/src/modules/create.appointment/view/components/visit.type.picker.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/providers/patient.provider.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/view/components/gender.picker.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/view/components/visit.type.picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

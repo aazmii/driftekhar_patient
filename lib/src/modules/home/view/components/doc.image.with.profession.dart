@@ -1,4 +1,4 @@
-import 'package:doc_appointment/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
 final List<String> icons = 'youtube,insta,snap,tiktok,whatsapp'.split(',');
