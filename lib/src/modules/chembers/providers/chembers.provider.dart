@@ -6,5 +6,5 @@ part 'chembers.provider.g.dart';
 class Chembers extends _$Chembers {
   @override
   Future<List<Chember>> build() async =>
-      await ChemberService.instance.readAll();
+      await ChemberService.instance.getAll();
 }

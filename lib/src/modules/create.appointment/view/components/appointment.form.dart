@@ -11,7 +11,6 @@ class AppointmentForm extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final patientNotifier = ref.watch(patientProvider.notifier);
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Column(
@@ -33,7 +32,8 @@ class AppointmentForm extends ConsumerWidget {
               10.toWidth,
               Expanded(
                 child: TextField(
-                  onChanged: (age) => patientNotifier.setAge = int.parse(age),
+                  onChanged: (age) =>
+                      patientNotifier.setAge = int.tryParse(age),
                   keyboardType: TextInputType.number,
                   decoration: const InputDecoration(
                     label: Text('Age'),
