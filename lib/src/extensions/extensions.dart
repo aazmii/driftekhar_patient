@@ -8,4 +8,4 @@ part 'src/int.dart';
 part 'src/iterable.dart';
 part 'src/object.dart';
 part 'src/string.dart';
-
+part 'src/time.of.day.dart';
