@@ -18,7 +18,7 @@ import 'components/surgon.carousel.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-
+  static const String route = '/';
   @override
   Widget build(BuildContext context) {
     final int crossAxisCount = context.width > 600 ? 4 : 2;

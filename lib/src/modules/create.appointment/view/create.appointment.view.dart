@@ -84,6 +84,9 @@ class CreateAppointmentView extends ConsumerWidget {
       ref.read(apptsProvider.notifier).add(newAppt.copyWith(id: id));
       ref.invalidate(newAppointmentProvider);
       context.showSnack('Request sent Successfully');
+      //TODO: 
+      context.pop();
+      context.pop();
     }
   }
 }
