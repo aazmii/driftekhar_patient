@@ -4,10 +4,10 @@ class GenderPicker extends StatefulWidget {
   const GenderPicker({super.key});
 
   @override
-  _GenderPickerState createState() => _GenderPickerState();
+  GenderPickerState createState() => GenderPickerState();
 }
 
-class _GenderPickerState extends State<GenderPicker> {
+class GenderPickerState extends State<GenderPicker> {
   String? selectedGender; // Stores the selected gender option
   List<String> genderOptions = ['Male', 'Female', 'Other'];
 
