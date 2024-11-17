@@ -1,25 +1,24 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'chembers.provider.dart';
+part of 'appts.provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$chembersHash() => r'3e779db04e1bd133e6c3a3a61d13caa5c6617665';
+String _$apptsHash() => r'337d4d3558914205c9f90d2a6fa5a12c856caa7f';
 
-/// See also [Chembers].
-@ProviderFor(Chembers)
-final chembersProvider =
-    AsyncNotifierProvider<Chembers, List<Chember>>.internal(
-  Chembers.new,
-  name: r'chembersProvider',
+/// See also [Appts].
+@ProviderFor(Appts)
+final apptsProvider = AsyncNotifierProvider<Appts, List<Appointment>>.internal(
+  Appts.new,
+  name: r'apptsProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$chembersHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$apptsHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$Chembers = AsyncNotifier<List<Chember>>;
+typedef _$Appts = AsyncNotifier<List<Appointment>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

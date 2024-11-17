@@ -62,21 +62,6 @@ class PayAndConfimButton extends StatelessWidget {
                     minimumSize: const Size.fromHeight(60),
                   ),
                   onPressed: onConfirm,
-                  // onPressed: !newAppointment.patientData!.isValid
-                  //     ? null
-                  //     : () {
-                  //         final newAppointment =
-                  //             ref.read(newAppointmentProvider);
-
-                  //         ref
-                  //             .read(appointmentsProvider.notifier)
-                  //             .addAppointment(newAppointment);
-                  //         ref.invalidate(newAppointmentProvider);
-                  //         ScaffoldMessenger.of(context)
-                  //             .showSnackBar(const SnackBar(
-                  //           content: Text('Request sent Successfully'),
-                  //         ));
-                  //       },
                   child: Text(
                     confirmText ?? 'Book Appointment',
                     style: const TextStyle(fontSize: 14),

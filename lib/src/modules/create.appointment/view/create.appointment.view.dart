@@ -1,7 +1,9 @@
+import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/chembers/providers/selected.chember.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:driftekhar_patient/src/modules/home/providers/appts.provider.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -62,8 +64,27 @@ class CreateAppointmentView extends ConsumerWidget {
           ),
         ),
       ),
-      bottomNavigationBar: PayAndConfimButton(fee: fee),
+      bottomNavigationBar: PayAndConfimButton(
+        fee: fee,
+        onConfirm: !newAppt.patientData!.isValid
+            ? null
+            : () async => await _handleSubmit(context, ref),
+      ),
     );
+  }
+
+  Future _handleSubmit(BuildContext context, WidgetRef ref) async {
+    final newAppt = ref.read(newAppointmentProvider);
+
+    final id = await AppointmentService.instance.create(newAppt);
+    if (!context.mounted) return;
+    if (id == null) {
+      context.showSnack('Could not craete your appointment');
+    } else {
+      ref.read(apptsProvider.notifier).add(newAppt.copyWith(id: id));
+      ref.invalidate(newAppointmentProvider);
+      context.showSnack('Request sent Successfully');
+    }
   }
 }
 

@@ -307,7 +307,7 @@ packages:
     description:
       path: "."
       ref: main
-      resolved-ref: a1ae423195fd727f88032a1ec50ddf019b6cc207
+      resolved-ref: f975ade2a229a0ca2421deeb0a600c02bb9a4790
       url: "https://github.com/anasmj/doc_patient_libs"
     source: git
     version: "0.0.1"
@@ -655,10 +655,10 @@ packages:
     dependency: "direct main"
     description:
       name: logger
-      sha256: "697d067c60c20999686a0add96cf6aba723b3aa1f83ecf806a8097231529ec32"
+      sha256: be4b23575aac7ebf01f225a241eb7f6b5641eeaf43c6a8613510fc2f8cf187d1
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.0"
+    version: "2.5.0"
   logging:
     dependency: transitive
     description:
