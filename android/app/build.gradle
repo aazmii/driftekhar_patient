@@ -10,8 +10,9 @@ plugins {
 
 android {
     namespace = "com.codeconnect.driftekhar.patient"
-    compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    compileSdk = 34
+    buildToolsVersion "23.0.1"
+    ndkVersion = "27.0.12077973"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

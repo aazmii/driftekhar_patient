@@ -1,4 +1,4 @@
-package com.codeconnect.driftekhar.driftekhar_patient
+package com.codeconnect.driftekhar.patient
 
 import io.flutter.embedding.android.FlutterActivity
 
