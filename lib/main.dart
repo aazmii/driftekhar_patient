@@ -1,6 +1,7 @@
+import 'dart:io';
+
 import 'package:driftekhar_patient/firebase_options.dart';
 import 'package:driftekhar_patient/src/services/fcm.service/fcm.service.dart';
-import 'package:driftekhar_patient/src/services/notification.service/nofication.service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart' show WidgetsFlutterBinding, runApp;
 import 'package:flutter/services.dart' show DeviceOrientation, SystemChrome;
@@ -16,9 +17,7 @@ void main() async {
 Future<void> _init() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  await NotificationService.instance.initialize();
-  // await FCMService.initNotification();
-  // await FCMService.registerFCMToken();
+  if (Platform.isAndroid || Platform.isIOS) await FCMService.initNotification();
   FCMService.listenToTokenRefresh();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   await openDB();
