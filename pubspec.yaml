@@ -40,6 +40,7 @@ dependencies:
       url: https://github.com/anasmj/doc_patient_libs
       ref: main  
   cloud_firestore: ^5.5.0
+  flutter_local_notifications: ^18.0.1
 
 
 dev_dependencies:
