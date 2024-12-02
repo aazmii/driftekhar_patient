@@ -9,6 +9,7 @@ import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart
 import 'package:driftekhar_patient/src/modules/home/models/welcome.options.dart';
 import 'package:driftekhar_patient/src/modules/online.consultation/view/online.consultation.dart';
 import 'package:driftekhar_patient/src/modules/router/provider/route.provider.dart';
+import 'package:driftekhar_patient/src/services/notification.service/nofication.service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -166,7 +167,12 @@ class HomeView extends StatelessWidget {
           ),
           // bottomNavigationBar: const PayAndConfimButton(),
           floatingActionButton: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              const token =
+                  'fYjLxJG5Q9a0oMvld1dMO2:APA91bHHiITYf2yQ-53u8Ierq7htr1kpKpgnbhNiAfs33oukUgWDFVtWgpXlZJlGZCfAUpoU6wkQFK4VGRN2SsdT3-ZGvqnLKyKTRxeMIEuZcq86TXtIRDw';
+              NotificationService.instance.sendNotificationToDevice(
+                  token, 'Patient App', 'Patient app body');
+            },
             icon: SvgPicture.asset(
               'assets/icons/whatsapp.svg',
               height: 44,
