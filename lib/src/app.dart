@@ -1,4 +1,5 @@
 import 'package:driftekhar_patient/src/l10n/localization.dart';
+import 'package:driftekhar_patient/src/routes/routes.dart';
 import 'package:flutter/material.dart'
     show
         BuildContext,
@@ -35,7 +36,10 @@ class MyApp extends ConsumerWidget {
       navigatorKey: navigatorKey,
       onGenerateTitle: onGenerateTitle,
       restorationScopeId: appName,
-      home: const AppRouter(),
+      initialRoute: homeRoute,
+      routes: routesMap,
+      // home: Scaffold(),
+      // home: const AppRouter(),
       builder: (context, child) {
         t = AppLocalizations.of(context)!;
         return MediaQuery(

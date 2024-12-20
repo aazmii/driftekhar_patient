@@ -1,20 +1,15 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:driftekhar_patient/src/constants/constants.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
-import 'package:driftekhar_patient/src/modules/chembers/providers/selected.chember.provider.dart';
-import 'package:driftekhar_patient/src/modules/chembers/view/chembers.view.dart';
-import 'package:driftekhar_patient/src/modules/create.appointment/view/create.appointment.view.dart';
-import 'package:driftekhar_patient/src/modules/home/components/services/view/services.dart';
 import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart';
-import 'package:driftekhar_patient/src/modules/home/models/welcome.options.dart';
-import 'package:driftekhar_patient/src/modules/online.consultation/view/online.consultation.dart';
-import 'package:driftekhar_patient/src/modules/router/provider/route.provider.dart';
+import 'package:driftekhar_patient/src/modules/home/models/grid.model.dart';
+import 'package:driftekhar_patient/src/routes/routes.dart';
 import 'package:driftekhar_patient/src/services/notification.service/nofication.service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../components/home.container/home.container.dart';
+import 'components/grid.container.dart';
 import 'components/surgon.carousel.dart';
 
 class HomeView extends StatelessWidget {
@@ -22,7 +17,7 @@ class HomeView extends StatelessWidget {
   static const String route = '/';
   @override
   Widget build(BuildContext context) {
-    final int crossAxisCount = context.width > 600 ? 4 : 2;
+    // final int crossAxisCount = context.width > 600 ? 4 : 2;
     // return Scaffold(
     //   body: Image.asset('assets/images/jpg/surgery4.jpg'),
     // );
@@ -40,7 +35,7 @@ class HomeView extends StatelessWidget {
                 children: [
                   Container(
                     color: primaryColor,
-                    height: 120,
+                    height: context.height * 0.3,
                     child: SurgonCarousel(),
                   ),
                   Center(
@@ -50,7 +45,7 @@ class HomeView extends StatelessWidget {
                         'assets/images/png/dr.iftekhar.png',
                         color: Colors.white,
                         // 'assets/images/png/logo.png',
-                        height: 40,
+                        height: context.width * 0.12,
                       ),
                     ),
                   ),
@@ -144,22 +139,51 @@ class HomeView extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Consumer(builder: (context, ref, child) {
-                    return GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: crossAxisCount,
-                        mainAxisSpacing: 30,
-                        crossAxisSpacing: 10,
-                      ),
-                      itemBuilder: (_, index) {
-                        return InkWell(
-                          onTap: () async => handleRoute(context, index, ref),
-                          child: HomeContainer(
-                            option: _welcomeOptions[index],
-                          ),
-                        );
-                      },
-                      itemCount: _welcomeOptions.length,
-                    );
+                    return context.isTabletWidth
+                        ? Wrap(
+                            runSpacing: 10,
+                            spacing: 10,
+                            children: List.generate(
+                              homeGridItems.length,
+                              (index) {
+                                // print('list ${homeGridItems[index]}');
+                                return GridContainer(
+                                  gridItem: homeGridItems[index],
+                                  onTap: () => Navigator.pushNamed(
+                                      context, homeGridItems[index].routeName),
+                                );
+                              },
+                            ),
+                          )
+                        : GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3,
+                              crossAxisSpacing: 10,
+                              mainAxisSpacing: 10,
+                            ),
+                            // gridDelegate:
+                            //     SliverGridDelegateWithFixedCrossAxisCount(
+                            //   crossAxisCount: crossAxisCount,
+                            //   mainAxisSpacing: 30,
+                            //   crossAxisSpacing: 10,
+                            // ),
+                            itemBuilder: (_, index) {
+                              return GridContainer(
+                                onTap: () async {
+                                  // print(homeGridItems[index].routeName);
+                                  Navigator.pushNamed(
+                                      context, homeGridItems[index].routeName);
+                                },
+                                gridItem: GridItem(
+                                  imagePath: homeGridItems[index].imagePath,
+                                  title: homeGridItems[index].title,
+                                  routeName: homeGridItems[index].routeName,
+                                ),
+                              );
+                            },
+                            itemCount: homeGridItems.length,
+                          );
                   }),
                 ),
               ),
@@ -188,63 +212,68 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  handleRoute(BuildContext context, int index, WidgetRef ref) async {
-    final service = _welcomeOptions[index].title;
+  // handleRoute(BuildContext context, int index, WidgetRef ref) async {
+  //   final service = _welcomeOptions[index].title;
 
-    if (service == 'Book Appointment') {
-      await fadePush(
-        context,
-        ChembersView(
-          title: 'Select Chember',
-          onSelectChember: (chember) async {
-            // print(
-            //     'before ${ref.read(selectedChemberProvider)?.name}'); // Before updating
-            // ref.read(selectedChemberProvider.notifier).update(chember);
-            // print(
-            //     'after ${ref.read(selectedChemberProvider)?.name}'); // After updating
-            ref.read(selectedChemberProvider.notifier).update(chember);
+  //   if (service == 'Book Appointment') {
+  //     await fadePush(
+  //       context,
+  //       ChembersView(
+  //         title: 'Select Chember',
+  //         onSelectChember: (chember) async {
+  //           // print(
+  //           //     'before ${ref.read(selectedChemberProvider)?.name}'); // Before updating
+  //           // ref.read(selectedChemberProvider.notifier).update(chember);
+  //           // print(
+  //           //     'after ${ref.read(selectedChemberProvider)?.name}'); // After updating
+  //           ref.read(selectedChemberProvider.notifier).update(chember);
 
-            await fadePush(
-              context,
-              const CreateAppointmentView(),
-            );
-          },
-        ),
-      );
-    }
-    if (service == 'Online Consultation') {
-      await fadePush(context, const OnlineConsultationPage());
-    }
-    if (service == 'Chembers') {
-      await fadePush(context, const ChembersView(title: 'Chembers'));
-    }
-    if (service == 'Services') {
-      await fadePush(context, const ServicesPage());
-    }
-  }
+  //           await fadePush(
+  //             context,
+  //             const CreateAppointmentView(),
+  //           );
+  //         },
+  //       ),
+  //     );
+  //   }
+  //   if (service == 'Online Consultation') {
+  //     await fadePush(context, const OnlineConsultationPage());
+  //   }
+  //   if (service == 'Chembers') {
+  //     await fadePush(context, const ChembersView(title: 'Chembers'));
+  //   }
+  //   if (service == 'Services') {
+  //     await fadePush(context, const ServicesPage());
+  //   }
+  // }
 }
 
-final _welcomeOptions = [
-  WelcomeOption(
+final homeGridItems = [
+  GridItem(
     title: 'Book Appointment',
-    image: 'assets/images/png/book.appointment.png',
+    imagePath: 'assets/images/png/book.appointment.png',
+    routeName: chembersRoute,
   ),
-  WelcomeOption(
+  GridItem(
     title: 'Online Consultation',
     // image: 'assets/images/png/online.consult.png',
-    image: 'assets/images/png/online.appointment.png',
+    imagePath: 'assets/images/png/online.appointment.png',
+    routeName: onlineConsultationRoute,
   ),
-  WelcomeOption(
+  GridItem(
     title: 'Services',
-    image: 'assets/images/png/medical.kit.png',
+    imagePath: 'assets/images/png/medical.kit.png',
+    routeName: servicesRoute,
   ),
-  WelcomeOption(
+  GridItem(
     title: 'Chembers',
-    image: 'assets/images/png/consult.png',
+    imagePath: 'assets/images/png/consult.png',
+    routeName: chembersRoute,
   ),
-  WelcomeOption(
+  GridItem(
     title: 'Socials',
-    image: 'assets/images/png/socials.png',
+    imagePath: 'assets/images/png/socials.png',
+    routeName: socialsRoute,
   ),
 ];
 
