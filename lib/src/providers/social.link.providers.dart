@@ -1,4 +1,4 @@
-import 'package:driftekhar_patient/src/models/social.link.model/social.link.dart';
+import 'package:com.codeconnect.driftekhar.patient/src/models/social.link.model/social.link.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 part 'social.link.providers.g.dart';
 

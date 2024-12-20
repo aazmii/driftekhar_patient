@@ -1,5 +1,5 @@
-import 'package:driftekhar_patient/src/extensions/extensions.dart';
-import 'package:driftekhar_patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:com.codeconnect.driftekhar.patient/src/extensions/extensions.dart';
+import 'package:com.codeconnect.driftekhar.patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
 import 'package:flutter/material.dart';
 
 class OnlineConsultationPage extends StatelessWidget {

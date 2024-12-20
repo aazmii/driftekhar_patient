@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.codeconnect.driftekhar" "\0"
-            VALUE "FileDescription", "driftekhar_patient" "\0"
+            VALUE "FileDescription", "com.codeconnect.driftekhar.patient" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "driftekhar_patient" "\0"
+            VALUE "InternalName", "com.codeconnect.driftekhar.patient" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2024 com.codeconnect.driftekhar. All rights reserved." "\0"
-            VALUE "OriginalFilename", "driftekhar_patient.exe" "\0"
-            VALUE "ProductName", "driftekhar_patient" "\0"
+            VALUE "OriginalFilename", "com.codeconnect.driftekhar.patient.exe" "\0"
+            VALUE "ProductName", "com.codeconnect.driftekhar.patient" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -26,15 +26,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for ios - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         return windows;
       case TargetPlatform.linux:
@@ -57,12 +51,33 @@ class DefaultFirebaseOptions {
     storageBucket: 'driftekhar-ec1e3.firebasestorage.app',
   );
 
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyDCTm4onFO-_dxCs8dL0Em2sSDkCCsyOW4',
+    appId: '1:834482021363:ios:2d64126e9373a55189a886',
+    messagingSenderId: '834482021363',
+    projectId: 'driftekhar-ec1e3',
+    storageBucket: 'driftekhar-ec1e3.firebasestorage.app',
+    iosClientId: '834482021363-ai0kbjqho916i2mbr7a6c7gu2mpvuevk.apps.googleusercontent.com',
+    iosBundleId: 'com.codeconnect.driftekhar.patient',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyDCTm4onFO-_dxCs8dL0Em2sSDkCCsyOW4',
+    appId: '1:834482021363:ios:2d64126e9373a55189a886',
+    messagingSenderId: '834482021363',
+    projectId: 'driftekhar-ec1e3',
+    storageBucket: 'driftekhar-ec1e3.firebasestorage.app',
+    iosClientId: '834482021363-ai0kbjqho916i2mbr7a6c7gu2mpvuevk.apps.googleusercontent.com',
+    iosBundleId: 'com.codeconnect.driftekhar.patient',
+  );
+
   static const FirebaseOptions windows = FirebaseOptions(
     apiKey: 'AIzaSyDx6htE4zCk4tVdVX52HrQ1JQw7WAmf0Fc',
-    appId: '1:834482021363:web:93ce462560783ee489a886',
+    appId: '1:834482021363:web:bf3b0bc802df20e789a886',
     messagingSenderId: '834482021363',
     projectId: 'driftekhar-ec1e3',
     authDomain: 'driftekhar-ec1e3.firebaseapp.com',
     storageBucket: 'driftekhar-ec1e3.firebasestorage.app',
   );
+
 }

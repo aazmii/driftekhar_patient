@@ -31,10 +31,10 @@
               "client_type": 3
             },
             {
-              "client_id": "834482021363-71btmlo5m87o321qa1nb6qtmugqlo0aj.apps.googleusercontent.com",
+              "client_id": "834482021363-5t176bgrosnoa441jum8jqkanqcvct96.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.codeconnect.driftekhar.admin"
+                "bundle_id": "com.codeconnect.driftekhar.driftekharAdmin"
               }
             }
           ]
@@ -67,10 +67,10 @@
               "client_type": 3
             },
             {
-              "client_id": "834482021363-71btmlo5m87o321qa1nb6qtmugqlo0aj.apps.googleusercontent.com",
+              "client_id": "834482021363-5t176bgrosnoa441jum8jqkanqcvct96.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.codeconnect.driftekhar.admin"
+                "bundle_id": "com.codeconnect.driftekhar.driftekharAdmin"
               }
             }
           ]

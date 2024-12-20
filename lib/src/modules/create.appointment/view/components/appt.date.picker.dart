@@ -1,5 +1,5 @@
-import 'package:driftekhar_patient/src/extensions/extensions.dart';
-import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:com.codeconnect.driftekhar.patient/src/extensions/extensions.dart';
+import 'package:com.codeconnect.driftekhar.patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

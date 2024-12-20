@@ -1,4 +1,4 @@
-import 'package:driftekhar_patient/src/modules/home/models/experience/experience.dart';
+import 'package:com.codeconnect.driftekhar.patient/src/modules/home/models/experience/experience.dart';
 
 final experiences = <Experience>[
   Experience(

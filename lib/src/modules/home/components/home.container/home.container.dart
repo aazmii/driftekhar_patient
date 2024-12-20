@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:driftekhar_patient/src/extensions/extensions.dart';
-import 'package:driftekhar_patient/src/modules/home/models/welcome.options.dart';
+import 'package:com.codeconnect.driftekhar.patient/src/extensions/extensions.dart';
+import 'package:com.codeconnect.driftekhar.patient/src/modules/home/models/welcome.options.dart';
 import 'package:flutter/material.dart';
 
 class HomeContainer extends StatelessWidget {
