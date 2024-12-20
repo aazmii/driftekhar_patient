@@ -1,5 +1,5 @@
-import 'package:com.codeconnect.driftekhar.patient/src/extensions/extensions.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/utils/url.launcher/url.launcher.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:flutter/material.dart';
 

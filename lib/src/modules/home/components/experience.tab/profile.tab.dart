@@ -1,6 +1,6 @@
-import 'package:com.codeconnect.driftekhar.patient/src/extensions/extensions.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/home/components/experience.tab/experience.container.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/home/providers/experiences.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/home/components/experience.tab/experience.container.dart';
+import 'package:driftekhar_patient/src/modules/home/providers/experiences.dart';
 import 'package:flutter/material.dart';
 
 class ProfileTab extends StatelessWidget {

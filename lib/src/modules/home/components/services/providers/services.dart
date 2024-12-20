@@ -1,5 +1,5 @@
-import 'package:com.codeconnect.driftekhar.patient/src/gen/assets.gen.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/home/components/services/models/service.model.dart';
+import 'package:driftekhar_patient/src/gen/assets.gen.dart';
+import 'package:driftekhar_patient/src/modules/home/components/services/models/service.model.dart';
 import 'package:flutter/services.dart';
 
 Future<List<Service>> getServicesWithDescriptions() async {

@@ -1,10 +1,10 @@
 import 'package:doc_patient_libs/doc_patient_libs.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/extensions/extensions.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/chembers/providers/selected.chember.provider.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/home/providers/appts.provider.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/utils/url.launcher/url.launcher.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/chembers/providers/selected.chember.provider.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:driftekhar_patient/src/modules/home/providers/appts.provider.dart';
+import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

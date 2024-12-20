@@ -1,4 +1,4 @@
-import 'package:com.codeconnect.driftekhar.patient/src/theme/themes/themes.dart';
+import 'package:driftekhar_patient/src/theme/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 ThemeData get lightTheme => ThemeData(

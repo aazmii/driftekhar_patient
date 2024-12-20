@@ -1,5 +1,5 @@
-import 'package:com.codeconnect.driftekhar.patient/src/extensions/extensions.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/home/providers/reviews.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/home/providers/reviews.dart';
 import 'package:flutter/material.dart';
 
 import 'reveiw.tile.dart';

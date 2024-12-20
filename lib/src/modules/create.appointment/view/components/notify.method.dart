@@ -1,5 +1,5 @@
-// import 'package:com.codeconnect.driftekhar.patient/src/models/appointment/appointment.dart';
-// import 'package:com.codeconnect.driftekhar.patient/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
+// import 'package:driftekhar_patient/src/models/appointment/appointment.dart';
+// import 'package:driftekhar_patient/src/modules/patient.modules/create.appointment/providers/new.appointment.provider.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_riverpod/flutter_riverpod.dart';
 

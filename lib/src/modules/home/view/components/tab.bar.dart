@@ -1,4 +1,4 @@
-import 'package:com.codeconnect.driftekhar.patient/src/modules/home/models/tab.model.dart';
+import 'package:driftekhar_patient/src/modules/home/models/tab.model.dart';
 import 'package:flutter/material.dart';
 
 class TabBarWidget extends StatelessWidget {

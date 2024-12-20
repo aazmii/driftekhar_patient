@@ -1,5 +1,5 @@
-import 'package:com.codeconnect.driftekhar.patient/src/modules/chembers/providers/chembers.provider.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/home/components/chember.tab/chember.container.dart';
+import 'package:driftekhar_patient/src/modules/chembers/providers/chembers.provider.dart';
+import 'package:driftekhar_patient/src/modules/home/components/chember.tab/chember.container.dart';
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

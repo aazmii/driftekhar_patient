@@ -1,5 +1,5 @@
-import 'package:com.codeconnect.driftekhar.patient/src/modules/create.appointment/view/create.appointment.view.dart';
-import 'package:com.codeconnect.driftekhar.patient/src/modules/router/provider/route.provider.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/view/create.appointment.view.dart';
+import 'package:driftekhar_patient/src/modules/router/provider/route.provider.dart';
 import 'package:flutter/material.dart';
 
 class GetAppointSection extends StatelessWidget {

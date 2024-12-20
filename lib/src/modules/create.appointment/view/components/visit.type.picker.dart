@@ -1,4 +1,4 @@
-import 'package:com.codeconnect.driftekhar.patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
