@@ -1,6 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:driftekhar_patient/src/modules/create.appointment/providers/patient.provider.dart';
 import 'package:doc_patient_libs/doc_patient_libs.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/providers/patient.provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
@@ -10,13 +9,14 @@ const uuid = Uuid();
 
 @Riverpod(keepAlive: true)
 class NewAppointment extends _$NewAppointment {
-  final _pendings = FirebaseFirestore.instance.collection('pending');
+  // final _pendings = FirebaseFirestore.instance.collection('pending');
 
   @override
   Appointment build() {
     return Appointment(
       id: uuid.v4(),
-      patientData: ref.watch(patientProvider),
+      // patientData: PatientData(),
+      // patientData: ref.watch(patientProvider),
     );
   }
 
@@ -33,7 +33,10 @@ class NewAppointment extends _$NewAppointment {
 
   Future<bool> createNew() async {
     try {
-      await _pendings.doc(state.id!).set(state.toMap());
+      state = state.copyWith(patientData: ref.read(patientProvider));
+      await AppointmentService.create(reqeusted, state.id!, state.toMap());
+      ref.invalidateSelf();
+      ref.invalidate(patientProvider);
       return true;
     } catch (e) {
       return false;

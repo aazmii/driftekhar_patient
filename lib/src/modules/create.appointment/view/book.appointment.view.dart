@@ -1,19 +1,22 @@
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:driftekhar_patient/src/modules/create.appointment/providers/patient.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:driftekhar_patient/src/utils/ui/loader.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'components/appointment.form.dart';
 
-class CreateAppointmentView extends ConsumerWidget {
-  const CreateAppointmentView({super.key});
+class BookAppointmentView extends ConsumerWidget {
+  const BookAppointmentView({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
     final newAppt = ref.watch(newAppointmentProvider);
+    final patientData = ref.watch(patientProvider);
     final fee = newAppt.type?.fee ?? 0;
     return Scaffold(
       appBar: AppBar(title: const Text('Book Appointment')),
@@ -64,7 +67,8 @@ class CreateAppointmentView extends ConsumerWidget {
       ),
       bottomNavigationBar: PayAndConfimButton(
         fee: fee,
-        onConfirm: !newAppt.patientData!.isValid
+        // onConfirm: () async => await _handleSubmit(context, ref),
+        onConfirm: !patientData.isValid
             ? null
             : () async => await _handleSubmit(context, ref),
       ),
@@ -72,14 +76,17 @@ class CreateAppointmentView extends ConsumerWidget {
   }
 
   Future _handleSubmit(BuildContext context, WidgetRef ref) async {
+    await showLoader(msg: 'Please wait...');
     final success = await ref.read(newAppointmentProvider.notifier).createNew();
-
     if (!context.mounted) return;
+    context.pop();
     if (!success) {
       context.showSnack('Could not craete your appointment');
     } else {
       // ref.invalidate(newAppointmentProvider);
       context.showSnack('Request sent Successfully');
+
+      ///POP twice if auth wrapper is used,
       context.pop();
       context.pop();
     }

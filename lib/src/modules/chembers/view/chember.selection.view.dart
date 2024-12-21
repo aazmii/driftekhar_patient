@@ -8,8 +8,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'components/chember.card.dart';
 
-class ChembersView extends ConsumerWidget {
-  const ChembersView({super.key, this.onSelectChember});
+class ChemberSelectionView extends ConsumerWidget {
+  const ChemberSelectionView({super.key, this.onSelectChember});
   final ValueSetter<Chember>? onSelectChember;
 
   @override
@@ -35,34 +35,33 @@ class ChembersView extends ConsumerWidget {
                         child: Text('No chember found'),
                       );
                     }
-                    return Expanded(
-                      child: ListView(children: [
-                        Text(
-                          '*Select a chember to book appointment',
-                          style: context.text.titleMedium!
-                              .copyWith(color: context.theme.primaryColor),
-                        ),
-                        ...chembers.map((e) {
-                          return Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 10.0),
-                            child: InkWell(
-                              onTap: () => onSelectChember?.call(e),
-                              child: ChemberCard(
-                                chember: e,
-                                isSelected: e.id == selectedChember?.id,
-                                onPressed: () => notifier.setChember = e,
-                              ),
-                              // child: ChemberContainer(chember: e),
+                    return ListView(children: [
+                      Text(
+                        '*Select a chember to book appointment',
+                        style: context.text.titleMedium!
+                            .copyWith(color: context.theme.primaryColor),
+                      ),
+                      ...chembers.map((e) {
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 10.0),
+                          child: InkWell(
+                            onTap: () => onSelectChember?.call(e),
+                            child: ChemberCard(
+                              chember: e,
+                              isSelected: e.id == selectedChember?.id,
+                              onPressed: () => notifier.setChember = e,
                             ),
-                          );
-                        }),
-                      ]),
-                    );
+                            // child: ChemberContainer(chember: e),
+                          ),
+                        );
+                      }),
+                    ]);
                   },
                   error: (e, s) =>
                       const Center(child: Text('Could not get chember data')),
-                  loading: () =>
-                      const Center(child: CircularProgressIndicator()),
+                  loading: () => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
                 ),
 
             ElevatedButton.icon(

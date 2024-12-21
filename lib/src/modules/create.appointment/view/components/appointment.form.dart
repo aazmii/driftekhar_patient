@@ -139,6 +139,9 @@ class VisitTypePicker extends ConsumerWidget {
         onSelectionChanged: (type) => ref
             .read(newAppointmentProvider.notifier)
             .update(newAppt.copyWith(type: type.first)),
+        // onSelectionChanged: (type) => ref
+        //     .read(newAppointmentProvider.notifier)
+        //     .update(newAppt.copyWith(type: type.first)),
       ),
     );
   }

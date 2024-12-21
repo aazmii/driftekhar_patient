@@ -248,7 +248,7 @@ final homeGridItems = [
   GridItem(
     title: 'Book Appointment',
     imagePath: 'assets/images/png/book.appointment.png',
-    routeName: chembersRoute,
+    routeName: chemberSelectionRoute,
   ),
   GridItem(
     title: 'Online Consultation',
@@ -264,7 +264,7 @@ final homeGridItems = [
   GridItem(
     title: 'Chembers',
     imagePath: 'assets/images/png/consult.png',
-    routeName: chembersRoute,
+    routeName: chemberSelectionRoute,
   ),
   GridItem(
     title: 'Socials',
