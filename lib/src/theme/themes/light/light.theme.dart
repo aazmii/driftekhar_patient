@@ -2,9 +2,8 @@ import 'package:driftekhar_patient/src/theme/themes/themes.dart';
 import 'package:flutter/material.dart';
 
 ThemeData get lightTheme => ThemeData(
+    scaffoldBackgroundColor: Colors.grey.shade100,
     visualDensity: VisualDensity.compact,
-    // primarySwatch: Colors.blue,
-
     colorSchemeSeed: Colors.blue.shade600,
     brightness: Brightness.light,
     useMaterial3: true,

@@ -1,15 +1,12 @@
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
-import 'package:driftekhar_patient/src/modules/chembers/providers/selected.chember.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
-import 'package:driftekhar_patient/src/modules/home/providers/appts.provider.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'components/appointment.form.dart';
-import 'components/chember.detail.section.dart';
 
 class CreateAppointmentView extends ConsumerWidget {
   const CreateAppointmentView({super.key});
@@ -19,22 +16,32 @@ class CreateAppointmentView extends ConsumerWidget {
     final newAppt = ref.watch(newAppointmentProvider);
     final fee = newAppt.type?.fee ?? 0;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('New Appointment'),
-      ),
+      appBar: AppBar(title: const Text('Book Appointment')),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              ...[
-                Text(
-                  ref.watch(selectedChemberProvider)?.name ?? '',
-                  style: context.text.titleLarge!
-                      .copyWith(color: context.theme.primaryColor),
+              20.toHeight,
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
+                  border: Border.all(color: Colors.grey),
                 ),
-                const ChemberDetailSection(),
-              ],
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      newAppt.chember?.name ?? '',
+                      style: context.text.titleLarge!.copyWith(
+                          fontWeight: FontWeight.bold, color: Colors.black54),
+                    ),
+                  ],
+                ),
+              ),
+              10.toHeight,
               Row(
                 children: [
                   const Expanded(child: Divider()),
@@ -49,17 +56,8 @@ class CreateAppointmentView extends ConsumerWidget {
                   const Expanded(child: Divider()),
                 ],
               ),
-              20.toHeight,
+              10.toHeight,
               const AppointmentForm(),
-
-              20.toHeight,
-
-              // const OrSection(),
-              // 10.toHeight,
-              // const Center(
-              //   child: CallForAppointmentButton(),
-              // ),
-              // 10.toHeight,
             ],
           ),
         ),
@@ -74,17 +72,14 @@ class CreateAppointmentView extends ConsumerWidget {
   }
 
   Future _handleSubmit(BuildContext context, WidgetRef ref) async {
-    final newAppt = ref.read(newAppointmentProvider);
+    final success = await ref.read(newAppointmentProvider.notifier).createNew();
 
-    final id = await AppointmentService.instance.create(newAppt);
     if (!context.mounted) return;
-    if (id == null) {
+    if (!success) {
       context.showSnack('Could not craete your appointment');
     } else {
-      ref.read(apptsProvider.notifier).add(newAppt.copyWith(id: id));
-      ref.invalidate(newAppointmentProvider);
+      // ref.invalidate(newAppointmentProvider);
       context.showSnack('Request sent Successfully');
-      //TODO:
       context.pop();
       context.pop();
     }

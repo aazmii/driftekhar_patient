@@ -4,7 +4,6 @@ import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart';
 import 'package:driftekhar_patient/src/modules/home/models/grid.model.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
-import 'package:driftekhar_patient/src/services/notification.service/nofication.service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,10 +16,6 @@ class HomeView extends StatelessWidget {
   static const String route = '/';
   @override
   Widget build(BuildContext context) {
-    // final int crossAxisCount = context.width > 600 ? 4 : 2;
-    // return Scaffold(
-    //   body: Image.asset('assets/images/jpg/surgery4.jpg'),
-    // );
     return Stack(
       children: [
         // Scaffold(body: SurgonCarousel()),
@@ -31,7 +26,6 @@ class HomeView extends StatelessWidget {
             children: [
               Stack(
                 clipBehavior: Clip.none,
-                // alignment: Alignment.topCenter,
                 children: [
                   Container(
                     color: primaryColor,
@@ -190,23 +184,25 @@ class HomeView extends StatelessWidget {
             ],
           ),
           // bottomNavigationBar: const PayAndConfimButton(),
-          floatingActionButton: IconButton(
-            onPressed: () {
-              const token =
-                  'fYjLxJG5Q9a0oMvld1dMO2:APA91bHHiITYf2yQ-53u8Ierq7htr1kpKpgnbhNiAfs33oukUgWDFVtWgpXlZJlGZCfAUpoU6wkQFK4VGRN2SsdT3-ZGvqnLKyKTRxeMIEuZcq86TXtIRDw';
-              NotificationService.instance.sendNotificationToDevice(
-                  token, 'Patient App', 'Patient app body');
-            },
-            icon: SvgPicture.asset(
-              'assets/icons/whatsapp.svg',
-              height: 44,
-            ),
-            // icon: const Icon(
-            //   FontAwesomeIcons.whatsapp,
-            //   color: Colors.green,
-            //   size: 34,
-            // ),
-          ),
+          floatingActionButton: Consumer(builder: (context, ref, child) {
+            return IconButton(
+              onPressed: () async {
+                // const token =
+                //     'fYjLxJG5Q9a0oMvld1dMO2:APA91bHHiITYf2yQ-53u8Ierq7htr1kpKpgnbhNiAfs33oukUgWDFVtWgpXlZJlGZCfAUpoU6wkQFK4VGRN2SsdT3-ZGvqnLKyKTRxeMIEuZcq86TXtIRDw';
+                // NotificationService.instance.sendNotificationToDevice(
+                //     token, 'Patient App', 'Patient app body');
+              },
+              icon: SvgPicture.asset(
+                'assets/icons/whatsapp.svg',
+                height: 44,
+              ),
+              // icon: const Icon(
+              //   FontAwesomeIcons.whatsapp,
+              //   color: Colors.green,
+              //   size: 34,
+              // ),
+            );
+          }),
         ),
       ],
     );

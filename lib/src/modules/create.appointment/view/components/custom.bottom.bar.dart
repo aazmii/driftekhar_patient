@@ -32,6 +32,7 @@ class PayAndConfimButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 0),
         child: Row(
           children: [
+            12.toWidth,
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
