@@ -45,6 +45,10 @@ dependencies:
   http: ^1.2.2
   googleapis_auth: ^1.6.0
   googleapis: ^13.2.0
+  flutter_launcher_icons: ^0.14.2
+  flutter_native_splash: ^2.4.3
+  dotted_border: ^2.1.0
+  lottie: ^3.3.0
 
 
 dev_dependencies:
@@ -73,6 +77,7 @@ flutter:
     - assets/images/service.images/
     - assets/icons/
     - assets/texts/services/
+    - assets/lotties/
 
 
 flutter_gen:
@@ -82,7 +87,13 @@ flutter_gen:
   
 
  
-
+flutter_launcher_icons:
+  android: true
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icons/app.icon.png"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icons/app.icon.png"
 
 import_sorter:
   comments: false

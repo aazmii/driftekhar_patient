@@ -15,6 +15,7 @@ class _ServicesPageState extends State<ServicesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: Colors.red,
       appBar: AppBar(
         title: const Text('Services'),
       ),
@@ -29,15 +30,21 @@ class _ServicesPageState extends State<ServicesPage> {
             return ListView.builder(
               itemBuilder: (_, index) {
                 final service = snapshot.data![index];
+                // return Placeholder();
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ExpansionTile(
+                    tilePadding: EdgeInsets.zero,
+                    // collapsedBackgroundColor:
+                    //     context.theme.scaffoldBackgroundColor,
+                    // backgroundColor: context.theme.scaffoldBackgroundColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    minTileHeight: 100,
+                    // minTileHeight: 80,
                     leading: Image.asset(
-                      width: 80,
+                      width: 40,
+                      // height: 10,
                       service.image ?? '',
                       fit: BoxFit.cover,
                     ),

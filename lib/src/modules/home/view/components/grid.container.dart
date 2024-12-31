@@ -15,13 +15,13 @@ class GridContainer extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset(gridItem.imagePath, height: 40, width: 40),
+          Image.asset(gridItem.imagePath, height: 50, width: 50),
           5.toHeight,
           Flexible(
             child: Text(
               gridItem.title,
               textAlign: TextAlign.center,
-              style: context.text.bodySmall!.copyWith(
+              style: context.text.titleMedium!.copyWith(
                 color: context.theme.primaryColor,
               ),
             ),

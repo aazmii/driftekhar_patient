@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:driftekhar_patient/src/constants/constants.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart';
@@ -8,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
 
+import 'components/book.appt.button.dart';
 import 'components/grid.container.dart';
 import 'components/surgon.carousel.dart';
 
@@ -58,15 +58,7 @@ class HomeView extends StatelessWidget {
                       child: SizedBox(
                         height: 100,
                         width: 100,
-                        child: CachedNetworkImage(
-                          imageUrl:
-                              'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
-                          fit: BoxFit.cover,
-                          errorWidget: (context, url, error) =>
-                              const Icon(Icons.error),
-                          placeholder: (context, url) =>
-                              const CircularProgressIndicator(),
-                        ),
+                        child: Image.asset('assets/icons/app.icon.png'),
                       ),
                     ),
                   ),
@@ -110,7 +102,7 @@ class HomeView extends StatelessWidget {
                   )
                 ],
               ),
-              context.isTabletWidth ? 80.toHeight : 120.toHeight,
+              context.isTabletWidth ? 80.toHeight : 150.toHeight,
               // SizedBox(
               //   width: context.width * 0.9,
               //   child: ScrollingText(
@@ -129,58 +121,82 @@ class HomeView extends StatelessWidget {
               //     fontWeight: FontWeight.bold,
               //   ),
               // ),
+
+              BookApptButton(
+                onPressed: () =>
+                    Navigator.pushNamed(context, homeGridItems.first.routeName),
+              ),
+              5.toHeight,
+              const Text(
+                'Tap for appointment',
+                style: TextStyle(color: Colors.grey),
+              ),
+              20.toHeight,
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Consumer(builder: (context, ref, child) {
-                    return context.isTabletWidth
-                        ? Wrap(
-                            runSpacing: 10,
-                            spacing: 10,
-                            children: List.generate(
-                              homeGridItems.length,
-                              (index) {
-                                // print('list ${homeGridItems[index]}');
-                                return GridContainer(
-                                  gridItem: homeGridItems[index],
-                                  onTap: () => Navigator.pushNamed(
-                                      context, homeGridItems[index].routeName),
-                                );
-                              },
-                            ),
-                          )
-                        : GridView.builder(
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 10,
-                              mainAxisSpacing: 10,
-                            ),
-                            // gridDelegate:
-                            //     SliverGridDelegateWithFixedCrossAxisCount(
-                            //   crossAxisCount: crossAxisCount,
-                            //   mainAxisSpacing: 30,
-                            //   crossAxisSpacing: 10,
-                            // ),
-                            itemBuilder: (_, index) {
-                              return GridContainer(
-                                onTap: () async {
-                                  // print(homeGridItems[index].routeName);
-                                  Navigator.pushNamed(
-                                      context, homeGridItems[index].routeName);
-                                },
-                                gridItem: GridItem(
-                                  imagePath: homeGridItems[index].imagePath,
-                                  title: homeGridItems[index].title,
-                                  routeName: homeGridItems[index].routeName,
-                                ),
-                              );
-                            },
-                            itemCount: homeGridItems.length,
-                          );
-                  }),
+                child: Wrap(
+                  runSpacing: 20,
+                  spacing: 10,
+                  children: List.generate(
+                    homeGridItems.length,
+                    (index) {
+                      // print('list ${homeGridItems[index]}');
+                      return GridContainer(
+                        gridItem: homeGridItems[index],
+                        onTap: () => Navigator.pushNamed(
+                            context, homeGridItems[index].routeName),
+                      );
+                    },
+                  ),
                 ),
               ),
+              // Flexible(
+              //   child: Padding(
+              //     padding: const EdgeInsets.all(8.0),
+              //     child: Consumer(
+              //       builder: (context, ref, child) {
+              //         return context.isTabletWidth
+              //             ? Wrap(
+              //                 runSpacing: 10,
+              //                 spacing: 10,
+              //                 children: List.generate(
+              //                   homeGridItems.length,
+              //                   (index) {
+              //                     // print('list ${homeGridItems[index]}');
+              //                     return GridContainer(
+              //                       gridItem: homeGridItems[index],
+              //                       onTap: () => Navigator.pushNamed(context,
+              //                           homeGridItems[index].routeName),
+              //                     );
+              //                   },
+              //                 ),
+              //               )
+              //             : Align(
+              //                 child: GridView.builder(
+              //                   shrinkWrap: true,
+              //                   gridDelegate:
+              //                       const SliverGridDelegateWithFixedCrossAxisCount(
+              //                           crossAxisCount: 3),
+              //                   itemBuilder: (_, index) {
+              //                     return GridContainer(
+              //                       onTap: () async {
+              //                         // print(homeGridItems[index].routeName);
+              //                         Navigator.pushNamed(context,
+              //                             homeGridItems[index].routeName);
+              //                       },
+              //                       gridItem: GridItem(
+              //                         imagePath: homeGridItems[index].imagePath,
+              //                         title: homeGridItems[index].title,
+              //                         routeName: homeGridItems[index].routeName,
+              //                       ),
+              //                     );
+              //                   },
+              //                   itemCount: homeGridItems.length,
+              //                 ),
+              //               );
+              //       },
+              //     ),
+              //   ),
+              // ),
             ],
           ),
           // bottomNavigationBar: const PayAndConfimButton(),
@@ -196,62 +212,22 @@ class HomeView extends StatelessWidget {
                 'assets/icons/whatsapp.svg',
                 height: 44,
               ),
-              // icon: const Icon(
-              //   FontAwesomeIcons.whatsapp,
-              //   color: Colors.green,
-              //   size: 34,
-              // ),
             );
           }),
         ),
       ],
     );
   }
-
-  // handleRoute(BuildContext context, int index, WidgetRef ref) async {
-  //   final service = _welcomeOptions[index].title;
-
-  //   if (service == 'Book Appointment') {
-  //     await fadePush(
-  //       context,
-  //       ChembersView(
-  //         title: 'Select Chember',
-  //         onSelectChember: (chember) async {
-  //           // print(
-  //           //     'before ${ref.read(selectedChemberProvider)?.name}'); // Before updating
-  //           // ref.read(selectedChemberProvider.notifier).update(chember);
-  //           // print(
-  //           //     'after ${ref.read(selectedChemberProvider)?.name}'); // After updating
-  //           ref.read(selectedChemberProvider.notifier).update(chember);
-
-  //           await fadePush(
-  //             context,
-  //             const CreateAppointmentView(),
-  //           );
-  //         },
-  //       ),
-  //     );
-  //   }
-  //   if (service == 'Online Consultation') {
-  //     await fadePush(context, const OnlineConsultationPage());
-  //   }
-  //   if (service == 'Chembers') {
-  //     await fadePush(context, const ChembersView(title: 'Chembers'));
-  //   }
-  //   if (service == 'Services') {
-  //     await fadePush(context, const ServicesPage());
-  //   }
-  // }
 }
 
 final homeGridItems = [
   GridItem(
-    title: 'Book Appointment',
+    title: 'Book\nAppointment',
     imagePath: 'assets/images/png/book.appointment.png',
     routeName: chemberSelectionRoute,
   ),
   GridItem(
-    title: 'Online Consultation',
+    title: 'Online\nConsultation',
     // image: 'assets/images/png/online.consult.png',
     imagePath: 'assets/images/png/online.appointment.png',
     routeName: onlineConsultationRoute,

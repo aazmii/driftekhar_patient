@@ -1,5 +1,5 @@
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
-import 'package:driftekhar_patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:driftekhar_patient/src/shared.widgets/dialogs.dart';
 import 'package:flutter/material.dart';
 
 class OnlineConsultationPage extends StatelessWidget {
@@ -26,11 +26,11 @@ class OnlineConsultationPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: PayAndConfimButton(
-        fee: 700,
-        confirmText: 'Request Appointment',
-        onConfirm: () {},
-      ),
+      // bottomNavigationBar: PayAndConfimButton(
+      //   fee: 700,
+      //   confirmText: 'Request Appointment',
+      //   onConfirm: () {},
+      // ),
     );
   }
 }
@@ -50,20 +50,26 @@ class DoctorInfo extends StatelessWidget {
         child: Row(
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.circular(100),
-              child: Image.network(
-                height: 60,
-                width: 60,
-                'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.error),
-                loadingBuilder: (context, child, loadingProgress) =>
-                    loadingProgress == null
-                        ? child
-                        : const CircularProgressIndicator(),
-              ),
-            ),
+                borderRadius: BorderRadius.circular(100),
+                child: Image.asset(
+                  height: 60,
+                  width: 60,
+                  'assets/icons/app.icon.png',
+                  fit: BoxFit.cover,
+                )
+                // child: Image.network(
+                //   height: 60,
+                //   width: 60,
+                //   'https://driftekharalam.com/wp-content/uploads/2024/09/IF.png',
+                //   fit: BoxFit.cover,
+                //   errorBuilder: (context, error, stackTrace) =>
+                //       const Icon(Icons.error),
+                //   loadingBuilder: (context, child, loadingProgress) =>
+                //       loadingProgress == null
+                //           ? child
+                //           : const CircularProgressIndicator(),
+                // ),
+                ),
             const SizedBox(width: 16),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,10 +111,9 @@ class _AppointmentFormState extends State<AppointmentForma> {
       firstDate: DateTime.now(),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
+    if (picked != null && picked != selectedDate) {
+      setState(() => selectedDate = picked);
+    }
   }
 
   Future<void> _selectTime(BuildContext context) async {
@@ -116,10 +121,9 @@ class _AppointmentFormState extends State<AppointmentForma> {
       context: context,
       initialTime: TimeOfDay.now(),
     );
-    if (picked != null && picked != selectedTime)
-      setState(() {
-        selectedTime = picked;
-      });
+    if (picked != null && picked != selectedTime) {
+      setState(() => selectedTime = picked);
+    }
   }
 
   @override
@@ -127,59 +131,83 @@ class _AppointmentFormState extends State<AppointmentForma> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            GestureDetector(
+              onTap: () => _selectDate(context),
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 15,
+                  horizontal: 10,
+                ),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  // color: Colors.blue,
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Text(
+                  selectedDate == null
+                      ? "Select Date"
+                      : "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}",
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => _selectTime(context),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey),
+                  borderRadius: BorderRadius.circular(5),
+                ),
+                child: Text(
+                  selectedTime == null
+                      ? "Select Time"
+                      : selectedTime!.format(context),
+                  style: TextStyle(color: Colors.grey[700]),
+                ),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 20),
         const Text(
-          "Select Date",
+          "Reason for Consultation",
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
-        const SizedBox(height: 8),
-        GestureDetector(
-          onTap: () => _selectDate(context),
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Text(
-              selectedDate == null
-                  ? "Select Date"
-                  : "${selectedDate!.day}/${selectedDate!.month}/${selectedDate!.year}",
-              style: TextStyle(color: Colors.grey[700]),
-            ),
-          ),
-        ),
-        const SizedBox(height: 20),
-        const Text("Select Time",
-            style: TextStyle(fontWeight: FontWeight.bold)),
-        const SizedBox(height: 8),
-        GestureDetector(
-          onTap: () => _selectTime(context),
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey),
-              borderRadius: BorderRadius.circular(5),
-            ),
-            child: Text(
-              selectedTime == null
-                  ? "Select Time"
-                  : "${selectedTime!.format(context)}",
-              style: TextStyle(color: Colors.grey[700]),
-            ),
-          ),
-        ),
-        const SizedBox(height: 20),
-        const Text("Reason for Consultation",
-            style: TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 8),
         TextField(
           controller: reasonController,
           maxLines: 3,
           decoration: const InputDecoration(
+            contentPadding: EdgeInsets.all(8),
             border: OutlineInputBorder(),
             hintText: "Describe your symptoms or reason",
           ),
         ),
+        30.toHeight,
+        ElevatedButton.icon(
+          style: ElevatedButton.styleFrom(
+            minimumSize: const Size.fromHeight(55),
+            backgroundColor: context.theme.primaryColor,
+            foregroundColor: Colors.white,
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+          ),
+          onPressed: () {
+            showWarning(
+              msg: "This feature is not available yet",
+            );
+          },
+          iconAlignment: IconAlignment.end,
+          label: const Text('Pay and Confirm'),
+          icon: const Icon(
+            Icons.arrow_forward,
+            color: Colors.white,
+          ),
+        )
       ],
     );
   }
