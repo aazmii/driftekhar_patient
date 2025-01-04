@@ -33,4 +33,9 @@ class Launcher {
       rethrow;
     }
   }
+
+  static Future openWhatsApp(String number) async {
+    final whatsAppUrl = Uri.parse('https://wa.me/$number');
+    launchUrl(whatsAppUrl);
+  }
 }

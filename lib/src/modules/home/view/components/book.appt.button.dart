@@ -5,7 +5,7 @@ import 'package:lottie/lottie.dart';
 
 class BookApptButton extends StatelessWidget {
   const BookApptButton({super.key, this.onPressed});
-  final VoidCallback? onPressed; 
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -21,13 +21,13 @@ class BookApptButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Lottie.asset(
-                height: 70,
-                width: 70,
+                height: 55,
+                width: 55,
                 'assets/lotties/pointWithFinger.json',
               ),
               Text(
                 'Appointment',
-                style: context.text.titleLarge!.copyWith(
+                style: context.text.titleMedium!.copyWith(
                   color: context.theme.primaryColor,
                   fontWeight: FontWeight.bold,
                 ),

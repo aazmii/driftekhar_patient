@@ -54,6 +54,11 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
     <string>tel</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>sms</string>
+	<string>tel</string>
+	</array>
 </array>
 </dict>
 </plist>

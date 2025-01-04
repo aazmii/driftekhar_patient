@@ -3,6 +3,7 @@ import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart';
 import 'package:driftekhar_patient/src/modules/home/models/grid.model.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
+import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_svg/svg.dart';
 import 'components/book.appt.button.dart';
 import 'components/grid.container.dart';
 import 'components/surgon.carousel.dart';
+import 'components/yt.video.list.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -126,16 +128,16 @@ class HomeView extends StatelessWidget {
                 onPressed: () =>
                     Navigator.pushNamed(context, homeGridItems.first.routeName),
               ),
-              5.toHeight,
-              const Text(
-                'Tap for appointment',
-                style: TextStyle(color: Colors.grey),
-              ),
               20.toHeight,
+              // const Text(
+              //   'Tap for appointment',
+              //   style: TextStyle(color: Colors.grey),
+              // ),
+              // 20.toHeight,
               Expanded(
                 child: Wrap(
                   runSpacing: 20,
-                  spacing: 10,
+                  spacing: 20,
                   children: List.generate(
                     homeGridItems.length,
                     (index) {
@@ -148,6 +150,10 @@ class HomeView extends StatelessWidget {
                     },
                   ),
                 ),
+              ),
+              const Flexible(
+                flex: 2,
+                child: YtVideoList(),
               ),
               // Flexible(
               //   child: Padding(
@@ -203,6 +209,7 @@ class HomeView extends StatelessWidget {
           floatingActionButton: Consumer(builder: (context, ref, child) {
             return IconButton(
               onPressed: () async {
+                await Launcher.openWhatsApp('+8801964492442');
                 // const token =
                 //     'fYjLxJG5Q9a0oMvld1dMO2:APA91bHHiITYf2yQ-53u8Ierq7htr1kpKpgnbhNiAfs33oukUgWDFVtWgpXlZJlGZCfAUpoU6wkQFK4VGRN2SsdT3-ZGvqnLKyKTRxeMIEuZcq86TXtIRDw';
                 // NotificationService.instance.sendNotificationToDevice(
@@ -226,12 +233,12 @@ final homeGridItems = [
     imagePath: 'assets/images/png/book.appointment.png',
     routeName: chemberSelectionRoute,
   ),
-  GridItem(
-    title: 'Online\nConsultation',
-    // image: 'assets/images/png/online.consult.png',
-    imagePath: 'assets/images/png/online.appointment.png',
-    routeName: onlineConsultationRoute,
-  ),
+  // GridItem(
+  //   title: 'Online\nConsultation',
+  // image: 'assets/images/png/online.consult.png',
+  //   imagePath: 'assets/images/png/online.appointment.png',
+  //   routeName: onlineConsultationRoute,
+  // ),
   GridItem(
     title: 'Services',
     imagePath: 'assets/images/png/medical.kit.png',
