@@ -1,5 +1,5 @@
 import 'package:driftekhar_patient/src/modules/create.appointment/view/book.appointment.view.dart';
-import 'package:driftekhar_patient/src/modules/home/view/home.view.dart';
+import 'package:driftekhar_patient/src/modules/home/view/home.view.new.dart';
 import 'package:driftekhar_patient/src/modules/online.consultation/view/online.consultation.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +16,7 @@ const String socialsRoute = "/socials";
 
 final routesMap = {
   // '/': (context) => const HomeView(),
-  homeRoute: (context) => const HomeView(),
+  homeRoute: (context) => const HomeViewNew(),
   bookAppointmentRoute: (context) => const BookAppointmentView(),
   onlineConsultationRoute: (context) => const OnlineConsultationPage(),
   servicesRoute: (context) => const ServicesPage(),

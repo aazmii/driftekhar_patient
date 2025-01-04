@@ -1,3 +1,4 @@
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
@@ -23,15 +24,26 @@ class YtVideoList extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => PlayerWidget(videoId: videoId),
-                  ),
+                showDialog(
+                  context: context,
+                  builder: (_) {
+                    return AlertDialog(
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.zero,
+                      ),
+                      insetPadding: EdgeInsets.zero,
+                      content: PlayerWidget(videoId: videoId),
+                      actions: [
+                        TextButton(
+                          onPressed: () => Navigator.pop(context),
+                          child: const Text('Close'),
+                        ),
+                      ],
+                    );
+                  },
                 );
               },
               child: Image.network(
-                width: 120,
                 YoutubePlayer.getThumbnail(videoId: videoId!),
               ),
             ),
@@ -63,9 +75,14 @@ class _PlayerWidgetState extends State<PlayerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: YoutubePlayer(
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 2,
+          color: context.theme.primaryColor,
+        ),
+      ),
+      child: YoutubePlayer(
         controller: _controller,
         showVideoProgressIndicator: true,
         progressIndicatorColor: Colors.amber,
