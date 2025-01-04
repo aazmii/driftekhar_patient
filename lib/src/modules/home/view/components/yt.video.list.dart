@@ -87,8 +87,8 @@ class _PlayerWidgetState extends State<PlayerWidget> {
         showVideoProgressIndicator: true,
         progressIndicatorColor: Colors.amber,
         progressColors: const ProgressBarColors(
-          playedColor: Colors.amber,
-          handleColor: Colors.amberAccent,
+          playedColor: Colors.red,
+          handleColor: Colors.red,
         ),
         // onReady: () {
         //   _controller.addListener(listener);

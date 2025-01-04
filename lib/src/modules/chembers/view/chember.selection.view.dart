@@ -57,8 +57,7 @@ class ChemberSelectionView extends ConsumerWidget {
                       }),
                     ]);
                   },
-                  error: (e, s) =>
-                      const Center(child: Text('Could not get chember data')),
+                  error: (e, s) => const NoChemberWidget(),
                   loading: () => const Center(
                     child: CircularProgressIndicator(),
                   ),
@@ -81,6 +80,24 @@ class ChemberSelectionView extends ConsumerWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NoChemberWidget extends StatelessWidget {
+  const NoChemberWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Can not book appointment', style: context.text.titleLarge),
+          // Text('We have an issue with chember', style: context.text.titleLarge),
+          Text('Please try again later', style: context.text.bodyLarge),
+        ],
       ),
     );
   }

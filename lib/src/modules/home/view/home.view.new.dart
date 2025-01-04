@@ -34,7 +34,7 @@ class HomeViewNew extends StatelessWidget {
               height: 30,
               speed: textScrollSpeed,
               text:
-                  'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয়। প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ',
+                  'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয়। প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ডায়াগনোসিস করুন অল্প সময়ে।',
               textStyle: context.text.titleSmall!.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Colors.grey.shade800,

@@ -18,7 +18,7 @@ class FCMService {
     log('Token $fcmToken', name: 'fcm');
 
     if (fcmToken != null) await storeFCMToken(fcmToken);
-  }
+  } 
 
   static Future<void> storeFCMToken(String fcmToken) async {
     await _firestore.collection('tokens').doc(fcmToken).set({
