@@ -2,7 +2,6 @@ import 'package:driftekhar_patient/src/constants/constants.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart';
 import 'package:driftekhar_patient/src/modules/home/models/grid.model.dart';
-import 'package:driftekhar_patient/src/modules/home/view/components/auto.scroll.text.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
