@@ -45,6 +45,13 @@ class YtVideoList extends StatelessWidget {
               },
               child: Image.network(
                 YoutubePlayer.getThumbnail(videoId: videoId!),
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.error),
+                loadingBuilder: (context, child, loadingProgress) =>
+                    loadingProgress == null
+                        ? child
+                        : const Center(child: CircularProgressIndicator()),
               ),
             ),
           );

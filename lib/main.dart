@@ -18,7 +18,8 @@ Future<void> _init() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   if (Platform.isAndroid || Platform.isIOS) await FCMService.initNotification();
-  FCMService.listenToTokenRefresh();
+  //  AuthService.signInAnonymously();
+  // FCMService.listenToTokenRefresh();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   // await openDB();
 }

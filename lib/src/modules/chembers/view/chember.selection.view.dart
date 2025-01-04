@@ -57,9 +57,28 @@ class ChemberSelectionView extends ConsumerWidget {
                       }),
                     ]);
                   },
-                  error: (e, s) => const NoChemberWidget(),
-                  loading: () => const Center(
-                    child: CircularProgressIndicator(),
+                  error: (e, s) {
+                    return const Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularProgressIndicator(),
+                          Text('Getting chember data ..')
+                        ],
+                      ),
+                    );
+                    // log('error getting chemnber data $e');
+                    // return const NoChemberWidget();
+                  },
+                  loading: () => Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const CircularProgressIndicator(),
+                        10.toWidth,
+                        Text('Getting chember data ..')
+                      ],
+                    ),
                   ),
                 ),
 

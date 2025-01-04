@@ -4,6 +4,7 @@ import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart
 import 'package:driftekhar_patient/src/modules/home/models/grid.model.dart';
 import 'package:driftekhar_patient/src/modules/home/view/components/auto.scroll.text.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
+import 'package:driftekhar_patient/src/services/auth.service/auth.service.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_svg/svg.dart';
 import 'components/book.appt.button.dart';
 import 'components/grid.container.dart';
 import 'components/surgon.carousel.dart';
+import 'components/waiting.screen.dart';
 import 'components/yt.video.list.dart';
 
 class HomeViewNew extends StatelessWidget {
@@ -20,71 +22,82 @@ class HomeViewNew extends StatelessWidget {
   final textScrollSpeed = 70.0;
   @override
   Widget build(BuildContext context) {
+    // return WaitingScreen();
     return Scaffold(
       // endDrawer: const AppDrawer(),
-
-      body: Column(
-        children: [
-          const CoverSection(),
-          context.isTabletWidth ? 80.toHeight : 140.toHeight,
-          const Divider(),
-          SizedBox(
-            width: context.width * 0.9,
-            child: ScrollingText(
-              height: 30,
-              speed: textScrollSpeed,
-              text:
-                  'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয়। প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ডায়াগনোসিস করুন অল্প সময়ে।',
-              textStyle: context.text.titleSmall!.copyWith(
-                fontWeight: FontWeight.bold,
-                color: Colors.grey.shade800,
-              ),
-            ),
-          ),
-          10.toHeight,
-          BookApptButton(
-            onPressed: () =>
-                Navigator.pushNamed(context, homeOptions.first.routeName),
-          ),
-          20.toHeight,
-          //---- OPTIONS
-          SizedBox(
-            height: 100,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: List.generate(
-                  homeOptions.length,
-                  (index) {
-                    // print('list ${homeOptions[index]}');
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
-                      child: GridContainer(
-                        gridItem: homeOptions[index],
-                        onTap: () => Navigator.pushNamed(
-                            context, homeOptions[index].routeName),
+      body: FutureBuilder(
+          future: AuthService.signInAnonymously(),
+          builder: (_, snapshot) {
+            return snapshot.connectionState == ConnectionState.waiting
+                ? const WaitingScreen()
+                : Column(
+                    children: [
+                      const CoverSection(),
+                      context.isTabletWidth ? 80.toHeight : 140.toHeight,
+                      const Divider(),
+                      SizedBox(
+                        width: context.width * 0.9,
+                        child: ScrollingText(
+                          height: 30,
+                          speed: textScrollSpeed,
+                          text:
+                              'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয়। প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ডায়াগনোসিস করুন অল্প সময়ে।',
+                          textStyle: context.text.titleSmall!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.grey.shade800,
+                          ),
+                        ),
                       ),
-                    );
-                  },
-                ),
-              ),
-            ),
-          ),
-          20.toHeight,
-          //---- YOUTUBE VIDEOS
-          const Padding(
-            padding: EdgeInsets.only(left: 8.0),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text('Popular on youtube'),
-            ),
-          ),
-          const SizedBox(
-            height: 100,
-            child: YtVideoList(),
-          ),
-        ],
-      ),
+                      10.toHeight,
+                      BookApptButton(
+                        onPressed: () => Navigator.pushNamed(
+                            context, homeOptions.first.routeName),
+                      ),
+                      20.toHeight,
+                      //---- OPTIONS
+                      SizedBox(
+                        height: 100,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: List.generate(
+                              homeOptions.length,
+                              (index) {
+                                // print('list ${homeOptions[index]}');
+                                return Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10),
+                                  child: GridContainer(
+                                    gridItem: homeOptions[index],
+                                    onTap: () => Navigator.pushNamed(
+                                        context, homeOptions[index].routeName),
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                      20.toHeight,
+                      //---- YOUTUBE VIDEOS
+                      const Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Popular on youtube',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 100,
+                        child: YtVideoList(),
+                      ),
+                    ],
+                  );
+          }),
+      // body:
       // bottomNavigationBar: const PayAndConfimButton(),
       floatingActionButton: Consumer(builder: (context, ref, child) {
         return IconButton(

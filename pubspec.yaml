@@ -50,6 +50,8 @@ dependencies:
   dotted_border: ^2.1.0
   lottie: ^3.3.0
   youtube_player_flutter: ^9.1.1
+  firebase_auth: ^5.3.4
+  shared_preferences: ^2.3.5
 
 
 dev_dependencies:
