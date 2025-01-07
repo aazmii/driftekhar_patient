@@ -1,5 +1,6 @@
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/patient.provider.dart';
+import 'package:driftekhar_patient/src/utils/appt.utils/appt.util.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:uuid/uuid.dart';
 
@@ -35,6 +36,7 @@ class NewAppointment extends _$NewAppointment {
     try {
       state = state.copyWith(patientData: ref.read(patientProvider));
       await AppointmentService.create(reqeusted, state.id!, state.toMap());
+      await sendNotificationToAdmins(state);
       ref.invalidateSelf();
       ref.invalidate(patientProvider);
       return true;

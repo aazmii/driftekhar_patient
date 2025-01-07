@@ -4,8 +4,8 @@ import 'package:driftekhar_patient/src/modules/home/components/social.icons.dart
 import 'package:driftekhar_patient/src/modules/home/models/grid.model.dart';
 import 'package:driftekhar_patient/src/modules/home/view/components/auto.scroll.text.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
-import 'package:driftekhar_patient/src/services/auth.service/auth.service.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
+import 'package:driftekhar_patient/src/utils/user.data.init.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/svg.dart';
@@ -26,7 +26,7 @@ class HomeViewNew extends StatelessWidget {
     return Scaffold(
       // endDrawer: const AppDrawer(),
       body: FutureBuilder(
-          future: AuthService.signInAnonymously(),
+          future: initUserData(),
           builder: (_, snapshot) {
             return snapshot.connectionState == ConnectionState.waiting
                 ? const WaitingScreen()
@@ -101,13 +101,7 @@ class HomeViewNew extends StatelessWidget {
       // bottomNavigationBar: const PayAndConfimButton(),
       floatingActionButton: Consumer(builder: (context, ref, child) {
         return IconButton(
-          onPressed: () async {
-            await Launcher.openWhatsApp('+8801964492442');
-            // const token =
-            //     'fYjLxJG5Q9a0oMvld1dMO2:APA91bHHiITYf2yQ-53u8Ierq7htr1kpKpgnbhNiAfs33oukUgWDFVtWgpXlZJlGZCfAUpoU6wkQFK4VGRN2SsdT3-ZGvqnLKyKTRxeMIEuZcq86TXtIRDw';
-            // NotificationService.instance.sendNotificationToDevice(
-            //     token, 'Patient App', 'Patient app body');
-          },
+          onPressed: () async => await Launcher.openWhatsApp(whastsappNumber),
           icon: SvgPicture.asset(
             'assets/icons/whatsapp.svg',
             height: 44,
