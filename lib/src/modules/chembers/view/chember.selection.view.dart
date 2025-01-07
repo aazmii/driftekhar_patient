@@ -59,13 +59,8 @@ class ChemberSelectionView extends ConsumerWidget {
                   },
                   error: (e, s) {
                     return const Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircularProgressIndicator(),
-                          Text('Getting chember data ..')
-                        ],
-                      ),
+                      child: Text(
+                          'Could not get chember data to make appointment'),
                     );
                     // log('error getting chemnber data $e');
                     // return const NoChemberWidget();
@@ -76,7 +71,7 @@ class ChemberSelectionView extends ConsumerWidget {
                       children: [
                         const CircularProgressIndicator(),
                         10.toWidth,
-                        Text('Getting chember data ..')
+                        const Text('Getting chember data ..')
                       ],
                     ),
                   ),
