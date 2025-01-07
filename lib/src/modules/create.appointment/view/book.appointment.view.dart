@@ -8,7 +8,7 @@ import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'components/appointment.form.dart';
+import 'components/appt.form.dart';
 
 class BookAppointmentView extends ConsumerWidget {
   const BookAppointmentView({super.key});
