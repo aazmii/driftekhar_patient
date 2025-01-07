@@ -16,7 +16,7 @@ const String socialsRoute = "/socials";
 
 final routesMap = {
   // '/': (context) => const HomeView(),
-  homeRoute: (context) => const HomeViewNew(),
+  homeRoute: (context) => const HomeView(),
   bookAppointmentRoute: (context) => const BookAppointmentView(),
   onlineConsultationRoute: (context) => const OnlineConsultationPage(),
   servicesRoute: (context) => const ServicesPage(),

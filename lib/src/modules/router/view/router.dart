@@ -8,7 +8,6 @@ class AppRouter extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return const HomeViewNew();
-    // return const HomeView();
+    return const HomeView();
   }
 }

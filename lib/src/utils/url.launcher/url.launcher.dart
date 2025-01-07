@@ -15,7 +15,7 @@ class Launcher {
     }
   }
 
-  static Future browseSocialLink(String link) async {
+  static Future browseLink(String link) async {
     if (await canLaunchUrl(Uri.parse(link))) {
       await launchUrl(
         Uri.parse(link),

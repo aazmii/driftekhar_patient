@@ -1,5 +1,5 @@
-import 'package:driftekhar_patient/src/models/social.link.model/social.link.dart';
-import 'package:driftekhar_patient/src/providers/social.link.providers.dart';
+import 'package:driftekhar_patient/src/constants/constants.dart';
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,42 +10,45 @@ class SocialIcons extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final linkModels = ref.watch(socialLinksPProvider);
-
+    // final linkModels = ref.watch(socialLinksPProvider);
+    //TODO: make this clickable
     return Row(
-      children: List.generate(
-        linkModels.length,
-        (index) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SocialIconHolder(
-            socialLink: linkModels[index],
-          ),
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        TappableIcon(
+          iconPath: 'assets/icons/youtube.svg',
+          onTap: () async => await Launcher.browseLink(youtube),
         ),
-      ),
+        20.toWidth,
+        TappableIcon(
+          iconPath: 'assets/icons/facebook.svg',
+          onTap: () async => await Launcher.browseLink(facebook),
+        ),
+        20.toWidth,
+        TappableIcon(
+          iconPath: 'assets/icons/tiktok.svg',
+          onTap: () async => await Launcher.browseLink(tiktok),
+        ),
+        10.toWidth,
+      ],
     );
   }
 }
 
-class SocialIconHolder extends StatelessWidget {
-  const SocialIconHolder({
+class TappableIcon extends StatelessWidget {
+  const TappableIcon({
     super.key,
-    required this.socialLink,
+    required this.iconPath,
+    this.onTap,
   });
-
-  final SocialLink socialLink;
+  final String iconPath;
+  final VoidCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        if (socialLink.link == 'whatsapp') return;
-        Launcher.browseSocialLink(socialLink.link!);
-      },
-      child: SvgPicture.asset(
-        'assets/icons/${socialLink.icon}.svg',
-        height: 25,
-        width: 25,
-      ),
+      onTap: onTap,
+      child: SvgPicture.asset(iconPath, height: 30, width: 30),
     );
   }
 }
