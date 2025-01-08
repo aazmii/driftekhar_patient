@@ -11,9 +11,8 @@ class SocialIcons extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     // final linkModels = ref.watch(socialLinksPProvider);
-    //TODO: make this clickable
     return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.end,
       children: [
         TappableIcon(
           iconPath: 'assets/icons/youtube.svg',

@@ -11,16 +11,16 @@ class OnlineConsultationPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Consultation Request"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: const Padding(
+        padding: EdgeInsets.all(16.0),
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const DoctorInfo(),
-              const SizedBox(height: 20),
+              DoctorInfo(),
+              SizedBox(height: 20),
               AppointmentForma(),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               // const SubmitButton(),
             ],
           ),
@@ -93,11 +93,13 @@ class DoctorInfo extends StatelessWidget {
 }
 
 class AppointmentForma extends StatefulWidget {
+  const AppointmentForma({super.key});
+
   @override
-  _AppointmentFormState createState() => _AppointmentFormState();
+  AppointmentFormState createState() => AppointmentFormState();
 }
 
-class _AppointmentFormState extends State<AppointmentForma> {
+class AppointmentFormState extends State<AppointmentForma> {
   String? selectedGender;
   List<String> genderOptions = ['Male', 'Female', 'Other'];
   DateTime? selectedDate;

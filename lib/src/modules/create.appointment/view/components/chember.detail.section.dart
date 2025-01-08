@@ -73,7 +73,7 @@ class _ChemberInformation extends ConsumerWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('${chember?.roomNo ?? '-'}'),
+                    child: Text(chember?.roomNo ?? '-'),
                   ),
                 ],
               ),
@@ -99,7 +99,7 @@ class _ChemberInformation extends ConsumerWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text('${chember?.phone ?? '-'}'),
+                    child: Text(chember?.phone ?? '-'),
                   ),
                 ],
               ),
