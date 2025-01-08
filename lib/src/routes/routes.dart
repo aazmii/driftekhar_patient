@@ -1,6 +1,7 @@
 import 'package:driftekhar_patient/src/modules/create.appointment/view/book.appointment.view.dart';
 import 'package:driftekhar_patient/src/modules/home/view/home.view.dart';
 import 'package:driftekhar_patient/src/modules/online.consultation/view/online.consultation.dart';
+import 'package:driftekhar_patient/src/modules/social.link.page/view/view.dart';
 import 'package:flutter/material.dart';
 
 import '../modules/chembers/view/chember.selection.view.dart';
@@ -21,5 +22,5 @@ final routesMap = {
   onlineConsultationRoute: (context) => const OnlineConsultationPage(),
   servicesRoute: (context) => const ServicesPage(),
   chemberSelectionRoute: (context) => const ChemberSelectionView(),
-  socialsRoute: (context) => Scaffold(appBar: AppBar()),
+  socialsRoute: (context) => const SocialLinksView()
 };

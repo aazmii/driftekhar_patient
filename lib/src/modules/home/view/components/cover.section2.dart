@@ -14,7 +14,13 @@ class CoverSection2 extends StatelessWidget {
       children: [
         Column(
           children: [
-            Expanded(flex: 5, child: SurgonCarousel()),
+            Expanded(
+              flex: 5,
+              child: ColoredBox(
+                color: context.theme.primaryColor,
+                child: SurgonCarousel(),
+              ),
+            ),
             const Expanded(child: SocialIcons()),
           ],
         ),

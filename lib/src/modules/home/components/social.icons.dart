@@ -16,17 +16,17 @@ class SocialIcons extends ConsumerWidget {
       children: [
         TappableIcon(
           iconPath: 'assets/icons/youtube.svg',
-          onTap: () async => await Launcher.browseLink(youtube),
+          onTap: () async => await Launcher.browseLink(youtubeLink),
         ),
         20.toWidth,
         TappableIcon(
           iconPath: 'assets/icons/facebook.svg',
-          onTap: () async => await Launcher.browseLink(facebook),
+          onTap: () async => await Launcher.browseLink(facebookLink),
         ),
         20.toWidth,
         TappableIcon(
           iconPath: 'assets/icons/tiktok.svg',
-          onTap: () async => await Launcher.browseLink(tiktok),
+          onTap: () async => await Launcher.browseLink(tiktokLink),
         ),
         10.toWidth,
       ],

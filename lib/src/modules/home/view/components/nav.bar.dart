@@ -50,7 +50,7 @@ Future handleAction(BuildContext context, String name) async {
   } else if (name == 'Appoint.') {
     await Navigator.pushNamed(context, chemberSelectionRoute);
   } else if (name == 'Messenger') {
-    Launcher.browseLink(facebook);
+    Launcher.browseLink(facebookLink);
   } else if (name == 'Whatsapp') {
     await Launcher.openWhatsApp('+8801964492442');
   }

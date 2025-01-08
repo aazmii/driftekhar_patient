@@ -32,13 +32,18 @@ class YtVideoList extends StatelessWidget {
                         borderRadius: BorderRadius.zero,
                       ),
                       insetPadding: EdgeInsets.zero,
-                      content: PlayerWidget(videoId: videoId),
-                      actions: [
-                        TextButton(
-                          onPressed: () => Navigator.pop(context),
-                          child: const Text('Close'),
-                        ),
-                      ],
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Align(
+                              alignment: Alignment.topRight,
+                              child: IconButton(
+                                onPressed: () => Navigator.pop(context),
+                                icon: const Icon(Icons.close),
+                              )),
+                          PlayerWidget(videoId: videoId),
+                        ],
+                      ),
                     );
                   },
                 );
