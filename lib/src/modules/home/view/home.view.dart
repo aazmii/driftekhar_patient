@@ -1,7 +1,7 @@
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/home/models/grid.model.dart';
 import 'package:driftekhar_patient/src/modules/home/view/components/auto.scroll.text.dart';
-import 'package:driftekhar_patient/src/modules/home/view/components/cover.section2.dart';
+import 'package:driftekhar_patient/src/modules/home/view/components/cover.section.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +21,7 @@ class HomeView extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Expanded(flex: 2, child: CoverSection2()),
+          const Expanded(flex: 2, child: CoverSection()),
           Expanded(
             flex: 3,
             child: Padding(
@@ -153,7 +153,7 @@ final _homeOptions = [
   GridItem(
     title: 'Chembers',
     imagePath: 'assets/images/png/consult.png',
-    routeName: chemberSelectionRoute,
+    routeName: chemberViewRoute,
   ),
   GridItem(
     title: 'Socials',

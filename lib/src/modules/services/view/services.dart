@@ -1,4 +1,4 @@
-import 'package:driftekhar_patient/src/modules/home/components/services/models/service.model.dart';
+import 'package:driftekhar_patient/src/modules/services/models/service.model.dart';
 import 'package:flutter/material.dart';
 
 import '../providers/services.dart';

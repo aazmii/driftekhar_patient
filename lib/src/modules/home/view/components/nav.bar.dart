@@ -1,11 +1,11 @@
 import 'package:driftekhar_patient/src/constants/constants.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/modules/home/models/nav.model.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../models/nav.model.dart';
 
 class FoatingNavBar extends StatelessWidget {
   FoatingNavBar({super.key});
