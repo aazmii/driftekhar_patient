@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "834482021363",
+    "project_id": "driftekhar-ec1e3",
+    "storage_bucket": "driftekhar-ec1e3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834482021363:android:1856ff7db4ee272f89a886",
+        "android_client_info": {
+          "package_name": "com.codeconnect.driftekhar.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834482021363-ohovf5u1fd9agdop5u60sg13v1tim2bk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYiI61g7Iwquy2L8m5CWk8BZwbYR42AGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834482021363-ohovf5u1fd9agdop5u60sg13v1tim2bk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "834482021363-5t176bgrosnoa441jum8jqkanqcvct96.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codeconnect.driftekhar.driftekharAdmin"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:834482021363:android:b9320d72e8e72b8e89a886",
+        "android_client_info": {
+          "package_name": "com.codeconnect.driftekhar.patient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "834482021363-ohovf5u1fd9agdop5u60sg13v1tim2bk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYiI61g7Iwquy2L8m5CWk8BZwbYR42AGw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "834482021363-ohovf5u1fd9agdop5u60sg13v1tim2bk.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "834482021363-5t176bgrosnoa441jum8jqkanqcvct96.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codeconnect.driftekhar.driftekharAdmin"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -13,16 +13,19 @@ extension BuildContextExtension on BuildContext {
   double get personalInfoTextFieldSmallMinimumWidth => 245;
 
   bool get tooSmall => width < 350 || height < 500;
+  bool get isTabletWidth => width >= 600;
 
   TextTheme get text => theme.textTheme;
 
-  Future<T?> push<T>(Widget page) => Navigator.of(this).push<T>(MaterialPageRoute(builder: (_) => page));
+  Future<T?> push<T>(Widget page) =>
+      Navigator.of(this).push<T>(MaterialPageRoute(builder: (_) => page));
 
-  Future<T?> pushReplacement<T>(Widget page) =>
-      Navigator.of(this).pushReplacement<T, T?>(MaterialPageRoute(builder: (_) => page));
+  Future<T?> pushReplacement<T>(Widget page) => Navigator.of(this)
+      .pushReplacement<T, T?>(MaterialPageRoute(builder: (_) => page));
 
   Future<T?> pushAndRemoveUntil<T>(Widget page) =>
-      Navigator.of(this).pushAndRemoveUntil<T>(MaterialPageRoute(builder: (_) => page), (_) => false);
+      Navigator.of(this).pushAndRemoveUntil<T>(
+          MaterialPageRoute(builder: (_) => page), (_) => false);
 
   void pop<T>([T? result]) => Navigator.of(this).pop(result);
 
@@ -33,4 +36,8 @@ extension BuildContextExtension on BuildContext {
   bool get isMacOS => theme.platform == TargetPlatform.macOS;
   bool get isDesktop => isWindows || isLinux || isMacOS;
   bool get isMobile => isAndroid || isIOS;
+
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason> showSnack(
+          String message) =>
+      ScaffoldMessenger.of(this).showSnackBar(SnackBar(content: Text(message)));
 }

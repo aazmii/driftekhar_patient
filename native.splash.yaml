@@ -1,0 +1,10 @@
+flutter_native_splash: 
+  android: true
+  ios: false 
+  web: false
+  color: "#D7C6FB"
+  
+  android_12:
+    color: "#D7C6FB" 
+#run this command after changing the file 
+#dart run flutter_native_splash:create --path=native.splash.yaml

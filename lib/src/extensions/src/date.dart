@@ -181,4 +181,14 @@ extension DateUtils on DateTime {
     final weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
     return weekdays[weekday - 1];
   }
+
+  //12 Oct - 03:30 PM
+  String get toDateAndTime => DateFormat('dd MMM - hh:mm a').format(this);
+  // String get formatted => DateFormat('dd MMM, yyyy – hh:mm a').format(this);
+
+  //Sat, 12 Oct
+  String get toDate => DateFormat('EEE, d MMMM').format(this);
+
+  //02:30 PM
+  String get toTime => DateFormat('hh:mm a').format(this);
 }
