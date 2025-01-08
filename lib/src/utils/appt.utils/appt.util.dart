@@ -35,5 +35,5 @@ String getTitle(AppointmentType t) {
 }
 
 String getBody(Appointment appt) {
-  return '${appt.patientData?.name} (${appt.patientData?.age}, ${appt.patientData?.gender?.name}) wants to book an appointment at ${appt.chember?.name}';
+  return '${appt.patientData?.name} (${appt.patientData?.age}, ${appt.patientData?.gender?.name}) wants to book an appointment at ${appt.chember?.name}. Phone: ${appt.patientData?.phone}';
 }
