@@ -24,7 +24,8 @@ class CoverSection extends StatelessWidget {
             const Expanded(child: SocialIcons()),
           ],
         ),
-        SafeArea(
+        Padding(
+          padding: EdgeInsets.only(top: context.height * 0.06),
           child: Image.asset(
             'assets/images/png/dr.iftekhar.png',
             color: Colors.white,

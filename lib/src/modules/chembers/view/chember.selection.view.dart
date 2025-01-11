@@ -1,4 +1,3 @@
-import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/chembers/providers/chembers.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
@@ -9,11 +8,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'components/chember.card.dart';
 
 class ChemberSelectionView extends ConsumerWidget {
-  const ChemberSelectionView({super.key, this.onSelectChember});
-  final ValueSetter<Chember>? onSelectChember;
+  const ChemberSelectionView({super.key});
+  // final ValueSetter<Chember>? onSelectChember;
 
   @override
   Widget build(BuildContext context, ref) {
+    // print('this');
+    // return Scaffold();
     final selectedChember =
         ref.watch(newAppointmentProvider.select((v) => v.chember));
     final notifier = ref.watch(newAppointmentProvider.notifier);
@@ -44,14 +45,10 @@ class ChemberSelectionView extends ConsumerWidget {
                       ...chembers.map((e) {
                         return Padding(
                           padding: const EdgeInsets.symmetric(vertical: 10.0),
-                          child: InkWell(
-                            onTap: () => onSelectChember?.call(e),
-                            child: ChemberCard(
-                              chember: e,
-                              isSelected: e.id == selectedChember?.id,
-                              onPressed: () => notifier.setChember = e,
-                            ),
-                            // child: ChemberContainer(chember: e),
+                          child: ChemberCard(
+                            chember: e,
+                            isSelected: e.name == selectedChember?.name,
+                            onPressed: () => notifier.setChember = e,
                           ),
                         );
                       }),
@@ -84,12 +81,13 @@ class ChemberSelectionView extends ConsumerWidget {
                 backgroundColor: Colors.green.shade600,
                 foregroundColor: Colors.white,
               ),
-              onPressed: selectedChember?.id == null
+              onPressed: selectedChember == null
                   ? null
                   : () => Navigator.pushNamed(context, bookAppointmentRoute),
               label: const Text('Book Schedule'),
               icon: const Icon(
                 Icons.arrow_forward,
+                color: Colors.white,
               ),
             ),
           ],

@@ -48,15 +48,20 @@ class YtVideoList extends StatelessWidget {
                   },
                 );
               },
-              child: Image.network(
-                YoutubePlayer.getThumbnail(videoId: videoId!),
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.error),
-                loadingBuilder: (context, child, loadingProgress) =>
-                    loadingProgress == null
-                        ? child
-                        : const Center(child: CircularProgressIndicator()),
+              child: Container(
+                decoration: BoxDecoration(border: Border.all(width: 2)),
+                height: 100,
+                width: 160,
+                child: Image.network(
+                  YoutubePlayer.getThumbnail(videoId: videoId!),
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) =>
+                      const Icon(Icons.error),
+                  loadingBuilder: (context, child, loadingProgress) =>
+                      loadingProgress == null
+                          ? child
+                          : const Center(child: CircularProgressIndicator()),
+                ),
               ),
             ),
           );

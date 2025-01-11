@@ -26,6 +26,14 @@ class Launcher {
     }
   }
 
+  static Future sendMail(String mailTo, String subject) async {
+    final Uri emailLaunchUri = Uri.parse('mailto:$mailTo?subject=$subject');
+    // print('can launch ${await canLaunchUrl(emailLaunchUri)}');
+    await launchUrl(emailLaunchUri);
+
+    // mailto:smith@example.org?subject=News&body=New%20plugin
+  }
+
   static Future callNumber(String number) async {
     try {
       await launchUrlString("tel://$number");

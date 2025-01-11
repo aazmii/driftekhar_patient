@@ -1,3 +1,4 @@
+import 'package:driftekhar_patient/src/modules/app.status.view/view/appt.status.view.dart';
 import 'package:driftekhar_patient/src/modules/chembers/view/chember.view.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/view/book.appointment.view.dart';
 import 'package:driftekhar_patient/src/modules/home/view/home.view.dart';
@@ -9,6 +10,7 @@ import '../modules/services/view/services.dart';
 
 const String homeRoute = "/home";
 const String bookAppointmentRoute = "/book_appointment";
+const String apptStatusRoute = "/appt_status";
 // const String upcomingApptRoute = "/upcoming_appointment";
 const String onlineConsultationRoute = "/consultation";
 const String servicesRoute = "/services";
@@ -25,5 +27,6 @@ final routesMap = {
   servicesRoute: (context) => const ServicesPage(),
   chemberViewRoute: (context) => const ChembersView(),
   chemberSelectionRoute: (context) => const ChemberSelectionView(),
-  socialsRoute: (context) => const SocialLinksView()
+  socialsRoute: (context) => const SocialLinksView(),
+  apptStatusRoute: (context) => const ApptStatusView()
 };

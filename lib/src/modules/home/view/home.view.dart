@@ -6,9 +6,12 @@ import 'package:driftekhar_patient/src/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 import 'components/book.appt.button.dart';
+import 'components/drawer.dart';
 import 'components/grid.container.dart';
 import 'components/nav.bar.dart';
 import 'components/yt.video.list.dart';
+
+final GlobalKey<ScaffoldState> homeViewScaffoldKey = GlobalKey();
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -18,6 +21,13 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     // return WaitingScreen();
     return Scaffold(
+      key: homeViewScaffoldKey,
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: Colors.white),
+      ),
+      endDrawer: const AppDrawer(),
+      extendBodyBehindAppBar: true,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -119,6 +129,7 @@ class HomeView extends StatelessWidget {
                   const Flexible(
                     child: YtVideoList(),
                   ),
+                  5.toHeight,
                   Padding(
                     padding: const EdgeInsets.all(0.0),
                     child: FoatingNavBar(),
