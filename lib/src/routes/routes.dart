@@ -1,4 +1,4 @@
-import 'package:driftekhar_patient/src/modules/app.status.view/view/appt.status.view.dart';
+import 'package:driftekhar_patient/src/modules/app.status/view/user.appts.view.dart';
 import 'package:driftekhar_patient/src/modules/chembers/view/chember.view.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/view/book.appointment.view.dart';
 import 'package:driftekhar_patient/src/modules/home/view/home.view.dart';
@@ -28,5 +28,5 @@ final routesMap = {
   chemberViewRoute: (context) => const ChembersView(),
   chemberSelectionRoute: (context) => const ChemberSelectionView(),
   socialsRoute: (context) => const SocialLinksView(),
-  apptStatusRoute: (context) => const ApptStatusView()
+  apptStatusRoute: (context) => const UserApptsView()
 };

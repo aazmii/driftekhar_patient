@@ -90,8 +90,10 @@ class HomeView extends StatelessWidget {
                   ),
                   10.toHeight,
                   BookApptButton(
-                    onPressed: () => Navigator.pushNamed(
-                        context, _homeOptions.first.routeName),
+                    onPressed: () async {
+                      Navigator.pushNamed(
+                          context, _homeOptions.first.routeName);
+                    },
                   ),
                   20.toHeight,
                   //---- OPTIONS

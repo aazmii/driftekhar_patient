@@ -15,17 +15,23 @@ import 'package:vector_graphics/vector_graphics.dart' as _vg;
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/app.icon.png
+  AssetGenImage get appIcon => const AssetGenImage('assets/icons/app.icon.png');
+
+  /// File path: assets/icons/facebook.svg
+  SvgGenImage get facebook => const SvgGenImage('assets/icons/facebook.svg');
+
   /// File path: assets/icons/insta.svg
   SvgGenImage get insta => const SvgGenImage('assets/icons/insta.svg');
 
   /// File path: assets/icons/location.svg
   SvgGenImage get location => const SvgGenImage('assets/icons/location.svg');
 
-  /// File path: assets/icons/snap.svg
-  SvgGenImage get snap => const SvgGenImage('assets/icons/snap.svg');
-
   /// File path: assets/icons/tiktok.svg
   SvgGenImage get tiktok => const SvgGenImage('assets/icons/tiktok.svg');
+
+  /// File path: assets/icons/web.svg
+  SvgGenImage get web => const SvgGenImage('assets/icons/web.svg');
 
   /// File path: assets/icons/whatsapp.svg
   SvgGenImage get whatsapp => const SvgGenImage('assets/icons/whatsapp.svg');
@@ -34,8 +40,8 @@ class $AssetsIconsGen {
   SvgGenImage get youtube => const SvgGenImage('assets/icons/youtube.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values =>
-      [insta, location, snap, tiktok, whatsapp, youtube];
+  List<dynamic> get values =>
+      [appIcon, facebook, insta, location, tiktok, web, whatsapp, youtube];
 }
 
 class $AssetsImagesGen {
@@ -50,6 +56,16 @@ class $AssetsImagesGen {
   /// Directory path: assets/images/service.images
   $AssetsImagesServiceImagesGen get service =>
       const $AssetsImagesServiceImagesGen();
+}
+
+class $AssetsLottiesGen {
+  const $AssetsLottiesGen();
+
+  /// File path: assets/lotties/pointWithFinger.json
+  String get pointWithFinger => 'assets/lotties/pointWithFinger.json';
+
+  /// List of all assets
+  List<String> get values => [pointWithFinger];
 }
 
 class $AssetsTextsGen {
@@ -261,6 +277,7 @@ class Assets {
 
   static const $AssetsIconsGen icons = $AssetsIconsGen();
   static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsLottiesGen lotties = $AssetsLottiesGen();
   static const $AssetsTextsGen texts = $AssetsTextsGen();
 }
 
