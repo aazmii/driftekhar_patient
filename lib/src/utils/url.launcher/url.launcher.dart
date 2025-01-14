@@ -1,3 +1,4 @@
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
@@ -11,7 +12,8 @@ class Launcher {
     if (await canLaunchUrl(Uri.parse(googleUrl))) {
       await launchUrl(Uri.parse(googleUrl));
     } else {
-      throw 'Could not launch $googleUrl';
+      // throw 'Could not launch $googleUrl';
+      await Fluttertoast.showToast(msg: 'Error');
     }
   }
 
@@ -22,28 +24,34 @@ class Launcher {
         mode: LaunchMode.externalApplication,
       );
     } else {
-      throw 'Could not launch $link';
+      await Fluttertoast.showToast(msg: 'Error');
     }
   }
 
   static Future sendMail(String mailTo, String subject) async {
-    final Uri emailLaunchUri = Uri.parse('mailto:$mailTo?subject=$subject');
-    // print('can launch ${await canLaunchUrl(emailLaunchUri)}');
-    await launchUrl(emailLaunchUri);
-
-    // mailto:smith@example.org?subject=News&body=New%20plugin
+    try {
+      final Uri emailLaunchUri = Uri.parse('mailto:$mailTo?subject=$subject');
+      await launchUrl(emailLaunchUri);
+    } catch (e) {
+      await Fluttertoast.showToast(msg: 'Error');
+    }
   }
 
   static Future callNumber(String number) async {
     try {
       await launchUrlString("tel://$number");
     } catch (e) {
-      rethrow;
+      await Fluttertoast.showToast(msg: 'Error');
+      // rethrow;
     }
   }
 
   static Future openWhatsApp(String number) async {
-    final whatsAppUrl = Uri.parse('https://wa.me/$number');
-    launchUrl(whatsAppUrl);
+    try {
+      final whatsAppUrl = Uri.parse('https://wa.me/$number');
+      launchUrl(whatsAppUrl);
+    } catch (e) {
+      await Fluttertoast.showToast(msg: 'Error');
+    }
   }
 }

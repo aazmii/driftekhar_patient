@@ -7,6 +7,7 @@ Color lightBlue = Colors.blue.shade100;
 
 //social links
 const whastsappNumber = '+8801964492442';
+const whastsappNumber2 = '+8801964492442';
 const callingNumber = '+8801964492442';
 const facebookLink =
     'https://www.facebook.com/dr.mohammadiftekharalam?mibextid=wwXIfr&mibextid=wwXIfr';

@@ -40,8 +40,7 @@ class UserAppts extends _$UserAppts {
 
   Future removeNonExistantIds(List<String> ids, List<Appointment> appts) async {
     for (var id in ids) {
-      log('deliting $id', name: 'hive');
-
+      if (!apptsBox.containsKey(id)) log('deliting $id', name: 'hive');
       if (!apptsBox.containsKey(id)) apptsBox.delete(id);
     }
   }

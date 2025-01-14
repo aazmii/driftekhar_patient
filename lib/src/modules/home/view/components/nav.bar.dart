@@ -51,6 +51,7 @@ Future handleAction(BuildContext context, String name) async {
   } else if (name == 'Messenger') {
     Launcher.browseLink(facebookLink);
   } else if (name == 'Whatsapp') {
-    await Launcher.openWhatsApp('+8801964492442');
+    await Launcher.openWhatsApp(whastsappNumber);
+    // await Launcher.openWhatsApp('+8801964492442');
   }
 }
