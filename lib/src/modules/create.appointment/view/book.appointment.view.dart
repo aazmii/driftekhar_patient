@@ -3,6 +3,7 @@ import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/patient.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/view/components/custom.bottom.bar.dart';
+import 'package:driftekhar_patient/src/modules/home/view/components/create.success.dialog.dart';
 import 'package:driftekhar_patient/src/utils/ui/loader.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
@@ -76,19 +77,18 @@ class BookAppointmentView extends ConsumerWidget {
   }
 
   Future _handleSubmit(BuildContext context, WidgetRef ref) async {
-    await showLoader(msg: 'Please wait...');
+    if (!apptFormKey.currentState!.validate()) return false;
+
+    await showLoader( );
     final success = await ref.read(newAppointmentProvider.notifier).createNew();
     if (!context.mounted) return;
     context.pop();
     if (!success) {
       context.showSnack('Could not craete your appointment');
     } else {
-      // ref.invalidate(newAppointmentProvider);
-      context.showSnack('Request sent Successfully');
-
-      ///POP twice if auth wrapper is used,
       context.pop();
       context.pop();
+      await showCreateSuccessDialog(context);
     }
   }
 }

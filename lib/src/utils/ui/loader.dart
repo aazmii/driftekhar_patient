@@ -1,6 +1,7 @@
 import 'package:driftekhar_patient/src/app.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 Future showLoader({String? msg}) async {
   if (navigatorKey.currentContext == null) return;
@@ -13,7 +14,7 @@ Future showLoader({String? msg}) async {
 
 class LoadingWidget extends StatelessWidget {
   const LoadingWidget({super.key, this.msg});
-  final _defaultMsg = 'Loading, please wait...';
+  // final _defaultMsg = 'Loading, please wait...';
   final String? msg;
   @override
   Widget build(BuildContext context) {
@@ -25,11 +26,16 @@ class LoadingWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(mainAxisSize: MainAxisSize.min, children: [
-          const CircularProgressIndicator(),
+          // const CircularProgressIndicator(),
+          Lottie.asset(
+            'assets/lotties/loader.json',
+            height: 100,
+            width: 100,
+          ),
           if (msg != null) ...[
             const SizedBox(height: 15),
             Text(
-              msg ?? _defaultMsg,
+              msg!,
               style: context.text.titleMedium,
             ),
           ],

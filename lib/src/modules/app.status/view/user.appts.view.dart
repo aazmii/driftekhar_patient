@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/modules/app.status/provider/user.appts.provider.dart';
+import 'package:driftekhar_patient/src/shared.widgets/error.widget.dart';
 import 'package:driftekhar_patient/src/shared.widgets/loading.widget.dart';
 import 'package:driftekhar_patient/src/shared.widgets/no.connection.widget.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -40,11 +42,11 @@ class UserApptsView extends ConsumerWidget {
                 );
               },
               error: (error, stackTrace) {
-                final ex = error as FirebaseException;
+                log(error.toString(), name: 'error getting appoitnments');
                 return Center(
-                  child: ex.code == 'unavailable'
+                  child: error.toString().contains('unavailable')
                       ? const NoConnectionWidget()
-                      : const NoConnectionWidget(),
+                      : const UnknownErrorWidget(),
                 );
               },
               loading: () => const Center(

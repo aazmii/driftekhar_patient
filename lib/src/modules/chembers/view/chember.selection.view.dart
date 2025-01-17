@@ -2,6 +2,7 @@ import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/chembers/providers/chembers.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
+import 'package:driftekhar_patient/src/utils/ui/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -62,16 +63,7 @@ class ChemberSelectionView extends ConsumerWidget {
                     // log('error getting chemnber data $e');
                     // return const NoChemberWidget();
                   },
-                  loading: () => Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const CircularProgressIndicator(),
-                        10.toWidth,
-                        const Text('Getting chember data ..')
-                      ],
-                    ),
-                  ),
+                  loading: () => const Center(child: LoadingWidget()),
                 ),
 
             ElevatedButton.icon(

@@ -36,7 +36,7 @@ class NewAppointment extends _$NewAppointment {
   Future<bool> createNew() async {
     try {
       state = state.copyWith(patientData: ref.read(patientProvider));
-      await AppointmentService.create(reqeusted, state.id!, state.toMap());
+      await AppointmentService.create(state);
       await apptsBox.add(state.id!);
       await sendNotificationToAdmins(state);
       ref.invalidateSelf();

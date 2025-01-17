@@ -16,15 +16,16 @@ class UnknownErrorWidget extends StatelessWidget {
           size: 50,
           color: Colors.red,
         ),
-        Text(
-          'Something went wrong',
-          style: context.text.titleLarge!.copyWith(
-            fontWeight: FontWeight.bold,
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 12.0),
+          child: Text(
+            'Something went wrong',
+            style: context.text.titleLarge!.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
-        const Text(
-          'Please check your internet connection and try again',
-        ),
+        const Text('Please wait for a while and try again'),
       ],
     );
   }

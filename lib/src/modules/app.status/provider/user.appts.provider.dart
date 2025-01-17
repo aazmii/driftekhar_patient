@@ -26,8 +26,10 @@ class UserAppts extends _$UserAppts {
     log('${ids.length} appointment id', name: 'hive');
     try {
       final list = [
-        ...await ApptService.getAllFromCollection('requested', ids),
-        ...await ApptService.getAllFromCollection('confirmed', ids)
+        ...await ApptService.getAllFromCollection(
+            AppointmentService.reqeusted, ids),
+        ...await ApptService.getAllFromCollection(
+            AppointmentService.approved, ids)
       ];
 
       // remove expired ids form hive
@@ -47,8 +49,10 @@ class UserAppts extends _$UserAppts {
 
   Future<List<Appointment>> getAllAppts() async {
     final ids = apptsBox.values.toList();
-    final requesteds = await ApptService.getAllFromCollection('requested', ids);
-    final approved = await ApptService.getAllFromCollection('confirmed', ids);
+    final requesteds = await ApptService.getAllFromCollection(
+        AppointmentService.reqeusted, ids);
+    final approved = await ApptService.getAllFromCollection(
+        AppointmentService.approved, ids);
     return [...approved, ...requesteds];
   }
 }

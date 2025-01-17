@@ -1,5 +1,6 @@
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class LoaderWidget extends StatelessWidget {
   const LoaderWidget({super.key, this.msg});
@@ -16,12 +17,11 @@ class LoaderWidget extends StatelessWidget {
         child: SizedBox(
           height: 100,
           width: 200,
-          child: Row(
-            children: [
-              const CircularProgressIndicator(),
-              const SizedBox(width: 10),
-              Flexible(child: Text(msg!, style: context.text.titleMedium!)),
-            ],
+          child: Lottie.asset(
+            'assets/lotties/loader.json',
+            repeat: true,
+            reverse: true,
+            animate: true,
           ),
         ),
       ),
