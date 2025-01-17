@@ -19,6 +19,7 @@ class ChemberSelectionView extends ConsumerWidget {
     final selectedChember =
         ref.watch(newAppointmentProvider.select((v) => v.chember));
     final notifier = ref.watch(newAppointmentProvider.notifier);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Book Appointment'),
@@ -65,23 +66,23 @@ class ChemberSelectionView extends ConsumerWidget {
                   },
                   loading: () => const Center(child: LoadingWidget()),
                 ),
-
-            ElevatedButton.icon(
-              iconAlignment: IconAlignment.end,
-              style: ElevatedButton.styleFrom(
-                minimumSize: const Size.fromHeight((60)),
-                backgroundColor: Colors.green.shade600,
-                foregroundColor: Colors.white,
+            if (ref.watch(chembersProvider).hasValue)
+              ElevatedButton.icon(
+                iconAlignment: IconAlignment.end,
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size.fromHeight((60)),
+                  backgroundColor: Colors.green.shade600,
+                  foregroundColor: Colors.white,
+                ),
+                onPressed: selectedChember == null
+                    ? null
+                    : () => Navigator.pushNamed(context, bookAppointmentRoute),
+                label: const Text('Book Schedule'),
+                icon: const Icon(
+                  Icons.arrow_forward,
+                  color: Colors.white,
+                ),
               ),
-              onPressed: selectedChember == null
-                  ? null
-                  : () => Navigator.pushNamed(context, bookAppointmentRoute),
-              label: const Text('Book Schedule'),
-              icon: const Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-              ),
-            ),
           ],
         ),
       ),

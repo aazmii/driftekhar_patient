@@ -46,10 +46,12 @@ class HomeView extends StatelessWidget {
                           ? context.text.titleLarge!.copyWith(
                               color: context.theme.primaryColor,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'OpenSans',
                             )
                           : context.text.titleMedium!.copyWith(
                               color: context.theme.primaryColor,
                               fontWeight: FontWeight.bold,
+                              fontFamily: 'OpenSans',
                             ),
                     ),
                   ),

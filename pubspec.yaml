@@ -84,6 +84,13 @@ flutter:
     - assets/icons/
     - assets/texts/services/
     - assets/lotties/
+    - assets/fonts/
+
+  fonts:
+    - family: OpenSans
+      fonts:
+        - asset: assets/fonts/NotoSans-VariableFont_wdth,wght.ttf
+          weight: 700
 
 
 flutter_gen:

@@ -19,41 +19,39 @@ class UserApptsView extends ConsumerWidget {
   Widget build(BuildContext context, ref) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Your Appointment'),
+        title: const Text('Appointments'),
       ),
-      body: RefreshIndicator(
-        onRefresh: ref.read(userApptsProvider.notifier).refresh,
-        child: ref.watch(userApptsProvider).when(
-              data: (appts) {
-                if (appts.isEmpty) return const EmptyApptWidget();
-                final pendings = appts
-                    .where((a) => a.status == AppointmentStatus.pending)
-                    .toList();
-                final approved = appts
-                    .where((a) => a.status == AppointmentStatus.confirmed)
-                    .toList();
-                return Column(
-                  children: [
-                    if (approved.isNotEmpty)
-                      Expanded(child: ApprovedAppts(appts: approved)),
-                    if (pendings.isNotEmpty)
-                      Expanded(child: PendingApptList(appts: pendings))
-                  ],
-                );
-              },
-              error: (error, stackTrace) {
-                log(error.toString(), name: 'error getting appoitnments');
-                return Center(
-                  child: error.toString().contains('unavailable')
-                      ? const NoConnectionWidget()
-                      : const UnknownErrorWidget(),
-                );
-              },
-              loading: () => const Center(
-                child: LoaderWidget(msg: 'Getting your appointments..'),
-              ),
+      body: ref.watch(userApptsProvider).when(
+            data: (appts) {
+              if (appts.isEmpty) return const EmptyApptWidget();
+              final pendings = appts
+                  .where((a) => a.status == AppointmentStatus.pending)
+                  .toList();
+              final approved = appts
+                  .where((a) => a.status == AppointmentStatus.confirmed)
+                  .toList();
+
+              return Column(
+                children: [
+                  if (approved.isNotEmpty)
+                    Expanded(child: ApprovedAppts(appts: approved)),
+                  if (pendings.isNotEmpty)
+                    Expanded(child: PendingApptList(appts: pendings))
+                ],
+              );
+            },
+            error: (error, stackTrace) {
+              log(error.toString(), name: 'error getting appoitnments');
+              return Center(
+                child: error.toString().contains('unavailable')
+                    ? const NoConnectionWidget()
+                    : const UnknownErrorWidget(),
+              );
+            },
+            loading: () => const Center(
+              child: LoaderWidget(msg: 'Getting your appointments..'),
             ),
-      ),
+          ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:driftekhar_patient/firebase_options.dart';
 import 'package:driftekhar_patient/src/db/paths.dart';
 import 'package:driftekhar_patient/src/services/fcm.service/fcm.service.dart';
+import 'package:driftekhar_patient/src/utils/user.data.init.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart' show WidgetsFlutterBinding, runApp;
 import 'package:flutter/services.dart' show DeviceOrientation, SystemChrome;
@@ -22,7 +23,7 @@ Future<void> _init() async {
   if (Platform.isAndroid || Platform.isIOS) await FCMService.initNotification();
   await initDir();
   await initHive();
-  // await AuthService.signInAnonymously();
+  initUserData(); //do not wait for this to be done
   // FCMService.listenToTokenRefresh();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   // await openDB();

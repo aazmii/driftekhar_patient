@@ -32,23 +32,23 @@ class PayAndConfimButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 0),
         child: Row(
           children: [
-            12.toWidth,
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Consultation Fee', style: context.text.titleSmall),
-                  Text(
-                    fee == 0 ? 'Free' : 'TK. ${fee ?? 0}',
-                    style: context.text.titleMedium!.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: context.theme.primaryColor,
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            // 12.toWidth,
+            // Expanded(
+            //   child: Column(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     crossAxisAlignment: CrossAxisAlignment.start,
+            //     children: [
+            //       Text('Consultation Fee', style: context.text.titleSmall),
+            //       Text(
+            //         fee == 0 ? 'Free' : 'TK. ${fee ?? 0}',
+            //         style: context.text.titleMedium!.copyWith(
+            //           fontWeight: FontWeight.bold,
+            //           color: context.theme.primaryColor,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
             Expanded(
               flex: 2,
               child: Consumer(builder: (context, ref, child) {

@@ -21,6 +21,11 @@ class UserAppts extends _$UserAppts {
     state = AsyncData(appts);
   }
 
+  /// Gets all appointments from hive and fetches the associated data from
+  /// firestore. Removes any expired or non-existent ids from hive.
+  ///
+  /// The order of the returned list is first the requested then the approved
+  /// appointments.
   Future<List<Appointment>> getAllAndProcess() async {
     final ids = apptsBox.values.toList();
     log('${ids.length} appointment id', name: 'hive');
@@ -33,26 +38,36 @@ class UserAppts extends _$UserAppts {
       ];
 
       // remove expired ids form hive
-      await removeNonExistantIds(ids, list);
+      await _removeNonExistantIds(ids, list);
       return list;
     } catch (e) {
       rethrow;
     }
   }
 
-  Future removeNonExistantIds(List<String> ids, List<Appointment> appts) async {
+  Future add(Appointment appt) async {
+    // await apptsBox.put(appt.id, appt.id!);
+    log('added ${appt.id} to hive', name: 'hive');
+    state = const AsyncLoading();
+    state = AsyncData(state.value!..add(appt));
+  }
+
+  Future _removeNonExistantIds(
+      List<String> ids, List<Appointment> appts) async {
     for (var id in ids) {
-      if (!apptsBox.containsKey(id)) log('deliting $id', name: 'hive');
-      if (!apptsBox.containsKey(id)) apptsBox.delete(id);
+      if (!apptsBox.values.contains(id)) {
+        apptsBox.delete(id);
+        log('removed $id from hive', name: 'hive');
+      }
     }
   }
 
-  Future<List<Appointment>> getAllAppts() async {
-    final ids = apptsBox.values.toList();
-    final requesteds = await ApptService.getAllFromCollection(
-        AppointmentService.reqeusted, ids);
-    final approved = await ApptService.getAllFromCollection(
-        AppointmentService.approved, ids);
-    return [...approved, ...requesteds];
-  }
+  // Future<List<Appointment>> _getAllAppts() async {
+  //   final ids = apptsBox.values.toList();
+  //   final requesteds = await ApptService.getAllFromCollection(
+  //       AppointmentService.reqeusted, ids);
+  //   final approved = await ApptService.getAllFromCollection(
+  //       AppointmentService.approved, ids);
+  //   return [...approved, ...requesteds];
+  // }
 }

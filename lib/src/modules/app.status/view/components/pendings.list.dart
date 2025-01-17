@@ -2,7 +2,9 @@ import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 
-import 'pending.appt.card.dart';
+import 'pending.card.dart';
+
+final ScrollController _approvedController = ScrollController();
 
 class PendingApptList extends StatelessWidget {
   const PendingApptList({super.key, required this.appts});
@@ -12,23 +14,30 @@ class PendingApptList extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'You have ${appts.length} pending appointment(s)',
-            style: context.text.titleMedium!.copyWith(
-              color: Colors.grey,
-            ),
-          ),
+          Text('Pending Appointments', style: context.text.titleLarge),
+          5.toHeight,
           const Text(
             'Soon you willreceieve an SMS form docotor',
             style: TextStyle(color: Colors.grey),
           ),
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: ListView(
-                children: appts.map((appt) => ApptCard(appt: appt)).toList(),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+              child: Scrollbar(
+                thumbVisibility: true,
+                thickness: 8,
+                radius: const Radius.circular(8),
+                controller: _approvedController,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 10.0),
+                  child: ListView(
+                    controller: _approvedController,
+                    children:
+                        appts.map((appt) => PendingCard(appt: appt)).toList(),
+                  ),
+                ),
               ),
             ),
           ),

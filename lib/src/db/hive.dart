@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:hive_flutter/hive_flutter.dart';
 
 late final Box<String> apptsBox;
@@ -10,5 +8,4 @@ Future initHive() async {
 
 Future openBoxes() async {
   apptsBox = await Hive.openBox('appointmentBox');
-  log('Hive opened');
 }

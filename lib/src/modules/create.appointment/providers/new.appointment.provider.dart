@@ -1,5 +1,6 @@
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/db/hive.dart';
+import 'package:driftekhar_patient/src/modules/app.status/provider/user.appts.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/patient.provider.dart';
 import 'package:driftekhar_patient/src/utils/appt.utils/appt.util.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -39,6 +40,8 @@ class NewAppointment extends _$NewAppointment {
       await AppointmentService.create(state);
       await apptsBox.add(state.id!);
       await sendNotificationToAdmins(state);
+      ref.read(userApptsProvider.notifier).add(state);
+      // ignore: unused_result
       ref.invalidateSelf();
       ref.invalidate(patientProvider);
       return true;

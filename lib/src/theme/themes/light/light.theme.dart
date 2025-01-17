@@ -42,4 +42,5 @@ ThemeData get lightTheme => ThemeData(
           borderRadius: BorderRadius.all(Radius.circular(6.0)),
         ),
       ),
+      fontFamily: 'OpenSans',
     );
