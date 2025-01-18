@@ -45,7 +45,7 @@ class AppDrawer extends StatelessWidget {
               title: const Text('Privacy Policy'),
             ),
             const Spacer(),
-            const Text('Version 0.1.0+8'),
+            const Text('Version 0.1.0+9'),
             10.toHeight,
           ],
         ),

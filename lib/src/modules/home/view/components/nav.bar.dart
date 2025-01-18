@@ -6,8 +6,8 @@ import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class FoatingNavBar extends StatelessWidget {
-  FoatingNavBar({super.key});
+class CustomNavBar extends StatelessWidget {
+  CustomNavBar({super.key});
   final items = [
     NavItem(icon: Icons.phone, label: 'Call'),
     NavItem(icon: Icons.calendar_month, label: 'Appoint.'),
@@ -16,13 +16,10 @@ class FoatingNavBar extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints:
-          const BoxConstraints(maxWidth: 300, minWidth: 200, maxHeight: 80),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8.0),
       child: Row(
-        mainAxisAlignment: context.isTabletWidth
-            ? MainAxisAlignment.spaceAround
-            : MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: items
             .map((e) => InkWell(
                   onTap: () => handleAction(context, e.label!),
@@ -42,6 +39,44 @@ class FoatingNavBar extends StatelessWidget {
     );
   }
 }
+// class CustomNavBar extends StatelessWidget {
+//   CustomNavBar({super.key});
+//   final items = [
+//     NavItem(icon: Icons.phone, label: 'Call'),
+//     NavItem(icon: Icons.calendar_month, label: 'Appoint.'),
+//     NavItem(icon: FontAwesomeIcons.facebookMessenger, label: 'Messenger'),
+//     NavItem(icon: FontAwesomeIcons.whatsapp, label: 'Whatsapp'),
+//   ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return ConstrainedBox(
+//       constraints:
+//           const BoxConstraints(maxWidth: 300, minWidth: 200, maxHeight: 80),
+//       child: Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+//         // mainAxisAlignment: context.isTabletWidth
+//         //     ? MainAxisAlignment.spaceAround
+//         //     : MainAxisAlignment.spaceBetween,
+//         children: items
+//             .map((e) => InkWell(
+//                   onTap: () => handleAction(context, e.label!),
+//                   child: Column(
+//                     mainAxisSize: MainAxisSize.min,
+//                     children: [
+//                       Icon(e.icon, color: context.theme.primaryColor),
+//                       Text(
+//                         e.label ?? '',
+//                         style: TextStyle(color: context.theme.primaryColor),
+//                       )
+//                     ],
+//                   ),
+//                 ))
+//             .toList(),
+//       ),
+//     );
+//   }
+// }
 
 Future handleAction(BuildContext context, String name) async {
   if (name == 'Call') {

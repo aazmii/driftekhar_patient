@@ -7,16 +7,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'gender.picker.dart';
 import 'visit.type.picker.dart';
+
 final apptFormKey = GlobalKey<FormState>();
+
 class AppointmentForm extends ConsumerWidget {
   const AppointmentForm({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
     final patientNotifier = ref.watch(patientProvider.notifier);
-    // final apptNotifier = ref.watch(newAppointmentProvider.notifier);
-    // final selectedDt =
-    //     ref.watch(newAppointmentProvider.select((v) => v.dateTime));
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -34,8 +33,6 @@ class AppointmentForm extends ConsumerWidget {
               validator: Validators.validatePhoneNumber,
               decoration: const InputDecoration(
                 prefix: Text('+88'),
-                // hintText: 'Phone Number',
-                // label: TextWithAstrics('Phone Number'),
               ),
             ),
             10.toHeight,
@@ -67,6 +64,14 @@ class AppointmentForm extends ConsumerWidget {
             10.toHeight,
             const TextWithAstrics('Type'),
             const VisitTypePicker(),
+            10.toHeight,
+            const Text('Note (optional)'),
+            TextField(
+              decoration:
+                  const InputDecoration(contentPadding: EdgeInsets.all(8)),
+              onChanged: (note) => patientNotifier.setNote = note,
+              maxLines: 3,
+            ),
           ],
         ),
       ),

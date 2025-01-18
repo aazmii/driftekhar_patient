@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 final urls = [
-  'https://www.youtube.com/watch?v=5jAnClVI2ts&list=PLxOr1HN5uNzllwsxdt2PVAQQrggaQ9Z6R&index=7',
   'https://www.youtube.com/watch?v=vpowzm9dyTo',
   'https://www.youtube.com/watch?v=_QTz4JV5uM8',
   'https://www.youtube.com/watch?v=yNU0El3CWWY',
   'https://www.youtube.com/watch?v=OCHgE9FevLQ',
+  'https://www.youtube.com/watch?v=5jAnClVI2ts&list=PLxOr1HN5uNzllwsxdt2PVAQQrggaQ9Z6R&index=7',
 ];
 
 class YtVideoList extends StatelessWidget {

@@ -10,6 +10,8 @@ class Patient extends _$Patient {
 
   set setName(String? name) => state = state.copyWith(name: name);
 
+  set setNote(String? note) => state = state.copyWith(note: note);
+
   set setGender(Gender? gender) => state = state.copyWith(gender: gender);
 
   set setPhone(String? phone) => state = state.copyWith(phone: phone);

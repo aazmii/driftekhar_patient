@@ -1,7 +1,8 @@
 name: driftekhar_patient
 description: "An app that will help patient to book an appointment with a doctor."
 publish_to: 'none'
-version: 0.1.0+8
+#update version code in app drawer as well
+version: 0.1.0+9
 
 environment:
   sdk: ^3.5.3

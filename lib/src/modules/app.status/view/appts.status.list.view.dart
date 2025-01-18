@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/app.status/provider/user.appts.provider.dart';
-import 'package:driftekhar_patient/src/shared.widgets/error.widget.dart';
 import 'package:driftekhar_patient/src/shared.widgets/loading.widget.dart';
 import 'package:driftekhar_patient/src/shared.widgets/no.connection.widget.dart';
 import 'package:flutter/material.dart';
@@ -18,21 +17,20 @@ class UserApptsView extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    final hasValue = ref.watch(userApptsProvider).value != null;
+    // final hasValue = ref.watch(userApptsProvider).value != null;
 
     return Scaffold(
       appBar: AppBar(
         title: const Text('Appointments'),
         actions: [
-          if (hasValue)
-            IconButton(
-              onPressed: () => ref.read(userApptsProvider.notifier).refresh(),
-              icon: Icon(
-                Icons.refresh,
-                // color: Colors.red,
-                color: context.theme.primaryColor,
-              ),
-            )
+          IconButton(
+            onPressed: () => ref.read(userApptsProvider.notifier).refresh(),
+            icon: Icon(
+              Icons.refresh,
+              // color: Colors.red,
+              color: context.theme.primaryColor,
+            ),
+          )
         ],
       ),
       body: ref.watch(userApptsProvider).when(
@@ -59,7 +57,8 @@ class UserApptsView extends ConsumerWidget {
               return Center(
                 child: error.toString().contains('unavailable')
                     ? const NoConnectionWidget()
-                    : const UnknownErrorWidget(),
+                    : const EmptyApptWidget(),
+                //UnknownErrorWidget()
               );
             },
             loading: () => const Center(child: LoaderWidget()),
