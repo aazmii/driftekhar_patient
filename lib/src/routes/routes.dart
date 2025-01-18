@@ -1,4 +1,4 @@
-import 'package:driftekhar_patient/src/modules/app.status/view/user.appts.view.dart';
+import 'package:driftekhar_patient/src/modules/app.status/view/appts.status.list.view.dart';
 import 'package:driftekhar_patient/src/modules/chembers/view/chember.view.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/view/book.appointment.view.dart';
 import 'package:driftekhar_patient/src/modules/home/view/home.view.dart';

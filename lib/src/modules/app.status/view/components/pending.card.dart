@@ -70,10 +70,12 @@ class PendingCard extends StatelessWidget {
                 size: iconSize,
                 color: context.theme.primaryColor,
               ),
-              Text(
-                appt.chember?.name ?? '',
-                style: context.text.titleMedium!.copyWith(
-                  fontWeight: FontWeight.bold,
+              Expanded(
+                child: Text(
+                  appt.chember?.name ?? '',
+                  style: context.text.titleMedium!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ],

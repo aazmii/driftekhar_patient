@@ -1,3 +1,4 @@
+import 'package:driftekhar_patient/src/constants/constants.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/utils/url.launcher/url.launcher.dart';
 import 'package:flutter/material.dart';
@@ -38,14 +39,14 @@ class AppDrawer extends StatelessWidget {
               title: const Text('Send Feedback'),
             ),
             ListTile(
-              onTap: () => Launcher.browseLink(
-                  'https://www.termsfeed.com/live/679b83bd-7ec9-4941-94ab-afc2f3128189'),
+              onTap: () => Launcher.browseLink(privacyLink),
               tileColor: Colors.transparent,
               leading: const Icon(Icons.privacy_tip),
               title: const Text('Privacy Policy'),
             ),
             const Spacer(),
-            const Text('Version 0.1.0+6')
+            const Text('Version 0.1.0+8'),
+            10.toHeight,
           ],
         ),
       ),

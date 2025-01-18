@@ -15,8 +15,11 @@ class EmptyApptWidget extends StatelessWidget {
             height: 100,
             width: 100,
           ),
+          10.toHeight,
+          Text('Nothing to show', style: context.text.titleLarge),
+          10.toHeight,
           Text(
-            'You have no appointments yet',
+            'You have not created any appointments yet',
             style: context.text.titleMedium,
           ),
         ],

@@ -14,14 +14,9 @@ class ApprovedAppts extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            'You have ${appts.length} approved appointment(s)',
-            style: context.text.titleMedium!.copyWith(
-              color: Colors.grey,
-            ),
-          ),
+          Text('Approved (${appts.length})', style: context.text.titleLarge),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),

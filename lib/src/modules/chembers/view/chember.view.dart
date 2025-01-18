@@ -1,7 +1,7 @@
 import 'package:doc_patient_libs/doc_patient_libs.dart';
-import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/chembers/providers/chembers.provider.dart';
 import 'package:driftekhar_patient/src/modules/create.appointment/providers/new.appointment.provider.dart';
+import 'package:driftekhar_patient/src/utils/ui/loader.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -52,16 +52,7 @@ class ChembersView extends ConsumerWidget {
                           'Could not get chember data to make appointment'),
                     );
                   },
-                  loading: () => Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const CircularProgressIndicator(),
-                        10.toWidth,
-                        const Text('Getting chember data ..')
-                      ],
-                    ),
-                  ),
+                  loading: () => const Center(child: LoadingWidget()),
                 ),
           ],
         ),

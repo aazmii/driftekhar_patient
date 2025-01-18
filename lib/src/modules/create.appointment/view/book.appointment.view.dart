@@ -79,7 +79,7 @@ class BookAppointmentView extends ConsumerWidget {
   Future _handleSubmit(BuildContext context, WidgetRef ref) async {
     if (!apptFormKey.currentState!.validate()) return false;
 
-    await showLoader( );
+    await showLoader();
     final success = await ref.read(newAppointmentProvider.notifier).createNew();
     if (!context.mounted) return;
     context.pop();

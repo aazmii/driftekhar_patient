@@ -11,6 +11,8 @@ class ApptService {
   ) async {
     List<Appointment> appts = [];
     try {
+      final exist = await doesCollectionExist(collectionName);
+      if (!exist) return [];
       QuerySnapshot querySnapshot = await _firestore
           .collection(collectionName)
           .where(FieldPath.documentId, whereIn: docIds)
@@ -22,5 +24,18 @@ class ApptService {
       rethrow;
     }
     return appts;
+  }
+
+  static Future<bool> doesCollectionExist(String collectionName) async {
+    try {
+      // Query the collection with a limit of 1 document
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection(collectionName)
+          .limit(1)
+          .get();
+      return querySnapshot.docs.isNotEmpty;
+    } catch (e) {
+      return false;
+    }
   }
 }

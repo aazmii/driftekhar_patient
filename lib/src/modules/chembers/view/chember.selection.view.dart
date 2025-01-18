@@ -66,7 +66,8 @@ class ChemberSelectionView extends ConsumerWidget {
                   },
                   loading: () => const Center(child: LoadingWidget()),
                 ),
-            if (ref.watch(chembersProvider).hasValue)
+            // if (ref.watch(chembersProvider).hasValue)
+            if (selectedChember != null)
               ElevatedButton.icon(
                 iconAlignment: IconAlignment.end,
                 style: ElevatedButton.styleFrom(
@@ -74,9 +75,8 @@ class ChemberSelectionView extends ConsumerWidget {
                   backgroundColor: Colors.green.shade600,
                   foregroundColor: Colors.white,
                 ),
-                onPressed: selectedChember == null
-                    ? null
-                    : () => Navigator.pushNamed(context, bookAppointmentRoute),
+                onPressed: () =>
+                    Navigator.pushNamed(context, bookAppointmentRoute),
                 label: const Text('Book Schedule'),
                 icon: const Icon(
                   Icons.arrow_forward,

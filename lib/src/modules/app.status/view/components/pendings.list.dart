@@ -16,7 +16,9 @@ class PendingApptList extends StatelessWidget {
       child: Column(
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Pending Appointments', style: context.text.titleLarge),
+          Text('Peneding (${appts.length})', style: context.text.titleLarge),
+
+          // Text('Pending Appointments', style: context.text.titleLarge),
           5.toHeight,
           const Text(
             'Soon you willreceieve an SMS form docotor',
@@ -34,8 +36,13 @@ class PendingApptList extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 10.0),
                   child: ListView(
                     controller: _approvedController,
-                    children:
-                        appts.map((appt) => PendingCard(appt: appt)).toList(),
+                    children: appts
+                        .map((appt) => Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 6.0),
+                              child: PendingCard(appt: appt),
+                            ))
+                        .toList(),
                   ),
                 ),
               ),
