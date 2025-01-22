@@ -78,11 +78,11 @@ class ChemberCard extends StatelessWidget {
               ...List.generate(
                 chember.schedules!.length,
                 (i) {
-                  final slots = chember.schedules![i].slots;
-                  if (slots == null) return const Text('No Slots');
-                  final slotStr = slots
+                  final timings = chember.schedules![i].timings;
+                  if (timings == null) return const Text('No Slots');
+                  final slotStr = timings
                       .map((slot) =>
-                          '${slot.start.format(context)} - ${slot.end.format(context)}')
+                          '${slot.start?.format(context)} - ${slot.end?.format(context)}')
                       .toList();
 
                   return Padding(

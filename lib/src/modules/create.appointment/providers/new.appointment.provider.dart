@@ -39,7 +39,7 @@ class NewAppointment extends _$NewAppointment {
       state = state.copyWith(patientData: ref.read(patientProvider));
       await AppointmentService.create(state);
       await apptsBox.add(state.id!);
-      await sendNotificationToAdmins(state);
+      await ApptUtils.sendNotificationToAdmins(state);
       ref.read(userApptsProvider.notifier).add(state);
       // ignore: unused_result
       ref.invalidateSelf();

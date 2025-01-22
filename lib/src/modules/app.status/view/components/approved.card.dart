@@ -1,6 +1,7 @@
 import 'package:doc_patient_libs/doc_patient_libs.dart';
 import 'package:driftekhar_patient/src/constants/ui.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
+import 'package:driftekhar_patient/src/utils/appt.utils/appt.util.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -23,7 +24,10 @@ class AppointmentCardState extends State<ApprovedCard> {
   @override
   Widget build(BuildContext context) {
     final age = widget.appt.patientData?.age;
-
+    final serial = ApptUtils.calculateSerial(
+      widget.appt.chember?.schedules ?? [],
+      widget.appt.bookedSlot!,
+    );
     // final type = widget.appt.type?.name.toUpperCase();
     final textStyle = context.text.titleMedium!.copyWith(
       fontWeight: FontWeight.bold,
@@ -74,7 +78,7 @@ class AppointmentCardState extends State<ApprovedCard> {
                 ),
                 // 10.toWidth,
                 Text(
-                  '${widget.appt.serial ?? ''}',
+                  '${serial ?? ''}',
                   style: textStyle,
                   // ),
                 ),

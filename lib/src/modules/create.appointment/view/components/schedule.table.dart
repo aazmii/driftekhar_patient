@@ -10,8 +10,9 @@ class ScheduleViewTable extends ConsumerWidget {
   @override
   Widget build(BuildContext context, ref) {
     final schedules = ref.watch(selectedChemberProvider)?.schedules ?? [];
-    final filtered =
-        schedules.where((s) => s.slots != null && s.slots!.isNotEmpty).toList();
+    final filtered = schedules
+        .where((s) => s.timings != null && s.timings!.isNotEmpty)
+        .toList();
 
     // print(schedules);
 
@@ -37,8 +38,8 @@ class ScheduleViewTable extends ConsumerWidget {
 }
 
 TableRow buildTableRow(Schedule scedule) {
-  final startTime = scedule.slots?.first.start.to12Hour;
-  final endTime = scedule.slots?.first.end.to12Hour;
+  final startTime = scedule.timings?.first.start?.to12Hour;
+  final endTime = scedule.timings?.first.end?.to12Hour;
   return TableRow(
     children: [
       Padding(
