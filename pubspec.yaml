@@ -2,7 +2,7 @@ name: driftekhar_patient
 description: "An app that will help patient to book an appointment with a doctor."
 publish_to: 'none'
 #update version code in app drawer as well
-version: 0.1.0+9
+version: 0.1.0+10
 
 environment:
   sdk: ^3.5.3
@@ -30,7 +30,7 @@ dependencies:
   doc_patient_libs:
     git:
       url: https://github.com/anasmj/doc_patient_libs
-      ref: dev  
+      ref: main  
   cloud_firestore: ^5.5.0
   flutter_local_notifications: ^18.0.1
   device_info_plus: ^11.1.1

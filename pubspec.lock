@@ -330,7 +330,7 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: dev
+      ref: main
       resolved-ref: "849ace57dbcffd7e07cca84075c2c164b77c1ae6"
       url: "https://github.com/anasmj/doc_patient_libs"
     source: git

@@ -1,6 +1,5 @@
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/home/models/grid.model.dart';
-import 'package:driftekhar_patient/src/modules/home/view/components/auto.scroll.text.dart';
 import 'package:driftekhar_patient/src/modules/home/view/components/cover.section.dart';
 import 'package:driftekhar_patient/src/routes/routes.dart';
 import 'package:flutter/material.dart';
@@ -78,19 +77,19 @@ class HomeView extends StatelessWidget {
                     ),
                     const Divider(),
 
-                    SizedBox(
-                      width: context.width * 0.9,
-                      child: ScrollingText(
-                        height: 30,
-                        speed: textScrollSpeed,
-                        text:
-                            'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয়। প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ডায়াগনোসিস করুন অল্প সময়ে।',
-                        textStyle: context.text.titleSmall!.copyWith(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey.shade800,
-                        ),
-                      ),
-                    ),
+                    // SizedBox(
+                    //   width: context.width * 0.9,
+                    //   child: ScrollingText(
+                    //     height: 30,
+                    //     speed: textScrollSpeed,
+                    //     text:
+                    //         'পেশেন্টদের ডায়াগনোসিস করে রোগ নির্ণয় করতে হয়। প্রাথমিক ডায়াগনোসিস, রিপোর্ট দেখানো, প্রেসক্রিপশন সহ নানান সুবিধা উপভোগ করুন অল্প সময়ে, অল্প খরচে ডায়াগনোসিস করুন অল্প সময়ে।',
+                    //     textStyle: context.text.titleSmall!.copyWith(
+                    //       fontWeight: FontWeight.bold,
+                    //       color: Colors.grey.shade800,
+                    //     ),
+                    //   ),
+                    // ),
                     10.toHeight,
                     BookApptButton(
                       onPressed: () async {
