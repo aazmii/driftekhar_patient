@@ -1,7 +1,9 @@
+import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:driftekhar_patient/src/modules/services/models/service.model.dart';
 import 'package:flutter/material.dart';
 
 import '../providers/services.dart';
+import 'components/service.detail.page.dart';
 
 class ServicesPage extends StatefulWidget {
   const ServicesPage({super.key});
@@ -11,7 +13,6 @@ class ServicesPage extends StatefulWidget {
 }
 
 class _ServicesPageState extends State<ServicesPage> {
-  int? _expandedIndex;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,42 +28,35 @@ class _ServicesPageState extends State<ServicesPage> {
               child: CircularProgressIndicator(),
             );
           } else {
-            return ListView.builder(
-              itemBuilder: (_, index) {
-                final service = snapshot.data![index];
-                // return Placeholder();
+            return GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+              physics: const BouncingScrollPhysics(),
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ExpansionTile(
-                    tilePadding: EdgeInsets.zero,
-                    // collapsedBackgroundColor:
-                    //     context.theme.scaffoldBackgroundColor,
-                    // backgroundColor: context.theme.scaffoldBackgroundColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    onTap: () => context.push(ServiceDetailPage(service: snapshot.data![index])),
+                    child: Card(
+                      child: Column(
+                        children: [
+                          Expanded(
+                              child: Hero(
+                                  tag: snapshot.data![index].image ?? '',
+                                  child: Image.asset(snapshot.data![index].image ?? '', fit: BoxFit.cover))),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(
+                              snapshot.data![index].title ?? '',
+                              style: const TextStyle(fontWeight: FontWeight.w500),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    // minTileHeight: 80,
-                    leading: Image.asset(
-                      width: 40,
-                      // height: 10,
-                      service.image ?? '',
-                      fit: BoxFit.cover,
-                    ),
-                    key: Key('$index'),
-                    title: Text(service.title ?? ''),
-                    initiallyExpanded: _expandedIndex == index,
-                    onExpansionChanged: (isExpanded) {
-                      setState(() {
-                        _expandedIndex = isExpanded ? index : null;
-                      });
-                    },
-                    children: [
-                      Text(service.description ?? ''),
-                    ],
                   ),
                 );
               },
-              itemCount: snapshot.data!.length,
             );
           }
         },

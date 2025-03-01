@@ -16,7 +16,7 @@ android {
     namespace = "com.codeconnect.driftekhar.patient"
     compileSdk = 34
     buildToolsVersion "23.0.1"
-    ndkVersion = "27.0.12077973"
+    ndkVersion = "28.0.13004108"
     android.buildTypes.release.ndk.debugSymbolLevel = "FULL"
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8

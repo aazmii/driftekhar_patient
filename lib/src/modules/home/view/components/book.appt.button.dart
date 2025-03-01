@@ -2,7 +2,7 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:driftekhar_patient/src/extensions/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-
+///TODO: remove 
 class BookApptButton extends StatelessWidget {
   const BookApptButton({super.key, this.onPressed});
   final VoidCallback? onPressed;

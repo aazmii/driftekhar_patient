@@ -1,11 +1,12 @@
 const whastsappNumber = '+8801964492442';
 const whastsappNumber2 = '+8801964492442';
 const callingNumber = '+8801964492442';
-const facebookLink =
-    'https://www.facebook.com/dr.mohammadiftekharalam?mibextid=wwXIfr&mibextid=wwXIfr';
+const messengerLink = 'anas.azmi.770';
+const docName = 'Dr. Iftekhar Alam';
+const docEmail = 'drmohammadiftekharalam@gmail.com';
+const docSpeciality = 'Orthopedic & Trauma Surgon';
+const facebookLink = 'https://www.facebook.com/dr.mohammadiftekharalam?mibextid=wwXIfr&mibextid=wwXIfr';
 const youtubeLink = 'https://youtube.com/@driftekharalam?si=NC-2GdkmL1VoqAOq';
-const tiktokLink =
-    'https://www.tiktok.com/@dr.iftekharalam?_t=ZS-8smeUtTv6Pv&_r=1';
+const tiktokLink = 'https://www.tiktok.com/@dr.iftekharalam?_t=ZS-8smeUtTv6Pv&_r=1';
 const webLink = 'https://driftekharalam.com/';
-const privacyLink =
-    'https://www.termsfeed.com/live/679b83bd-7ec9-4941-94ab-afc2f3128189';
+const privacyLink = 'https://www.termsfeed.com/live/679b83bd-7ec9-4941-94ab-afc2f3128189';
