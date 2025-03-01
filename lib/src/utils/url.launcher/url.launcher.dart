@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart' show debugPrint;
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -6,8 +7,7 @@ class Launcher {
   Launcher._();
 
   static Future openMap(double lat, double long) async {
-    final googleUrl =
-        'https://www.google.com/maps/search/?api=1&query=$lat,$long';
+    final googleUrl = 'https://www.google.com/maps/search/?api=1&query=$lat,$long';
 
     if (await canLaunchUrl(Uri.parse(googleUrl))) {
       await launchUrl(Uri.parse(googleUrl));
@@ -52,6 +52,16 @@ class Launcher {
       launchUrl(whatsAppUrl);
     } catch (e) {
       await Fluttertoast.showToast(msg: 'Error');
+    }
+  }
+
+  static Future<void> openMessenger(String userId) async {
+    final Uri messengerUri = Uri.parse("https://m.me/$userId");
+
+    if (await canLaunchUrl(messengerUri)) {
+      await launchUrl(messengerUri, mode: LaunchMode.externalApplication);
+    } else {
+      debugPrint("Could not open Messenger");
     }
   }
 }
