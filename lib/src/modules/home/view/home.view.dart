@@ -189,12 +189,16 @@ class HomeView extends StatelessWidget {
             left: 10,
             child: Hero(
               tag: 'assets/icons/app.icon.png',
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: SizedBox(
-                  height: 100,
-                  width: 100,
-                  child: Image.asset('assets/icons/app.icon.png'),
+              child: CircleAvatar(
+                // backgroundColor: context.theme.primaryColor,
+                radius: 52,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: SizedBox(
+                    height: 100,
+                    width: 100,
+                    child: Image.asset('assets/icons/app.icon.png'),
+                  ),
                 ),
               ),
             ),
@@ -215,7 +219,7 @@ final _homeOptions = [
   ),
   GridItem(
     title: 'Services',
-    imagePath: 'assets/images/png/medical.kit.png',
+    imagePath: 'assets/images/png/joints.png',
     routeName: servicesRoute,
   ),
   GridItem(

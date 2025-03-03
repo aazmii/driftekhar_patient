@@ -23,10 +23,8 @@ class GridContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              gridItem.imagePath,
-              height: 50,
-              width: 50,
+            Expanded(
+              child: Image.asset(gridItem.imagePath),
             ),
             5.toHeight,
             Row(
@@ -37,6 +35,7 @@ class GridContainer extends StatelessWidget {
                   textAlign: TextAlign.start,
                   style: context.text.titleMedium!.copyWith(
                     color: context.theme.primaryColor,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 // Text('helo'),
