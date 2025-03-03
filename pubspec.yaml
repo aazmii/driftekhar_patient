@@ -47,6 +47,9 @@ dependencies:
   hive_flutter: ^1.1.0
   fluttertoast: ^8.2.10
   flutter_speed_dial: ^7.0.0
+  markdown: ^7.3.0
+  flutter_html: ^3.0.0-beta.2
+  flutter_markdown: ^0.7.6+2
 
 
 dev_dependencies:
@@ -77,6 +80,7 @@ flutter:
     - assets/texts/services/
     - assets/lotties/
     - assets/fonts/
+    - assets/md/
 
   fonts:
     - family: OpenSans

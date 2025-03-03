@@ -10,7 +10,9 @@ class SpeedDialButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SpeedDial(
-      animatedIcon: AnimatedIcons.menu_close,
+      // animatedIcon: AnimatedIcons.menu_close,
+      icon: FontAwesomeIcons.commentMedical,
+      activeIcon: Icons.close,
       overlayOpacity: 0.7,
       children: [
         SpeedDialChild(
@@ -33,14 +35,13 @@ class SpeedDialButton extends StatelessWidget {
           onTap: () async => await Launcher.openWhatsApp(whastsappNumber),
         ),
         SpeedDialChild(
-            backgroundColor: Colors.blue.shade50,
-            labelStyle: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
-            child: const Icon(FontAwesomeIcons.facebookMessenger, color: Colors.blue),
-            label: 'Messenger',
-            //TODO: replace with facebook link
-            onTap: () async => await Launcher.openMessenger(messengerLink)
-            // onTap: () async => await Launcher.browseLink(facebookLink),
-            ),
+          backgroundColor: Colors.blue.shade50,
+          labelStyle: const TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+          child: const Icon(FontAwesomeIcons.facebookMessenger, color: Colors.blue),
+          label: 'Messenger',
+          // onTap: () async => await Launcher.openMessenger(messengerLink)
+          onTap: () async => await Launcher.browseLink(facebookLink),
+        ),
         SpeedDialChild(
           backgroundColor: Colors.red.shade50,
           labelStyle: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
