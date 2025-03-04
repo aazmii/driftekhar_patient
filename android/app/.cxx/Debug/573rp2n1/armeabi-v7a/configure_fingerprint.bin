@@ -2,6 +2,7 @@ C/C++ Structured Logn
 l
 j/Users/algorithmgeneraton/development/flutter/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txtC
 A
+<<<<<<< HEAD
 ?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	ÈøˆƒÕ2¤ ¢Ø®úÏ2ƒ
 €
 ~/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/additional_project_files.txt	ÈøˆƒÕ2 æÕî‚Õ2
@@ -26,3 +27,29 @@ v
 t/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/prefab_config.json	ÈøˆƒÕ2( ‡Öî‚Õ2}
 {
 y/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/symbol_folder_index.txt	ÈøˆƒÕ2p ˆÖî‚Õ2
+=======
+?com.android.build.gradle.internal.cxx.io.EncodedFileFingerPrint	›Ž¦ÞÕ2¤ ¢Ø®úÏ2ƒ
+€
+~/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/additional_project_files.txt	›Ž¦ÞÕ2 “°Ü•Õ2
+}
+{/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/android_gradle_build.json	›Ž¦ÞÕ2» ”°Ü•Õ2†
+ƒ
+€/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/android_gradle_build_mini.json	›Ž¦ÞÕ2ª •°Ü•Õ2q
+o
+m/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/build.ninja	›Ž¦ÞÕ2 Ý ú¯Ü•Õ2u
+s
+q/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/build.ninja.txt	›Ž¦ÞÕ2z
+x
+v/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/build_file_index.txt	›Ž¦ÞÕ2j •°Ü•Õ2{
+y
+w/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/compile_commands.json	›Ž¦ÞÕ2	
+}
+{/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/compile_commands.json.bin	›Ž¦ÞÕ2
+‡
+„
+/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/metadata_generation_command.txt	›Ž¦ÞÕ2»	 •°Ü•Õ2x
+v
+t/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/prefab_config.json	›Ž¦ÞÕ2( •°Ü•Õ2}
+{
+y/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/Debug/573rp2n1/armeabi-v7a/symbol_folder_index.txt	›Ž¦ÞÕ2p •°Ü•Õ2
+>>>>>>> dev
