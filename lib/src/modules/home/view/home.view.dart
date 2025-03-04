@@ -206,7 +206,7 @@ class HomeView extends StatelessWidget {
         ],
       ),
       floatingActionButton: const SpeedDialButton(),
-      bottomNavigationBar: CustomNavBar(),
+      bottomNavigationBar: const CustomNavBar(),
     );
   }
 }

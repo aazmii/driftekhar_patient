@@ -16,7 +16,7 @@ final items = [
 ];
 
 class CustomNavBar extends StatelessWidget {
-  CustomNavBar({super.key});
+  const CustomNavBar({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(
