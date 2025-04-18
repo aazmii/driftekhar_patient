@@ -1,3 +1,1 @@
-# com.codeconnect.driftekhar.patient
-
-A new Flutter project.
+A personalized app to create doctor appointment  
