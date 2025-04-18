@@ -1,0 +1,2 @@
+/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/RelWithDebInfo/1x5u6wr2/x86/CMakeFiles/edit_cache.dir
+/Users/algorithmgeneraton/personal/driftekhar_patient/android/app/.cxx/RelWithDebInfo/1x5u6wr2/x86/CMakeFiles/rebuild_cache.dir
